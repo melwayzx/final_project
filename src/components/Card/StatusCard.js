@@ -52,10 +52,12 @@ export default function StatusCard({ domesticDailyCase }) {
           justifyContent: "flex-end",
         }}
       >
-        <div style={{ color: "#C23D3D", marginRight: "10px" }}>
+        <div
+          style={{ color: "#C23D3D", marginRight: "10px", fontSize: "14px" }}
+        >
           อัพเดตล่าสุด
         </div>
-        <div>{domesticDailyCase.UpdateDate}</div>
+        <div style={{ fontSize: "14px" }}>{domesticDailyCase.UpdateDate}</div>
       </div>
     </div>
   );

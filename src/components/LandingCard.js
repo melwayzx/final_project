@@ -37,7 +37,6 @@ const StyledContainer = {
 };
 
 const StyledText = {
-  fontFamily: "Sukhumvit Set",
   fontSize: "40px",
 };
 
@@ -54,4 +53,5 @@ const StyledWrapper = {
   justifyContent: "center",
   alignItems: "center",
   marginRight: "100px",
+  fontFamily: "Sukhumvit Set",
 };
