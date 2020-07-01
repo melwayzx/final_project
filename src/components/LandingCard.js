@@ -2,6 +2,7 @@ import StatusCard from "./Card/StatusCard";
 import { colors } from "@material-ui/core";
 
 export default function LandingCard({ domesticDailyCase }) {
+  console.log(domesticDailyCase);
   return (
     <div>
       <div style={StyledContainer}>
