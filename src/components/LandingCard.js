@@ -23,7 +23,7 @@ export default function LandingCard({ domesticDailyCase }) {
             </div>
             <div style={StyledText}>ประเทศไทย </div>
           </div>
-          <Button />
+          <Button href={"/covidScale"} name={"แบบประเมินความเสี่ยง"} />
         </div>
 
         <StatusCard domesticDailyCase={domesticDailyCase} />
@@ -34,6 +34,7 @@ export default function LandingCard({ domesticDailyCase }) {
 
 const StyledContainer = {
   display: "flex",
+  justifyContent: "center",
 };
 
 const StyledText = {

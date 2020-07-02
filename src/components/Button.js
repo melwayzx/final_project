@@ -1,7 +1,16 @@
 import React from "react";
+import Link from "next/link";
 
-export default function Button() {
-  return <div style={StyledButtonContainer}>แบบประเมินความเสี่ยง</div>;
+export default function Button({ href, name }) {
+  return (
+    <div>
+      <div style={StyledButtonContainer}>
+        <Link href="/covidScale">
+          <a style={StyledLink}>{name}</a>
+        </Link>
+      </div>
+    </div>
+  );
 }
 
 const StyledButtonContainer = {
@@ -12,4 +21,9 @@ const StyledButtonContainer = {
   padding: "10px",
   boxSixing: "border-box",
   textAlign: "center",
+};
+
+const StyledLink = {
+  color: "white",
+  textDecoration: "inherit",
 };
