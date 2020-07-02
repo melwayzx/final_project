@@ -2,6 +2,7 @@ import Head from "next/head";
 import CovidReport from "../src/services/covid-reports";
 import MenuBar from "../src/components/MenuBar";
 import LandingCard from "../src/components/LandingCard";
+import Navbar from "react-bootstrap/Navbar";
 import TableChart from "../src/components/Table";
 
 export default function index(props) {
@@ -21,7 +22,7 @@ export default function index(props) {
         <title>Covid-19 updates </title>
       </Head>
       <LandingCard domesticDailyCase={domesticDailyCase} />
-      <TableChart domesticSum={domesticSum} />
+      {/* <TableChart domesticSum={domesticSum} /> */}
     </div>
   );
 }
