@@ -1,7 +1,7 @@
-import StatusCard from "./Card/StatusCard";
-import Button from "../components/Button";
+import StatusCard from "./StatusCard";
+import Button from "../Button";
 
-export default function LandingCard({ domesticDailyCase }) {
+export default function SumCard({ domesticDailyCase }) {
   // console.log(domesticDailyCase);
   return (
     <div>

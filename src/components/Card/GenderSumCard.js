@@ -1,9 +1,9 @@
 import PieChartData from "../Chart/PieChartData";
 
-export default function GenderSumCard() {
+export default function GenderSumCard({ domesticSum }) {
   return (
-    <Div>
-      <PieChartData />
-    </Div>
+    <div>
+      <PieChartData domesticSum={domesticSum} />
+    </div>
   );
 }

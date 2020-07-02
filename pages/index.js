@@ -1,7 +1,7 @@
 import Head from "next/head";
 import CovidReport from "../src/services/covid-reports";
-import LandingCard from "../src/components/LandingCard";
-import PieChartData from "../src/components/Chart/PieChartData";
+import SumCard from "../src/components/Card/SumCard";
+import GenderSumCard from "../src/components/Card/GenderSumCard";
 export default function index(props) {
   const {
     domesticDailyCase,
@@ -18,8 +18,8 @@ export default function index(props) {
       <Head>
         <title>Covid-19 updates </title>
       </Head>
-      <LandingCard domesticDailyCase={domesticDailyCase} />
-      <PieChartData domesticSum={domesticSum} />
+      <SumCard domesticDailyCase={domesticDailyCase} />
+      <GenderSumCard domesticSum={domesticSum} />
     </div>
   );
 }
