@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import Button from "../src/components/Button";
-
+import Survey from '../pages/survey';
 export default function covidScale() {
   return (
     <div>
@@ -11,8 +11,9 @@ export default function covidScale() {
         href={"/"}
         name={"กลับไปหน้าหลัก"}
       ></Button>
-    </div>
-  );
+      <Survey></Survey>
+    </div >
+  )
 }
 
 const StyledButtonContainer = {
@@ -20,7 +21,7 @@ const StyledButtonContainer = {
   backgroundColor: "#C23D3D",
   borderRadius: "8px",
   color: "white",
-  padding: "10px",
+  padding: "12px",
   boxSixing: "border-box",
   textAlign: "center",
 };
@@ -28,4 +29,13 @@ const StyledButtonContainer = {
 const StyledLink = {
   color: "white",
   textDecoration: "inherit",
+};
+const StyledButtonChoice = {
+  width: "300px",
+  backgroundColor: "#6B726E",
+  borderRadius: "8px",
+  color: "white",
+  padding: "10px",
+  boxSixing: "border-box",
+  textAlign: "center",
 };

@@ -25,7 +25,7 @@ export default function getConfirmGlobal() {
       columns: true,
       skip_empty_lines: true,
     });
-    console.log(records);
+    // console.log(records);
   });
   return records;
 }
