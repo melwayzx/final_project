@@ -23,7 +23,12 @@ export default function LandingCard({ domesticDailyCase }) {
             </div>
             <div style={StyledText}>ประเทศไทย </div>
           </div>
-          <Button href={"/covidScale"} name={"แบบประเมินความเสี่ยง"} />
+          <Button
+            href={"/covidScale"}
+            name={"แบบประเมินความเสี่ยง"}
+            StyledButtonContainer={StyledButtonContainer}
+            StyledLink={StyledLink}
+          />
         </div>
 
         <StatusCard domesticDailyCase={domesticDailyCase} />
@@ -55,4 +60,19 @@ const StyledWrapper = {
   alignItems: "center",
   marginRight: "100px",
   fontFamily: "Sukhumvit Set",
+};
+
+const StyledButtonContainer = {
+  width: "200px",
+  backgroundColor: "#C23D3D",
+  borderRadius: "8px",
+  color: "white",
+  padding: "10px",
+  boxSixing: "border-box",
+  textAlign: "center",
+};
+
+const StyledLink = {
+  color: "white",
+  textDecoration: "inherit",
 };
