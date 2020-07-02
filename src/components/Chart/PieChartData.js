@@ -44,7 +44,7 @@ export default function PieChartData({ domesticSum }) {
 
   return (
     <div>
-      <PieChart width={730} height={250}>
+      <PieChart width={250} height={250}>
         <Pie
           data={data}
           dataKey="value"

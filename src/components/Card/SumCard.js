@@ -13,9 +13,9 @@ export default function SumCard({ domesticDailyCase }) {
               style={{
                 ...StyledText,
                 color: "#C23D3D",
-                fontSize: "60px",
+                fontSize: "100px",
                 fontWeight: 900,
-                lineHeight: "45px",
+                lineHeight: "60px",
               }}
             >
               {" "}
@@ -40,6 +40,8 @@ export default function SumCard({ domesticDailyCase }) {
 const StyledContainer = {
   display: "flex",
   justifyContent: "center",
+  padding: "100px",
+  boxSixing: "border-box",
 };
 
 const StyledText = {
