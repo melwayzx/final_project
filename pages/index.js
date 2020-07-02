@@ -14,7 +14,7 @@ export default function index(props) {
   // console.log(`domesticSum`, domesticSum);
 
   return (
-    <div>
+    <div style={{ padding: "100px", boxSixing: "border-box" }}>
       <Head>
         <title>Covid-19 updates </title>
       </Head>
