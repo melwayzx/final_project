@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import Button from "../src/components/Button";
-import Survey from '../pages/survey';
+import Survey from "../src/components/survey";
 export default function covidScale() {
   return (
     <div>
@@ -12,8 +12,8 @@ export default function covidScale() {
         name={"กลับไปหน้าหลัก"}
       ></Button>
       <Survey></Survey>
-    </div >
-  )
+    </div>
+  );
 }
 
 const StyledButtonContainer = {

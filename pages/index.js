@@ -2,6 +2,7 @@ import Head from "next/head";
 import CovidReport from "../src/services/covid-reports";
 import SumCard from "../src/components/Card/SumCard";
 import GenderSumCard from "../src/components/Card/GenderSumCard";
+import Table from "../src/components/Chart/Table";
 export default function index(props) {
   const {
     domesticDailyCase,
@@ -20,6 +21,7 @@ export default function index(props) {
       </Head>
       <SumCard domesticDailyCase={domesticDailyCase} />
       <GenderSumCard domesticSum={domesticSum} />
+      <Table data={domesticSum} />
     </div>
   );
 }
