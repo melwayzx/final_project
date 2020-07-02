@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import Button from "../src/components/Button";
-
+import Survey from '../pages/survey';
 export default function covidScale() {
   return (
     <div>
@@ -11,22 +11,8 @@ export default function covidScale() {
         href={"/"}
         name={"กลับไปหน้าหลัก"}
       ></Button>
-
-      <form>
-        <div>1. ผู้ป่วยมีอุณหภูมิร่างกายในช่วงอุณหภูมิใด</div>
-
-        <div className="radio">
-          <label>
-            <input type="radio" value="1" checked={false} />
-            ต่ำกว่า 37.5 องศา
-          </label>
-          <label>
-            <input type="radio" value="2" checked={false} />
-           สูงกว่าหรือเท่ากับ 37.5 หรือ รู้สึกว่ามีไข้
-          </label>
-        </div>
-      </form>
-    </div>
+      <Survey></Survey>
+    </div >
   )
 }
 
