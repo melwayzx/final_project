@@ -4,8 +4,8 @@ export default function survey() {
     return (
         <div>
             <form>
-                <div>1. ผู้ป่วยมีอุณหภูมิร่างกายในช่วงอุณหภูมิใด</div>
-                <div className="radio">
+                <div style={{ fontSize: "16px", fontFamily: "Sukhumvit Set", marginBottom: "25px" }}>1. ผู้ป่วยมีอุณหภูมิร่างกายในช่วงอุณหภูมิใด</div>
+                <div style={{ fontSize: "16px", fontFamily: "Sukhumvit Set", marginBottom: "25px" }} className="radio">
                     <label>
                         <input type="radio" value="1" checked={false} />
             ต่ำกว่า 37.5 องศา
@@ -15,9 +15,9 @@ export default function survey() {
            สูงกว่าหรือเท่ากับ 37.5 หรือ รู้สึกว่ามีไข้
           </label>
                 </div>
-                <div>2. ผู้ป่วยมีอาการระบบทางเดินหายใจ อย่างใดอย่างหนึ่งดังต่อไปนี้
+                <div style={{ fontSize: "16px", fontFamily: "Sukhumvit Set", marginBottom: "25px" }}>2. ผู้ป่วยมีอาการระบบทางเดินหายใจ อย่างใดอย่างหนึ่งดังต่อไปนี้
            "ไอ น้ำมูก เจ็บคอ หายใจเหนื่อย หรือหายใจลำบาก"</div>
-                <div className="radio">
+                <div style={{ fontSize: "16px", fontFamily: "Sukhumvit Set", marginBottom: "25px" }} className="radio">
                     <label>
                         <input type="radio" value="1" checked={false} />
            ไม่มี
@@ -27,9 +27,9 @@ export default function survey() {
           มี
           </label>
                 </div>
-                <div>3. ผู้ป่วยมีประวัติเดินทางไปยัง หรือ มาจาก หรือ อาศัยอยู่ในพื้นที่เกิดโรค COVID-19
+                <div style={{ fontSize: "16px", fontFamily: "Sukhumvit Set", marginBottom: "25px" }}>3. ผู้ป่วยมีประวัติเดินทางไปยัง หรือ มาจาก หรือ อาศัยอยู่ในพื้นที่เกิดโรค COVID-19
            ในช่วงเวลา 14 วัน ก่อนป่วย </div>
-                <div className="radio">
+                <div style={{ fontSize: "16px", fontFamily: "Sukhumvit Set", marginBottom: "25px" }} className="radio">
                     <label>
                         <input type="radio" value="1" checked={false} />
            ไม่มี
@@ -39,9 +39,9 @@ export default function survey() {
           มี
           </label>
                 </div>
-                <div>4. อยู่ใกล้ชิดกับผู้ป่วยยืนยัน COVID-19 (ใกล้กว่า 1 เมตร นานเกิน 5 นาที)
+                <div style={{ fontSize: "16px", fontFamily: "Sukhumvit Set", marginBottom: "25px" }}>4. อยู่ใกล้ชิดกับผู้ป่วยยืนยัน COVID-19 (ใกล้กว่า 1 เมตร นานเกิน 5 นาที)
         ในช่วง 14 วันก่อน </div>
-                <div className="radio">
+                <div style={{ fontSize: "16px", fontFamily: "Sukhumvit Set", marginBottom: "25px" }} className="radio">
                     <label>
                         <input type="radio" value="1" checked={false} />
            ไม่มี
@@ -51,9 +51,9 @@ export default function survey() {
           มี
           </label>
                 </div>
-                <div>5. มีประวัติไปสถานที่ชุมนุมชน หรือสถานที่ที่มีการรวมกลุ่มคน เช่น ตลาดนัด ห้างสรรพสินค้า
+                <div style={{ fontSize: "16px", fontFamily: "Sukhumvit Set", marginBottom: "25px" }}>5. มีประวัติไปสถานที่ชุมนุมชน หรือสถานที่ที่มีการรวมกลุ่มคน เช่น ตลาดนัด ห้างสรรพสินค้า
            สถานพยาบาล หรือ ขนส่งสาธารณะ </div>
-                <div className="radio">
+                <div style={{ fontSize: "16px", fontFamily: "Sukhumvit Set", marginBottom: "25px" }} className="radio">
                     <label>
                         <input type="radio" value="1" checked={false} />
            ไม่มี
@@ -63,8 +63,8 @@ export default function survey() {
           มี
           </label>
                 </div>
-                <div>6. ผู้ป่วยประกอบอาชีพที่สัมผัสใกล้ชิดกับนักท่องเที่ยวต่างชาติ สถานที่แออัด หรือติดต่อคนจำนวนมาก </div>
-                <div className="radio">
+                <div style={{ fontSize: "16px", fontFamily: "Sukhumvit Set", marginBottom: "25px" }}>6. ผู้ป่วยประกอบอาชีพที่สัมผัสใกล้ชิดกับนักท่องเที่ยวต่างชาติ สถานที่แออัด หรือติดต่อคนจำนวนมาก </div>
+                <div style={{ fontSize: "16px", fontFamily: "Sukhumvit Set", marginBottom: "25px" }} className="radio">
                     <label>
                         <input type="radio" value="1" checked={false} />
            ไม่มี
@@ -74,8 +74,8 @@ export default function survey() {
           มี
           </label>
                 </div>
-                <div>7. เป็นบุคลากรทางการแพทย์ </div>
-                <div className="radio">
+                <div style={{ fontSize: "16px", fontFamily: "Sukhumvit Set", marginBottom: "25px" }}>7. เป็นบุคลากรทางการแพทย์ </div>
+                <div style={{ fontSize: "16px", fontFamily: "Sukhumvit Set", marginBottom: "25px" }} sclassName="radio">
                     <label>
                         <input type="radio" value="1" checked={false} />
            ไม่มี
@@ -85,8 +85,8 @@ export default function survey() {
           มี
           </label>
                 </div>
-                <div>8. มีผู้ใกล้ชิดป่วยเป็นไข้หวัดพร้อมกัน มากกว่า 5 คน ในช่วงสัปดาห์ที่ป่วย</div>
-                <div className="radio">
+                <div style={{ fontSize: "16px", fontFamily: "Sukhumvit Set", marginBottom: "25px" }}>8. มีผู้ใกล้ชิดป่วยเป็นไข้หวัดพร้อมกัน มากกว่า 5 คน ในช่วงสัปดาห์ที่ป่วย</div>
+                <div style={{ fontSize: "16px", fontFamily: "Sukhumvit Set", marginBottom: "25px" }} className="radio">
                     <label>
                         <input type="radio" value="1" checked={false} />
            ไม่มี
@@ -103,7 +103,7 @@ export default function survey() {
                 href={"/result"}
                 name={"ดูผลลัพธ์การประเมิน"}
             ></Button>
-        </div>
+        </div >
     )
 }
 
