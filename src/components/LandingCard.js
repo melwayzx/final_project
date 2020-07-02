@@ -2,7 +2,7 @@ import StatusCard from "./Card/StatusCard";
 import Button from "../components/Button";
 
 export default function LandingCard({ domesticDailyCase }) {
-  console.log(domesticDailyCase);
+  // console.log(domesticDailyCase);
   return (
     <div>
       <div style={StyledContainer}>
