@@ -1,8 +1,6 @@
 import React from "react";
 
 export default function StatusCard({ domesticDailyCase }) {
-  // console.log(domesticDailyCase);
-
   return (
     <div style={{ fontFamily: "Sukhumvit Set" }}>
       <div style={StyledWrapper}>
