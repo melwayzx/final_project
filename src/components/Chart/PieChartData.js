@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import { PieChart, Pie, Cell } from "recharts";
 
 export default function PieChartData({ domesticSum }) {
-  console.log({ domesticSum });
+  // console.log({ domesticSum });
   const data = [
     {
       name: "ผู้หญิง",
@@ -47,6 +47,8 @@ export default function PieChartData({ domesticSum }) {
       <PieChart width={730} height={250}>
         <Pie
           data={data}
+          dataKey="value"
+          nameKey="name"
           cx="50%"
           cy="50%"
           labelLine={false}
@@ -55,7 +57,7 @@ export default function PieChartData({ domesticSum }) {
           fill="#8884d8"
         >
           {data.map((entry, index) => (
-            <Cell fill={COLORS[index % COLORS.length]} />
+            <Cell key={entry.name} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
       </PieChart>

@@ -1,11 +1,7 @@
 import Head from "next/head";
 import CovidReport from "../src/services/covid-reports";
-import MenuBar from "../src/components/MenuBar";
 import LandingCard from "../src/components/LandingCard";
-import Navbar from "react-bootstrap/Navbar";
-import TableChart from "../src/components/Table";
 import PieChartData from "../src/components/Chart/PieChartData";
-
 export default function index(props) {
   const {
     domesticDailyCase,
@@ -23,9 +19,7 @@ export default function index(props) {
         <title>Covid-19 updates </title>
       </Head>
       <LandingCard domesticDailyCase={domesticDailyCase} />
-      {/* <PieChart domesticSum={domesticSum} /> */}
       <PieChartData domesticSum={domesticSum} />
-      {/* <TableChart domesticSum={domesticSum} /> */}
     </div>
   );
 }
@@ -42,6 +36,7 @@ export async function getServerSideProps() {
       domesticDailyCase,
       domesticSum,
       // confirmGlobal,
+
       // deathGlobal,
       // recoveredGlobal,]
     }, // will be passed to the page component as props
