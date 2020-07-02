@@ -1,11 +1,10 @@
 import React from "react";
-import styled from "styled-components";
 
 export default function StatusCard({ domesticDailyCase }) {
   // console.log(domesticDailyCase);
 
   return (
-    <div>
+    <div style={{ fontFamily: "Sukhumvit Set" }}>
       <div style={StyledWrapper}>
         <div style={StyledMainBox}>
           <div style={StyledFlexbox}>
@@ -46,6 +45,20 @@ export default function StatusCard({ domesticDailyCase }) {
           <div style={StyledCount}>+ {domesticDailyCase.NewDeaths}</div>
         </div>
       </div>
+      <div
+        style={{
+          display: "flex",
+          textAlign: "right",
+          justifyContent: "flex-end",
+        }}
+      >
+        <div
+          style={{ color: "#C23D3D", marginRight: "10px", fontSize: "14px" }}
+        >
+          อัพเดตล่าสุด
+        </div>
+        <div style={{ fontSize: "14px" }}>{domesticDailyCase.UpdateDate}</div>
+      </div>
     </div>
   );
 }
@@ -58,7 +71,6 @@ const StyledWrapper = {
   gridTemplateRows: "125px 125px",
   gridTemplateAreas: ` "a a a"
     "b c d"`,
-  fontFamily: "Sukhumvit Set",
   color: "#ffffff",
   textAlign: "center",
 };

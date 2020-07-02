@@ -1,13 +1,36 @@
 import StatusCard from "./Card/StatusCard";
+import Button from "../components/Button";
 
 export default function LandingCard({ domesticDailyCase }) {
+  // console.log(domesticDailyCase);
   return (
     <div>
       <div style={StyledContainer}>
-        <div style={StyledTextContainer}>
-          <div style={StyledText}>อัปเดตสถิติ COVID-1 </div>
-          <div style={StyledText}>ประเทศไทย </div>
+        <div style={StyledWrapper}>
+          <div style={StyledTextContainer}>
+            <div style={StyledText}>อัปเดตสถิติ </div>
+            <div
+              style={{
+                ...StyledText,
+                color: "#C23D3D",
+                fontSize: "60px",
+                fontWeight: 900,
+                lineHeight: "45px",
+              }}
+            >
+              {" "}
+              COVID-19
+            </div>
+            <div style={StyledText}>ประเทศไทย </div>
+          </div>
+          <Button
+            href={"/covidScale"}
+            name={"แบบประเมินความเสี่ยง"}
+            StyledButtonContainer={StyledButtonContainer}
+            StyledLink={StyledLink}
+          />
         </div>
+
         <StatusCard domesticDailyCase={domesticDailyCase} />
       </div>
     </div>
@@ -16,13 +39,40 @@ export default function LandingCard({ domesticDailyCase }) {
 
 const StyledContainer = {
   display: "flex",
+  justifyContent: "center",
 };
 
 const StyledText = {
-  fontFamily: "Sukhumvit Set",
-  fontSize: "50px",
+  fontSize: "40px",
 };
 
 const StyledTextContainer = {
+  display: "flex",
+  flexDirection: "column",
   justifyContent: "center",
+  textAlign: "center",
+};
+
+const StyledWrapper = {
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  marginRight: "100px",
+  fontFamily: "Sukhumvit Set",
+};
+
+const StyledButtonContainer = {
+  width: "200px",
+  backgroundColor: "#C23D3D",
+  borderRadius: "8px",
+  color: "white",
+  padding: "10px",
+  boxSixing: "border-box",
+  textAlign: "center",
+};
+
+const StyledLink = {
+  color: "white",
+  textDecoration: "inherit",
 };
