@@ -2,16 +2,11 @@ import Head from "next/head";
 import CovidReport from "../src/services/covid-reports";
 import MenuBar from "../src/components/MenuBar";
 import LandingCard from "../src/components/LandingCard";
-<<<<<<< HEAD
 import Table from '../src/components/Chart/Table';
 import Piechart from '../src/components/Chart/PieChart';
 import LineCharts from '../src/components/Chart/LineCharts';
 import Map from '../src/components/Chart/Map';
-import { SVGMap } from "react-svg-map";
-=======
-import Navbar from "react-bootstrap/Navbar";
-import TableChart from "../src/components/Table";
->>>>>>> f4fd1e626c84a8ee4c62a2a56d917a0629c7053d
+import covidScale from "./covidScale";
 
 export default function index(props) {
   const {
@@ -30,17 +25,11 @@ export default function index(props) {
         <title>Covid-19 updates </title>
       </Head>
       <LandingCard domesticDailyCase={domesticDailyCase} />
-<<<<<<< HEAD
       <Table> </Table>
-      {/* <PiechaSrt></Piechart> */}
-      <LineCharts confirmGlobal={confirmGlobal}></LineCharts>
+      <Piechart></Piechart>
+      {/* <LineCharts confirmGlobal={confirmGlobal}></LineCharts> */}
+      <covidScale></covidScale>
       <Map></Map>
-      <image></image>
-      {/* <SVGMap /> */}
-
-=======
-      {/* <TableChart domesticSum={domesticSum} /> */}
->>>>>>> f4fd1e626c84a8ee4c62a2a56d917a0629c7053d
     </div>
   );
 }

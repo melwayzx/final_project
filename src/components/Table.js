@@ -25,11 +25,10 @@ const rows = [
   createData("สมุทรปราการ", 140),
   createData("ยะลา", 134),
 ];
-
 export default function SimpleTable({ domesticSum }) {
   const classes = useStyles();
 
-  console.log(domesticSum.Province);
+  // console.log(domesticSum.Province);
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
