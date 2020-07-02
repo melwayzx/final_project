@@ -1,7 +1,7 @@
 import PieChartData from "../Chart/PieChartData";
 
 export default function GenderSumCard({ domesticSum }) {
-  console.log(domesticSum);
+  // console.log(domesticSum);
   return (
     <div style={{ fontFamily: "Sukhumvit Set" }}>
       <div>ผู้ติดเชื้อในประเทศไทย จำแนกตามเพศ</div>

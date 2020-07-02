@@ -1,8 +1,9 @@
-import React, { PureComponent } from "react";
-import { PieChart, Pie, Cell } from "recharts";
+import React, { useState } from "react";
+import { PieChart, Pie, Cell, Tooltip } from "recharts";
 
 export default function PieChartData({ domesticSum }) {
-  console.log({ domesticSum });
+  // console.log({ domesticSum });
+  const [hover, setHover] = useState(false);
   const data = [
     {
       name: "ผู้หญิง",
@@ -42,6 +43,10 @@ export default function PieChartData({ domesticSum }) {
     );
   };
 
+  const hoverText = (name, value) => {
+    <Tooltip title={name} placement="top-start"></Tooltip>;
+  };
+
   return (
     <div
       style={{
@@ -60,20 +65,24 @@ export default function PieChartData({ domesticSum }) {
           cy="50%"
           labelLine={false}
           label={renderCustomizedLabel}
-          // outerRadius={80}
+          isAnimationActive={false}
           fill="#8884d8"
         >
           {data.map((entry, index) => (
-            <Cell key={entry.name} fill={COLORS[index % COLORS.length]} />
+            <Cell key={entry.name} fill={COLORS[index % COLORS.length]}></Cell>
           ))}
         </Pie>
+        <Tooltip />
       </PieChart>
       <div style={{ display: "flex" }}>
         <div style={{ ...StyledLabel, background: "#F08080" }}></div>
-        <div style={{ lineHeight: "20px", width: "50px" }}>ผู้หญิง</div>
+        <div style={{ lineHeight: "20px", width: "50px" }}>หญิง</div>
         <div style={{ ...StyledLabel, background: "#0088FE" }}></div>
-        <div style={{ lineHeight: "20px", width: "30px" }}> ผู้ชาย</div>
+        <div style={{ lineHeight: "20px", width: "30px" }}>ชาย</div>
       </div>
+      {/* <Tooltip title="Add" placement="top-start">
+        <div>top-start</div>
+      </Tooltip> */}
     </div>
   );
 }
@@ -82,4 +91,34 @@ const StyledLabel = {
   width: "20px",
   height: "20px",
   marginRight: "10px",
+};
+
+const StyledPopupBox = {
+  width: "100px",
+  height: "100px",
+  background: "white",
+};
+
+const tooltip = {
+  position: " relative",
+  display: "inline-block",
+  borderBottom: " 1px dotted black",
+  "&:hover": {
+    background: "#efefef",
+    visibility: " visible",
+  },
+};
+
+const tooltiptext = {
+  visibility: "hidden",
+  width: "120px",
+  backgroundColor: "black",
+  color: "#fff",
+  textAlign: "center",
+  borderRadius: "6px",
+  padding: "5px 0",
+
+  /* Position the tooltip */
+  position: "absolute",
+  zIndex: "1",
 };

@@ -22,13 +22,16 @@ export default function index(props) {
       <Head>
         <title>Covid-19 updates </title>
       </Head>
-      <Table> </Table>
-      {/* <LineCharts confirmGlobal={confirmGlobal}></LineCharts> */}
-      <covidScale></covidScale>
-      {/* <Map domesticSum={domesticSum} /> */}
-      <SumCard domesticDailyCase={domesticDailyCase} />
-      <GenderSumCard domesticSum={domesticSum} />
-    </div>
+<<<<<<< HEAD
+  <Table> </Table>
+  {/* <LineCharts confirmGlobal={confirmGlobal}></LineCharts> */ }
+  <covidScale></covidScale>
+  {/* <Map domesticSum={domesticSum} /> */ }
+=======
+>>>>>>> origin/Melwayz
+  <SumCard domesticDailyCase={domesticDailyCase} />
+    <GenderSumCard domesticSum={domesticSum} />
+    </div >
   );
 }
 
