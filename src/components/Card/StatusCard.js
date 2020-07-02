@@ -33,7 +33,7 @@ export default function StatusCard({ domesticDailyCase }) {
           <div style={StyledCount}>
             {" "}
             {domesticDailyCase.NewHospitalized > 1
-              ? +domesticDailyCase.NewHospitalized
+              ? `+ ${domesticDailyCase.NewHospitalized}`
               : domesticDailyCase.NewHospitalized}
           </div>
         </div>
