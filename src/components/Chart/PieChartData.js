@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { PieChart, Pie, Cell } from "recharts";
-import { render } from "react-dom";
+import { PieChart, Pie, Cell, Tooltip } from "recharts";
 
 export default function PieChartData({ domesticSum }) {
   // console.log({ domesticSum });
@@ -44,6 +43,10 @@ export default function PieChartData({ domesticSum }) {
     );
   };
 
+  const hoverText = (name, value) => {
+    <Tooltip title={name} placement="top-start"></Tooltip>;
+  };
+
   return (
     <div
       style={{
@@ -62,13 +65,14 @@ export default function PieChartData({ domesticSum }) {
           cy="50%"
           labelLine={false}
           label={renderCustomizedLabel}
-          // outerRadius={80}
+          isAnimationActive={false}
           fill="#8884d8"
         >
           {data.map((entry, index) => (
             <Cell key={entry.name} fill={COLORS[index % COLORS.length]}></Cell>
           ))}
         </Pie>
+        <Tooltip />
       </PieChart>
       <div style={{ display: "flex" }}>
         <div style={{ ...StyledLabel, background: "#F08080" }}></div>
@@ -76,6 +80,9 @@ export default function PieChartData({ domesticSum }) {
         <div style={{ ...StyledLabel, background: "#0088FE" }}></div>
         <div style={{ lineHeight: "20px", width: "30px" }}>ชาย</div>
       </div>
+      {/* <Tooltip title="Add" placement="top-start">
+        <div>top-start</div>
+      </Tooltip> */}
     </div>
   );
 }
