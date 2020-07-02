@@ -40,8 +40,6 @@ export default function SumCard({ domesticDailyCase }) {
 const StyledContainer = {
   display: "flex",
   justifyContent: "center",
-  padding: "100px",
-  boxSixing: "border-box",
 };
 
 const StyledText = {
