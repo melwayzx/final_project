@@ -4,6 +4,7 @@ import Table from '../src/components/Chart/Table';
 // import LineCharts from '../src/components/Chart/LineCharts';
 import Map from '../src/components/Chart/Map';
 // import covidScale from "./covidScale";
+import BarChartData from '../src/components/Chart/BarChartData';
 import SumCard from "../src/components/Card/SumCard";
 import GenderSumCard from "../src/components/Card/GenderSumCard";
 export default function index(props) {
@@ -25,6 +26,7 @@ export default function index(props) {
       <Table> </Table>
       <SumCard domesticDailyCase={domesticDailyCase} />
       <GenderSumCard domesticSum={domesticSum} />
+      <BarChartData></BarChartData>
     </div >
   );
 }
