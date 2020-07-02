@@ -1,7 +1,7 @@
-import StatusCard from "./Card/StatusCard";
-import Button from "../components/Button";
+import StatusCard from "./StatusCard";
+import Button from "../Button";
 
-export default function LandingCard({ domesticDailyCase }) {
+export default function SumCard({ domesticDailyCase }) {
   // console.log(domesticDailyCase);
   return (
     <div>
@@ -13,9 +13,9 @@ export default function LandingCard({ domesticDailyCase }) {
               style={{
                 ...StyledText,
                 color: "#C23D3D",
-                fontSize: "60px",
+                fontSize: "100px",
                 fontWeight: 900,
-                lineHeight: "45px",
+                lineHeight: "60px",
               }}
             >
               {" "}

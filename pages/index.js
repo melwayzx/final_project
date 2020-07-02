@@ -1,18 +1,16 @@
 import Head from "next/head";
 import CovidReport from "../src/services/covid-reports";
-import MenuBar from "../src/components/MenuBar";
-import LandingCard from "../src/components/LandingCard";
 import Table from '../src/components/Chart/Table';
-import Piechart from '../src/components/Chart/PieChart';
-import LineCharts from '../src/components/Chart/LineCharts';
+// import LineCharts from '../src/components/Chart/LineCharts';
 import Map from '../src/components/Chart/Map';
-import covidScale from "./covidScale";
-
+// import covidScale from "./covidScale";
+import SumCard from "../src/components/Card/SumCard";
+import GenderSumCard from "../src/components/Card/GenderSumCard";
 export default function index(props) {
   const {
     domesticDailyCase,
     domesticSum,
-    confirmGlobal,
+    // confirmGlobal,
     // deathGlobal,
     // recoveredGlobal,
   } = props;
@@ -20,16 +18,16 @@ export default function index(props) {
   // console.log(`domesticSum`, domesticSum);
 
   return (
-    <div>
+    <div style={{ padding: "100px", boxSixing: "border-box" }}>
       <Head>
         <title>Covid-19 updates </title>
       </Head>
-      <LandingCard domesticDailyCase={domesticDailyCase} />
       <Table> </Table>
-      <Piechart></Piechart>
       {/* <LineCharts confirmGlobal={confirmGlobal}></LineCharts> */}
       <covidScale></covidScale>
-      <Map></Map>
+      {/* <Map domesticSum={domesticSum} /> */}
+      <SumCard domesticDailyCase={domesticDailyCase} />
+      <GenderSumCard domesticSum={domesticSum} />
     </div>
   );
 }
@@ -37,7 +35,7 @@ export default function index(props) {
 export async function getServerSideProps() {
   const domesticDailyCase = await CovidReport.getDomesticDailyCase();
   const domesticSum = await CovidReport.getDomesticSum();
-  const confirmGlobal = await CovidReport.getConfirmGlobal();
+  // const confirmGlobal = await CovidReport.getConfirmGlobal();
   // const deathGlobal = await CovidReport.getDeathGlobal();
   // const recoveredGlobal = await CovidReport.getRecoveredGlobal();
 
@@ -45,7 +43,7 @@ export async function getServerSideProps() {
     props: {
       domesticDailyCase,
       domesticSum,
-      confirmGlobal,
+      // confirmGlobal,
 
       // deathGlobal,
       // recoveredGlobal,]
