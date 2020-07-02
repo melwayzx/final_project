@@ -4,6 +4,7 @@ import MenuBar from "../src/components/MenuBar";
 import LandingCard from "../src/components/LandingCard";
 import Navbar from "react-bootstrap/Navbar";
 import TableChart from "../src/components/Table";
+import PieChartData from "../src/components/Chart/PieChartData";
 
 export default function index(props) {
   const {
@@ -22,6 +23,8 @@ export default function index(props) {
         <title>Covid-19 updates </title>
       </Head>
       <LandingCard domesticDailyCase={domesticDailyCase} />
+      {/* <PieChart domesticSum={domesticSum} /> */}
+      <PieChartData domesticSum={domesticSum} />
       {/* <TableChart domesticSum={domesticSum} /> */}
     </div>
   );
