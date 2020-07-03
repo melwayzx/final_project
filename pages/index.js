@@ -7,6 +7,7 @@ export default function index(props) {
   const {
     domesticDailyCase,
     domesticSum,
+    domesticCase,
     // confirmGlobal,
     // deathGlobal,
     // recoveredGlobal,
@@ -29,6 +30,7 @@ export default function index(props) {
 export async function getServerSideProps() {
   const domesticDailyCase = await CovidReport.getDomesticDailyCase();
   const domesticSum = await CovidReport.getDomesticSum();
+  const domesticCase = await CovidReport.getDomesticCase();
   // const confirmGlobal = await CovidReport.getConfirmGlobal();
   // const deathGlobal = await CovidReport.getDeathGlobal();
   // const recoveredGlobal = await CovidReport.getRecoveredGlobal();
@@ -37,6 +39,7 @@ export async function getServerSideProps() {
     props: {
       domesticDailyCase,
       domesticSum,
+      domesticCase,
       // confirmGlobal,
 
       // deathGlobal,
