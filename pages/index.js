@@ -10,8 +10,8 @@ import GenderSumCard from "../src/components/Card/GenderSumCard";
 
 export default function index(props) {
   const {
-    domesticDailyCase,
-    domesticSum,
+    // domesticDailyCase,
+    // domesticSum,
     domesticCase,
     // confirmGlobal,
     // deathGlobal,
@@ -35,8 +35,8 @@ export default function index(props) {
 }
 
 export async function getServerSideProps() {
-  const domesticDailyCase = await CovidReport.getDomesticDailyCase();
-  const domesticSum = await CovidReport.getDomesticSum();
+  // const domesticDailyCase = await CovidReport.getDomesticDailyCase();
+  // const domesticSum = await CovidReport.getDomesticSum();
   const domesticCase = await CovidReport.getDomesticCase();
   // const confirmGlobal = await CovidReport.getConfirmGlobal();
   // const deathGlobal = await CovidReport.getDeathGlobal();
@@ -44,8 +44,8 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      domesticDailyCase,
-      domesticSum,
+      // domesticDailyCase,
+      // domesticSum,
       domesticCase,
       // confirmGlobal,
 

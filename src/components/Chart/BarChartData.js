@@ -11,6 +11,9 @@ import {
 } from "recharts";
 export default function BarChartData({ domesticCase }) {
   console.log(domesticCase);
+  let age = [];
+  age = [{ ...domesticCase }].map((item) => console.log(item.Age));
+  console.log(age);
   const data = [
     { name: "0-10 ปี", จำนวนคน: 62 },
     { name: "11-20 ปี ", จำนวนคน: 121 },
