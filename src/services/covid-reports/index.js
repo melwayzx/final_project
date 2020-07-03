@@ -3,6 +3,7 @@ import getDomesticSum from "./getDomesticSum";
 import getRecoveredGlobal from "./getRecoveredGlobal";
 import getDeathGlobal from "./getDeathGlobal";
 import getConfirmGlobal from "./getConfirmGlobal";
+import getDomesticCase from "./getDomesticCase";
 
 export default {
   getDomesticDailyCase,
@@ -10,4 +11,5 @@ export default {
   getRecoveredGlobal,
   getDeathGlobal,
   getConfirmGlobal,
+  getDomesticCase,
 };
