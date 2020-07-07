@@ -1,11 +1,11 @@
 import React, { useRef, useEffect } from 'react';
 import * as d3 from "d3";
 import json from "./thailand.json"
-
+import { Tooltip } from "recharts";
 
 export default function ThMap({ domesticSum }) {
-    const data = [domesticSum.Province]
-    console.log(domesticSum.Province["Bangkok"])
+    const data = [{ name: domesticSum.Province }]
+    console.log(domesticSum.Province)
     const svgRef = useRef();
 
     useEffect(() => {
@@ -29,17 +29,20 @@ export default function ThMap({ domesticSum }) {
         xym.scale(2500)
 
         const report = transform(domesticSum)
-
-        // mapLayer.selectAll("path").data(json.features)
+        mapLayer.selectAll("path").data(json.features)
         mapLayer.selectAll("path").data(json.features)
             .enter().append("path")
             .attr("d", path)
             .attr('vector-effect', 'non-scaling-stroke')
+            // .on('mouseover', function (e) {}
+
+
+
             .style("fill", function (data) {
-                // console.log(report)
-                if (report.Province[data.properties.name]?.level === "danger") {
+
+                if (domesticSum.Province[data.properties.name]?.level === "danger") {
                     return "#800909"
-                } else if (report.Province[data.properties.name]?.level === "caution") {
+                } else if (domesticSum.Province[data.properties.name]?.level === "caution") {
                     return "#f8a8ae"
                 }
                 return "#fce0d2"
@@ -55,9 +58,11 @@ export default function ThMap({ domesticSum }) {
                 ref={svgRef}
                 style={{ position: "relative" }}
             />
+            <Tooltip title={domesticSum.Province} placement="top-start"></Tooltip>;
         </div>
     );
 }
+
 
 const transform = (report) => {
     report.Province["Phangnga"] = report.Province["Phang Nga"]
@@ -113,5 +118,4 @@ const mapStyle = {
     height: 660,
     width: 800
 }
-
 
