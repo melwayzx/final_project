@@ -3,6 +3,7 @@ import CovidReport from "../src/services/covid-reports";
 import SumCard from "../src/components/Card/SumCard";
 import GenderSumCard from "../src/components/Card/GenderSumCard";
 import ThMap from "../src/components/Map/ThMap";
+import TableSum from '../src/components/Chart/TableSum';
 export default function index(props) {
   const {
     domesticDailyCase,
@@ -24,6 +25,7 @@ export default function index(props) {
       <GenderSumCard domesticSum={domesticSum} /> */}
 
       <ThMap domesticSum={domesticSum} />
+      <TableSum />
     </div>
   );
 }

@@ -34,9 +34,9 @@ export default function ThMap({ domesticSum }) {
             .enter().append("path")
             .attr("d", path)
             .attr('vector-effect', 'non-scaling-stroke')
-            // .on('mouseover', function (e) {}
-
-
+            .on('mouseover', function (e) {
+                return mapLayer.style("fill", "#800909")
+            })
 
             .style("fill", function (data) {
 
