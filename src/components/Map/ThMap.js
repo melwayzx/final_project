@@ -1,12 +1,11 @@
 import React, { useRef, useEffect } from 'react';
 import * as d3 from "d3";
 import json from "./thailand.json"
-// import Map from 'react-d3-map';
-// let url = 'https://raw.githubusercontent.com/apisit/thailand.json/master/thailand.json';
-// d3.json(url).then(data => console.log(data))
 
-export default function ThMap({ domesticReport }) {
-    const data = [10, 20, 30, 40, 50]
+
+export default function ThMap({ domesticSum }) {
+    const data = [domesticSum.Province]
+    console.log(domesticSum.Province["Bangkok"])
     const svgRef = useRef();
 
     useEffect(() => {
@@ -29,7 +28,7 @@ export default function ThMap({ domesticReport }) {
         xym.translate([width / 2, height / 2])
         xym.scale(2500)
 
-        const report = transform(domesticReport)
+        const report = transform(domesticSum)
 
         // mapLayer.selectAll("path").data(json.features)
         mapLayer.selectAll("path").data(json.features)
