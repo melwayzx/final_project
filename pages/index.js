@@ -2,6 +2,8 @@ import Head from "next/head";
 import CovidReport from "../src/services/covid-reports";
 import SumCard from "../src/components/Card/SumCard";
 import GenderSumCard from "../src/components/Card/GenderSumCard";
+import AgeSumCard from "../src/components/Card/AgeSumCard";
+
 import ThMap from "../src/components/Map/ThMap";
 import TableSum from '../src/components/Chart/TableSum';
 export default function index(props) {
@@ -41,7 +43,7 @@ export async function getServerSideProps() {
     props: {
       domesticDailyCase,
       domesticSum,
-      domesticReport: domesticSum
+      domesticReport: domesticSum,
       // confirmGlobal,
 
       // deathGlobal,
