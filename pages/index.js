@@ -6,6 +6,7 @@ import AgeSumCard from "../src/components/Card/AgeSumCard";
 
 import ThMap from "../src/components/Map/ThMap";
 import TableSum from '../src/components/Chart/TableSum';
+import survey from '../src/components/survey';
 export default function index(props) {
   const {
     domesticDailyCase,
@@ -20,12 +21,12 @@ export default function index(props) {
 
   return (
     <div style={{ height: "100vh", width: "100vw" }}>
-      {/* <Head>
+      <Head>
         <title>Covid-19 updates </title>
       </Head>
       <SumCard domesticDailyCase={domesticDailyCase} />
-      <GenderSumCard domesticSum={domesticSum} /> */}
-
+      <GenderSumCard domesticSum={domesticSum} />
+      <survey />
       <ThMap domesticSum={domesticSum} />
       <TableSum />
     </div>

@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "./Button";
+
 export default function survey() {
+  const [point, setPoint] = useState('');
+  const [select, setSelected] = useState(false);
+
   return (
     <div>
-      <form>
+      <form >
         <div
           style={{
             fontSize: "16px",
@@ -21,14 +25,10 @@ export default function survey() {
           }}
           className="radio"
         >
-          <label>
-            <input type="radio" value="1" checked={false} />
-            ต่ำกว่า 37.5 องศา
-          </label>
-          <label>
-            <input type="radio" value="2" checked={false} />
-            สูงกว่าหรือเท่ากับ 37.5 หรือ รู้สึกว่ามีไข้
-          </label>
+          <label><input type="radio" value="1" id="1" />
+            ต่ำกว่า 37.5 องศา</label>
+          <label><input type="radio" value="2" id="2" />
+            สูงกว่าหรือเท่ากับ 37.5 หรือ รู้สึกว่ามีไข้</label>
         </div>
         <div
           style={{
@@ -49,11 +49,11 @@ export default function survey() {
           className="radio"
         >
           <label>
-            <input type="radio" value="1" checked={false} />
+            <input type="radio" value="1" id="1" />
             ไม่มี
           </label>
           <label>
-            <input type="radio" value="2" checked={false} />
+            <input type="radio" value="2" id="2" />
             มี
           </label>
         </div>
@@ -76,11 +76,11 @@ export default function survey() {
           className="radio"
         >
           <label>
-            <input type="radio" value="1" checked={false} />
+            <input type="radio" value="1" id="1" />
             ไม่มี
           </label>
           <label>
-            <input type="radio" value="2" checked={false} />
+            <input type="radio" value="2" id="2" />
             มี
           </label>
         </div>
@@ -103,11 +103,11 @@ export default function survey() {
           className="radio"
         >
           <label>
-            <input type="radio" value="1" checked={false} />
+            <input type="radio" value="1" id="1" />
             ไม่มี
           </label>
           <label>
-            <input type="radio" value="2" checked={false} />
+            <input type="radio" value="2" id="2" />
             มี
           </label>
         </div>
@@ -130,11 +130,11 @@ export default function survey() {
           className="radio"
         >
           <label>
-            <input type="radio" value="1" checked={false} />
+            <input type="radio" value="1" id="1" />
             ไม่มี
           </label>
           <label>
-            <input type="radio" value="2" checked={false} />
+            <input type="radio" value="2" id="2s" />
             มี
           </label>
         </div>
@@ -157,11 +157,11 @@ export default function survey() {
           className="radio"
         >
           <label>
-            <input type="radio" value="1" checked={false} />
+            <input type="radio" value="1" id="1" />
             ไม่มี
           </label>
           <label>
-            <input type="radio" value="2" checked={false} />
+            <input type="radio" value="2" id="2" />
             มี
           </label>
         </div>
@@ -183,11 +183,11 @@ export default function survey() {
           sclassName="radio"
         >
           <label>
-            <input type="radio" value="1" checked={false} />
+            <input type="radio" value="1" id="1" />
             ไม่มี
           </label>
           <label>
-            <input type="radio" value="2" checked={false} />
+            <input type="radio" value="2" id="2" />
             มี
           </label>
         </div>
@@ -210,11 +210,11 @@ export default function survey() {
           className="radio"
         >
           <label>
-            <input type="radio" value="1" checked={false} />
+            <input type="radio" value="1" id="1" />
             ไม่มี
           </label>
           <label>
-            <input type="radio" value="2" checked={false} />
+            <input type="radio" value="2" id="2" />
             มี
           </label>
         </div>
@@ -224,10 +224,18 @@ export default function survey() {
         StyledLink={StyledLink}
         href={"/result"}
         name={"ดูผลลัพธ์การประเมิน"}
+      // onclick="displayRadioValue()"
       ></Button>
     </div>
   );
 }
+//function displayRadioValue() {
+//var ele = document.getElementsByName('gender');
+//   for (i = 0; i < ele.length; i++) {
+//     if (ele[i].checked)
+//       document.getElementById("result").innerHTML
+//         = "Gender: " + ele[i].value; 
+// }
 
 const StyledButtonContainer = {
   width: "200px",
