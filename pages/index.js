@@ -7,6 +7,7 @@ import Table from "../src/components/Chart/Table";
 import BarChartData from "../src/components/Chart/BarChartData";
 import SumCard from "../src/components/Card/SumCard";
 import GenderSumCard from "../src/components/Card/GenderSumCard";
+import AgeSumCard from "../src/components/Card/AgeSumCard";
 
 export default function index(props) {
   const {
@@ -27,7 +28,7 @@ export default function index(props) {
       </Head>
       {/* <SumCard domesticDailyCase={domesticDailyCase} />
       <GenderSumCard domesticSum={domesticSum} /> */}
-      <BarChartData domesticCase={domesticCase} />
+      <AgeSumCard domesticCase={domesticCase} />
       {/* <Table data={domesticSum} />
       <ThMap></ThMap> */}
     </div>
