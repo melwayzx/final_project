@@ -58,26 +58,32 @@ export default function BarChartData({ domesticCase }) {
     { name: "71-80 ปี", จำนวนคน: age71_80 },
     { name: "81-90 ปี", จำนวนคน: age81_90 },
     { name: "91-100 ปี", จำนวนคน: age91_100 },
-    { name: "ไม่ระบุ", จำนวนคน: ageUndefined },
+    // { name: "ไม่ระบุ", จำนวนคน: ageUndefined },
   ];
   return (
     <BarChart
-      width={500}
-      height={300}
+      width={700}
+      height={388}
       data={data}
-      margin={{
-        top: 5,
-        right: 10,
-        left: 10,
-        bottom: 5,
-      }}
+      // margin={{
+      //   top: 5,
+      //   right: 0,
+      //   left: 0,
+      //   bottom: 5,
+      // }}
+      barSize={40}
     >
-      <CartesianGrid strokeDasharray="1 1 " />
+      {/* <CartesianGrid strokeDasharray="1 1 " /> */}
       <XAxis dataKey="name" />
-      <YAxis dataKey="จำนวนคน" />
+      {/* <YAxis /> */}
       <Tooltip />
       <Legend />
-      <Bar dataKey="จำนวนคน" fill="#8884d8" />
+      <Bar
+        dataKey="จำนวนคน"
+        fill="#E35F5B"
+        background={{ fill: "#eee" }}
+        label={{ position: "top", opacity: "0.6" }}
+      />
     </BarChart>
   );
 }
