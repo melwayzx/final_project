@@ -1,19 +1,15 @@
 import Head from "next/head";
 import CovidReport from "../src/services/covid-reports";
-import Table from "../src/components/Chart/Table";
-// import LineCharts from '../src/components/Chart/LineCharts';
-// import ThMap from "../src/components/Chart/ThMap";
-//import covidScale from "./covidScale";
-import BarChartData from "../src/components/Chart/BarChartData";
 import SumCard from "../src/components/Card/SumCard";
 import GenderSumCard from "../src/components/Card/GenderSumCard";
 import AgeSumCard from "../src/components/Card/AgeSumCard";
 
+import ThMap from "../src/components/Map/ThMap";
 export default function index(props) {
   const {
-    // domesticDailyCase,
-    // domesticSum,
-    domesticCase,
+    domesticDailyCase,
+    domesticSum,
+
     // confirmGlobal,
     // deathGlobal,
     // recoveredGlobal,
@@ -22,32 +18,30 @@ export default function index(props) {
   // console.log(`domesticSum`, domesticSum);
 
   return (
-    <div style={{ padding: "100px", boxSixing: "border-box" }}>
-      <Head>
+    <div style={{ height: "100vh", width: "100vw" }}>
+      {/* <Head>
         <title>Covid-19 updates </title>
       </Head>
-      {/* <SumCard domesticDailyCase={domesticDailyCase} />
+      <SumCard domesticDailyCase={domesticDailyCase} />
       <GenderSumCard domesticSum={domesticSum} /> */}
-      <AgeSumCard domesticCase={domesticCase} />
-      {/* <Table data={domesticSum} />
-      <ThMap></ThMap> */}
+
+      <ThMap domesticSum={domesticSum} />
     </div>
   );
 }
 
 export async function getServerSideProps() {
-  // const domesticDailyCase = await CovidReport.getDomesticDailyCase();
-  // const domesticSum = await CovidReport.getDomesticSum();
-  const domesticCase = await CovidReport.getDomesticCase();
+  const domesticDailyCase = await CovidReport.getDomesticDailyCase();
+  const domesticSum = await CovidReport.getDomesticSum();
   // const confirmGlobal = await CovidReport.getConfirmGlobal();
   // const deathGlobal = await CovidReport.getDeathGlobal();
   // const recoveredGlobal = await CovidReport.getRecoveredGlobal();
 
   return {
     props: {
-      // domesticDailyCase,
-      // domesticSum,
-      domesticCase,
+      domesticDailyCase,
+      domesticSum,
+      domesticReport: domesticSum,
       // confirmGlobal,
 
       // deathGlobal,
