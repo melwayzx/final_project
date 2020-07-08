@@ -3,21 +3,24 @@ import CovidReport from "../src/services/covid-reports";
 import SumCard from "../src/components/Card/SumCard";
 import GenderSumCard from "../src/components/Card/GenderSumCard";
 import AgeSumCard from "../src/components/Card/AgeSumCard";
-
 import ThMap from "../src/components/Map/ThMap";
 import TableSum from '../src/components/Chart/TableSum';
 import survey from '../src/components/survey';
+import LineCharts from '../src/components/Chart/LineCharts';
+import Table from '../src/components/Chart/Table';
+import CardAbord from "../src/components/Card/CardAbord";
 export default function index(props) {
   const {
     domesticDailyCase,
     domesticSum,
 
-    // confirmGlobal,
+    confirmGlobal,
     // deathGlobal,
     // recoveredGlobal,
   } = props;
-  // console.log(`Domestic daily case`, domesticDailyCase);
+  console.log(`Domestic daily case`, domesticDailyCase);
   // console.log(`domesticSum`, domesticSum);
+  // console.log(`confirmGlobal`, confirmGlobal);
 
   return (
     <div style={{ height: "100vh", width: "100vw" }}>
@@ -28,7 +31,11 @@ export default function index(props) {
       <GenderSumCard domesticSum={domesticSum} />
       <survey />
       <ThMap domesticSum={domesticSum} />
-      <TableSum />
+      {/* <TableSum /> */}
+
+      <CardAbord />
+      <LineCharts confirmGlobal={confirmGlobal} />
+      {/* <Table /> */}
     </div>
   );
 }
