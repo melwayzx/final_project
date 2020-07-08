@@ -18,7 +18,7 @@ export default function index(props) {
     // recoveredGlobal,
   } = props;
   // console.log(`Domestic daily case`, domesticDailyCase);
-  // console.log(`domesticSum`, domesticSum);
+  console.log(`domesticSum`, domesticSum);
 
   return (
     <div style={{ height: "100vh", width: "100vw", paddingTop: "150px" }}>
@@ -33,13 +33,24 @@ export default function index(props) {
           justifyContent: "center",
           marginTop: "125px",
           background: "#fafafafa",
+          height: "600px",
         }}
       >
         <GenderSumCard domesticSum={domesticSum} />
         <AgeSumCard domesticCase={domesticCase} />
       </div>
-
-      {/* <ThMap domesticSum={domesticSum} /> */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          marginTop: "125px",
+          background: "white",
+          height: "600px",
+        }}
+      >
+        <ThMap domesticSum={domesticSum} />
+      </div>
     </div>
   );
 }
@@ -57,7 +68,6 @@ export async function getServerSideProps() {
       domesticDailyCase,
       domesticSum,
       domesticCase,
-      // domesticReport: domesticSum,
       // confirmGlobal,
       // deathGlobal,
       // recoveredGlobal,]
