@@ -5,6 +5,8 @@ import GenderSumCard from "../src/components/Card/GenderSumCard";
 import AgeSumCard from "../src/components/Card/AgeSumCard";
 
 import ThMap from "../src/components/Map/ThMap";
+import TableSum from "../src/components/Chart/TableSum";
+import survey from "../src/components/survey";
 export default function index(props) {
   const {
     domesticDailyCase,
