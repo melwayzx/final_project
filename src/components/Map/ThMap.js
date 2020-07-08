@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import * as d3 from "d3";
 import json from "./thailand.json";
 // import { Tooltip } from "recharts";
-import Tooltip from "@material-ui/core/Tooltip";
+// import Tooltip from "@material-ui/core/Tooltip";
 
 export default function ThMap({ domesticSum }) {
   const data = [{ name: domesticSum.Province }];
@@ -65,7 +65,7 @@ export default function ThMap({ domesticSum }) {
         ref={svgRef}
         style={{ position: "relative" }}
       />
-      <Tooltip title={domesticSum.Province} placement="top-start"></Tooltip>;
+      {/* <Tooltip title={domesticSum.Province} placement="top-start"></Tooltip>; */}
     </div>
   );
 }
