@@ -1,12 +1,14 @@
 import React, { useRef, useEffect } from "react";
 import * as d3 from "d3";
 import json from "./thailand.json";
-// import { Tooltip } from "recharts";
-// import Tooltip from "@material-ui/core/Tooltip";
 
 export default function ThMap({ domesticSum }) {
-  const data = [{ name: domesticSum.Province }];
-  // console.log(domesticSum.Province);
+  const data = [
+    {
+      name: domesticSum.Province,
+    },
+  ];
+
   const svgRef = useRef();
 
   useEffect(() => {
@@ -31,7 +33,16 @@ export default function ThMap({ domesticSum }) {
     xym.scale(2500);
 
     const report = transform(domesticSum);
+
     mapLayer.selectAll("path").data(json.features);
+
+    var tooltip = d3
+      .select("body")
+      .append("div")
+      // .style("position", "absolute")
+      .style("z-index", "10")
+      .style("visibility", "hidden");
+
     mapLayer
       .selectAll("path")
       .data(json.features)
@@ -39,7 +50,12 @@ export default function ThMap({ domesticSum }) {
       .append("path")
       .attr("d", path)
       .attr("vector-effect", "non-scaling-stroke")
-      // .on('mouseover', function (e) {}
+      // .on("mouseover", function (d) {
+      //   return tooltip.style("visibility", "visible").text(d.properties.name);
+      // })
+      // .on("mouseout", function () {
+      //   return tooltip.style("visibility", "hidden");
+      // })
 
       .style("fill", function (data) {
         if (domesticSum.Province[data.properties.name]?.level === "danger") {
