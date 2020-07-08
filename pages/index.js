@@ -19,13 +19,13 @@ export default function index(props) {
 
   return (
     <div style={{ height: "100vh", width: "100vw" }}>
-      {/* <Head>
+      <Head>
         <title>Covid-19 updates </title>
       </Head>
       <SumCard domesticDailyCase={domesticDailyCase} />
-      <GenderSumCard domesticSum={domesticSum} /> */}
+      <GenderSumCard domesticSum={domesticSum} />
 
-      <ThMap domesticSum={domesticSum} />
+      {/* <ThMap domesticSum={domesticSum} /> */}
     </div>
   );
 }
@@ -41,7 +41,7 @@ export async function getServerSideProps() {
     props: {
       domesticDailyCase,
       domesticSum,
-      domesticReport: domesticSum,
+      // domesticReport: domesticSum,
       // confirmGlobal,
 
       // deathGlobal,
