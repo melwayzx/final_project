@@ -3,10 +3,7 @@ import CovidReport from "../src/services/covid-reports";
 import SumCard from "../src/components/Card/SumCard";
 import GenderSumCard from "../src/components/Card/GenderSumCard";
 import AgeSumCard from "../src/components/Card/AgeSumCard";
-
-import ThMap from "../src/components/Map/ThMap";
-import TableSum from "../src/components/Chart/TableSum";
-import survey from "../src/components/survey";
+import ThailandSumCard from "../src/components/Card/ThailandSumCard";
 // import SecondSection from "../src/components/section/SecondSection";
 export default function index(props) {
   const {
@@ -49,7 +46,7 @@ export default function index(props) {
           height: "600px",
         }}
       >
-        <ThMap domesticSum={domesticSum} />
+        <ThailandSumCard domesticSum={domesticSum} />
       </div>
     </div>
   );
