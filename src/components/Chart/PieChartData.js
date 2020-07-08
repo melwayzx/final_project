@@ -54,6 +54,7 @@ export default function PieChartData({ domesticSum }) {
         flexDirection: "column",
         alignItems: "center",
         width: "250px",
+        height: "350px",
       }}
     >
       <PieChart width={350} height={350}>

@@ -61,18 +61,7 @@ export default function BarChartData({ domesticCase }) {
     // { name: "ไม่ระบุ", จำนวนคน: ageUndefined },
   ];
   return (
-    <BarChart
-      width={700}
-      height={388}
-      data={data}
-      // margin={{
-      //   top: 5,
-      //   right: 0,
-      //   left: 0,
-      //   bottom: 5,
-      // }}
-      barSize={40}
-    >
+    <BarChart width={700} height={350} data={data} barSize={40}>
       {/* <CartesianGrid strokeDasharray="1 1 " /> */}
       <XAxis dataKey="name" />
       {/* <YAxis /> */}
@@ -80,7 +69,7 @@ export default function BarChartData({ domesticCase }) {
       <Legend />
       <Bar
         dataKey="จำนวนคน"
-        fill="#E35F5B"
+        fill="rgb(240, 128, 128)"
         background={{ fill: "#eee" }}
         label={{ position: "top", opacity: "0.6" }}
       />
