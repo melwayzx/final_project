@@ -11,8 +11,8 @@ export default function CardAbord() {
                                 ...StyledText,
                                 color: "#C23D3D",
                                 fontSize: "100px",
-                                fontWeight: 500,
-                                lineHeight: "60px",
+                                fontWeight: 800,
+                                lineHeight: "100px",
                             }}
                         >
                             {" "}
@@ -62,9 +62,4 @@ const StyledButtonContainer = {
     padding: "10px",
     boxSixing: "border-box",
     textAlign: "center",
-};
-
-const StyledLink = {
-    color: "white",
-    textDecoration: "inherit",
 };
