@@ -1,3 +1,5 @@
+// import StatusCardAbord from "./StatusCardAbord";
+
 export default function CardAbord() {
 
     return (
@@ -10,7 +12,7 @@ export default function CardAbord() {
                             style={{
                                 ...StyledText,
                                 color: "#C23D3D",
-                                fontSize: "100px",
+                                fontSize: "80px",
                                 fontWeight: 800,
                                 lineHeight: "100px",
                             }}
@@ -23,8 +25,9 @@ export default function CardAbord() {
 
                 </div>
 
-                {/* <StatusCardAbord /> */}
+
             </div>
+            {/* <StatusCardAbord /> */}
         </div>
     );
 }
@@ -35,7 +38,7 @@ const StyledContainer = {
 };
 
 const StyledText = {
-    fontSize: "40px",
+    fontSize: "30px",
 };
 
 const StyledTextContainer = {
@@ -47,19 +50,7 @@ const StyledTextContainer = {
 
 const StyledWrapper = {
     display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    marginRight: "100px",
+    marginLeft: "0px",
+    marginTop: "100px",
     fontFamily: "Sukhumvit Set",
-};
-
-const StyledButtonContainer = {
-    width: "200px",
-    backgroundColor: "#C23D3D",
-    borderRadius: "8px",
-    color: "white",
-    padding: "10px",
-    boxSixing: "border-box",
-    textAlign: "center",
 };

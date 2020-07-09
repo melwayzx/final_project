@@ -1,9 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "./Button";
-
+import Result from "../pages/result";
 export default function survey() {
-  const [point, setPoint] = useState('');
+  const [point, setPoint] = useState(0);
   const [select, setSelected] = useState(false);
+
+  function selectRadio(e) {
+    setSelected(true);
+    calPoint();
+  }
+  function calPoint(id) {
+    if (id % 2 == 0) {
+      setPoint(state => state + 1)
+    }
+    console.log(point);
+  }
+
 
   return (
     <div>
@@ -25,9 +37,9 @@ export default function survey() {
           }}
           className="radio"
         >
-          <label><input type="radio" value="1" id="1" />
+          <label><input type="radio" onChange={(e) => calPoint(1)} value="1" id="1" />
             ต่ำกว่า 37.5 องศา</label>
-          <label><input type="radio" value="2" id="2" />
+          <label><input type="radio" onChange={(e) => calPoint(2)} value="2" id="2" />
             สูงกว่าหรือเท่ากับ 37.5 หรือ รู้สึกว่ามีไข้</label>
         </div>
         <div
@@ -49,11 +61,11 @@ export default function survey() {
           className="radio"
         >
           <label>
-            <input type="radio" value="1" id="1" />
+            <input type="radio" onChange={(e) => calPoint(3)} value="3" id="3" />
             ไม่มี
           </label>
           <label>
-            <input type="radio" value="2" id="2" />
+            <input type="radio" onChange={(e) => calPoint(4)} value="4" id="4" />
             มี
           </label>
         </div>
@@ -76,11 +88,11 @@ export default function survey() {
           className="radio"
         >
           <label>
-            <input type="radio" value="1" id="1" />
+            <input type="radio" onChange={(e) => calPoint(5)} value="5" id="5" />
             ไม่มี
           </label>
           <label>
-            <input type="radio" value="2" id="2" />
+            <input type="radio" onChange={(e) => calPoint(6)} value="6" id="6" />
             มี
           </label>
         </div>
@@ -103,11 +115,11 @@ export default function survey() {
           className="radio"
         >
           <label>
-            <input type="radio" value="1" id="1" />
+            <input type="radio" onChange={(e) => calPoint(7)} value="7" id="7" />
             ไม่มี
           </label>
           <label>
-            <input type="radio" value="2" id="2" />
+            <input type="radio" onChange={(e) => calPoint(8)} value="8" id="8" />
             มี
           </label>
         </div>
@@ -130,11 +142,11 @@ export default function survey() {
           className="radio"
         >
           <label>
-            <input type="radio" value="1" id="1" />
+            <input type="radio" onChange={(e) => calPoint(9)} value="9" id="9" />
             ไม่มี
           </label>
           <label>
-            <input type="radio" value="2" id="2s" />
+            <input type="radio" onChange={(e) => calPoint(10)} value="10" id="10" />
             มี
           </label>
         </div>
@@ -157,11 +169,11 @@ export default function survey() {
           className="radio"
         >
           <label>
-            <input type="radio" value="1" id="1" />
+            <input type="radio" onChange={(e) => calPoint(11)} value="11" id="11" />
             ไม่มี
           </label>
           <label>
-            <input type="radio" value="2" id="2" />
+            <input type="radio" onChange={(e) => calPoint(12)} value="12" id="12" />
             มี
           </label>
         </div>
@@ -183,11 +195,11 @@ export default function survey() {
           sclassName="radio"
         >
           <label>
-            <input type="radio" value="1" id="1" />
+            <input type="radio" onChange={(e) => calPoint(13)} value="13" id="13" />
             ไม่มี
           </label>
           <label>
-            <input type="radio" value="2" id="2" />
+            <input type="radio" onChange={(e) => calPoint(14)} value="14" id="14" />
             มี
           </label>
         </div>
@@ -210,11 +222,11 @@ export default function survey() {
           className="radio"
         >
           <label>
-            <input type="radio" value="1" id="1" />
+            <input type="radio" onChange={(e) => calPoint(15)} value="15" id="15" />
             ไม่มี
           </label>
           <label>
-            <input type="radio" value="2" id="2" />
+            <input type="radio" onChange={(e) => calPoint(16)} value="16" id="16" />
             มี
           </label>
         </div>
@@ -224,8 +236,7 @@ export default function survey() {
         StyledLink={StyledLink}
         href={"/result"}
         name={"ดูผลลัพธ์การประเมิน"}
-      // onclick="displayRadioValue()"
-      ></Button>
+      ><Result point={point} /></Button>
     </div>
   );
 }

@@ -1,12 +1,14 @@
 import React, { useRef, useEffect } from "react";
 import * as d3 from "d3";
 import json from "./thailand.json";
-// import { Tooltip } from "recharts";
-import Tooltip from "@material-ui/core/Tooltip";
 
 export default function ThMap({ domesticSum }) {
-    const data = [{ name: domesticSum.Province }];
-    // console.log(domesticSum.Province);
+    const data = [
+        {
+            name: domesticSum.Province,
+        },
+    ];
+
     const svgRef = useRef();
 
     useEffect(() => {
@@ -31,7 +33,16 @@ export default function ThMap({ domesticSum }) {
         xym.scale(2500);
 
         const report = transform(domesticSum);
+
         mapLayer.selectAll("path").data(json.features);
+
+        var tooltip = d3
+            .select("body")
+            .append("div")
+            // .style("position", "absolute")
+            .style("z-index", "10")
+            .style("visibility", "hidden");
+
         mapLayer
             .selectAll("path")
             .data(json.features)
@@ -39,7 +50,12 @@ export default function ThMap({ domesticSum }) {
             .append("path")
             .attr("d", path)
             .attr("vector-effect", "non-scaling-stroke")
-            // .on('mouseover', function (e) {}
+            // .on("mouseover", function (d) {
+            //   return tooltip.style("visibility", "visible").text(d.properties.name);
+            // })
+            // .on("mouseout", function () {
+            //   return tooltip.style("visibility", "hidden");
+            // })
 
             .style("fill", function (data) {
                 if (domesticSum.Province[data.properties.name]?.level === "danger") {
@@ -65,32 +81,13 @@ export default function ThMap({ domesticSum }) {
                 ref={svgRef}
                 style={{ position: "relative" }}
             />
-            <Tooltip title={domesticSum.Province} placement="top-start"></Tooltip>;
+            {/* <Tooltip title={domesticSum.Province} placement="top-start"></Tooltip>; */}
         </div>
     );
 }
 
 const transform = (report) => {
-    //   report.Province["Phangnga"] = report.Province["Phang Nga"];
-    //   delete report.Province[report.Province["Phang Nga"]];
 
-    //   report.Province["Bangkok Metropolis"] = report.Province["Bangkok"];
-    //   delete report.Province["Bangkok"];
-
-    //   report.Province["Lop Buri"] = report.Province["Lopburi"];
-    //   delete report.Province["Lopburi"];
-
-    //   report.Province["Si Sa Ket"] = report.Province["Sisaket"];
-    //   delete report.Province["Sisaket"];
-
-    //   report.Province["Chonburi"] = report.Province["Chon Buri"];
-    //   delete report.Province["Chon Buri"];
-
-    //   report.Province["Buri Ram"] = report.Province["Buriram"];
-    //   delete report.Province["Buriram"];
-
-    //   report.Province["Nong Bua Lam Phu"] = report.Province["Nong Bua Lamphu"];
-    //   delete report.Province["Nong Bua Lamphu"];
 
     const newObj = { ...report };
 

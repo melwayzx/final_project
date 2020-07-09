@@ -10,7 +10,7 @@ import TableRow from "@material-ui/core/TableRow";
 
 const useStyles = makeStyles({
   table: {
-    width: 400,
+    width: 300,
   },
 });
 
@@ -22,23 +22,53 @@ export default function SimpleTable({ data }) {
   return (
     // <TableContainer component={Paper}>
     <Table className={classes.table} aria-label="simple table">
-      <TableHead>
+      {/* <TableHead>
         <TableRow>
           <TableCell>จังหวัด</TableCell>
           <TableCell align="right">ผู้ติดเชื้อ</TableCell>
         </TableRow>
-      </TableHead>
-      <TableBody>
-        {provinceList.map((province) => (
-          <TableRow key={province}>
-            <TableCell component="th" scope="row">
-              {province}
-            </TableCell>
-            <TableCell align="right">{data.Province[province]}</TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
+      </TableHead> */}
+      <div style={StyledTableHeader}>
+        <div
+          style={{ padding: "0px 15px", color: "#AF3233", fontWeight: "600" }}
+        >
+          จังหวัด
+        </div>
+        <div
+          style={{
+            padding: "0 40px 0 40px",
+            color: "#AF3233",
+            fontWeight: "600",
+          }}
+        >
+          ผู้ติดเชื้อ
+        </div>
+      </div>
+      <div style={StyledTableContainer}>
+        <TableBody>
+          {provinceList.map((province) => (
+            <TableRow key={province}>
+              <TableCell component="th" scope="row">
+                {province}
+              </TableCell>
+              <TableCell align="right">{data.Province[province]}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </div>
     </Table>
     // </TableContainer>
   );
 }
+
+const StyledTableContainer = {
+  height: "600px",
+  width: "300px",
+  overflow: "auto",
+  color: "white",
+};
+const StyledTableHeader = {
+  width: "300px",
+  display: "flex",
+  justifyContent: "space-between",
+};
