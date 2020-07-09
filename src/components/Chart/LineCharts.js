@@ -4,8 +4,8 @@ import {
 } from 'recharts';
 
 export default function LineCharts({ confirmGlobal }) {
-    //apiพังง
-    // console.log(confirmGlobal)
+
+    console.log(confirmGlobal)
 
     return (
         <LineChart
