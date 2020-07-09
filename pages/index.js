@@ -3,8 +3,10 @@ import CovidReport from "../src/services/covid-reports";
 import SumCard from "../src/components/Card/SumCard";
 import GenderSumCard from "../src/components/Card/GenderSumCard";
 import AgeSumCard from "../src/components/Card/AgeSumCard";
-import ThailandSumCard from "../src/components/Card/ThailandSumCard";
-import CardAbord from "../src/components/Card/CardAbord";
+import ThMap from "../src/components/Map/ThMap";
+import TableSum from "../src/components/Chart/TableSum";
+import CardAbord from '../src/components/Card/CardAbord';
+import LineCharts from '../src/components/Chart/LineCharts';
 // import SecondSection from "../src/components/section/SecondSection";
 export default function index(props) {
   const {
@@ -15,8 +17,9 @@ export default function index(props) {
     // deathGlobal,
     // recoveredGlobal,
   } = props;
-  // console.log(`Domestic daily case`, domesticDailyCase);
+  //console.log(`Domestic daily case`, domesticDailyCase);
   // console.log(`domesticSum`, domesticSum);
+  // console.log(`confirmGlobal`, confirmGlobal);
 
   return (
     <div style={{ height: "100vh", width: "100vw", paddingTop: "150px" }}>
@@ -26,10 +29,6 @@ export default function index(props) {
       <SumCard domesticDailyCase={domesticDailyCase} />
       {/* <survey /> */}
       {/* <ThMap domesticSum={domesticSum} /> */}
-      {/* <TableSum /> */}
-
-      {/* <LineCharts confirmGlobal={confirmGlobal} /> */}
-      {/* <Table /> */}
       <div
         style={{
           display: "flex",
@@ -53,11 +52,13 @@ export default function index(props) {
           height: "600px",
         }}
       >
-        <ThailandSumCard domesticSum={domesticSum} />
+        {/* <ThailandSumCard domesticSum={domesticSum} /> */}
 
       </div>
       <CardAbord />
-    </div>
+      <TableSum />
+      {/* <LineCharts confirmGlobal={confirmGlobal} /> */}
+    </div >
   );
 }
 

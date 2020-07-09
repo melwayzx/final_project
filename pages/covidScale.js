@@ -1,8 +1,21 @@
 import Link from "next/link";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Button from "../src/components/Button";
-import Survey from "../src/components/survey";
+
 export default function covidScale() {
+  const [point, setPoint] = useState(0);
+  const [select, setSelected] = useState(false);
+  function selectRadio(e) {
+    setSelected(true);
+    calPoint();
+  }
+  function calPoint(id) {
+    if (id % 2 == 0) {
+      setPoint(state => state + 1)
+    }
+    console.log(point);
+  }
+
   return (
     <div>
       <Button
@@ -227,9 +240,9 @@ export default function covidScale() {
         <Button
           StyledButtonContainer={StyledButtonContainer}
           StyledLink={StyledLink}
-          href={"/result"}
+          href={"/Result"}
           name={"ดูผลลัพธ์การประเมิน"}
-        ><Result point={point} /></Button>
+        ></Button>
       </div>
     </div>
   );

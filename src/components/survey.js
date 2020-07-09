@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from "react";
 import Button from "./Button";
-import Result from "../pages/result";
 export default function survey() {
   const [point, setPoint] = useState(0);
   const [select, setSelected] = useState(false);
 
-  function selectRadio(e) {
-    setSelected(true);
-    calPoint();
-  }
+  // function selectRadio(e) {
+  //   setSelected(true);
+  //   calPoint();
+  // }
   function calPoint(id) {
     if (id % 2 == 0) {
       setPoint(state => state + 1)
     }
     console.log(point);
   }
-
 
   return (
     <div>
@@ -234,9 +232,10 @@ export default function survey() {
       <Button
         StyledButtonContainer={StyledButtonContainer}
         StyledLink={StyledLink}
-        href={"/result"}
+        href={"/Result"}
         name={"ดูผลลัพธ์การประเมิน"}
-      ><Result point={point} /></Button>
+      ></Button>
+
     </div>
   );
 }

@@ -4,14 +4,14 @@ import {
 } from 'recharts';
 
 export default function LineCharts({ confirmGlobal }) {
-    //apiพังง
+
     // console.log(confirmGlobal)
 
     return (
         <LineChart
             width={600}
             height={600}
-            // data={[confirmGlobal]}
+            // data={[{ date:}]}
             margin={{
                 top: 5, right: 30, left: 20, bottom: 5,
             }}
