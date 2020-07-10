@@ -125,8 +125,9 @@ const transform = (report) => {
 
     return newObj;
   };
+}
+const mapStyle = {
+  height: 660,
+  width: 800,
+}
 
-  const mapStyle = {
-    height: 660,
-    width: 800,
-  };

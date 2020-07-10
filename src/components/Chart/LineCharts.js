@@ -1,35 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-import {
-    LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
-} from 'recharts';
-
-export default function LineCharts({ confirmGlobal }) {
-
-    // console.log(confirmGlobal)
-
-    return (
-        <LineChart
-            width={600}
-            height={600}
-            // data={[{ date:}]}
-            margin={{
-                top: 5, right: 30, left: 20, bottom: 5,
-            }}
-
-        >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="x" unit="ประเทศ" />
-            <YAxis dataKey="y" unit="จำนวนคน" />
-            <Tooltip />
-            <Legend />
-            {/* <Line type="monotone" dataKey="Thailand" stroke="#8884d8" />
-            <Line type="monotone" dataKey="Japan" stroke="#82ca9d" /> */}
-        </LineChart >
-
-    );
-}
-=======
 import axios from "axios";
 import { useState, useEffect } from "react";
 import parse from "csv-parse/lib/sync";
@@ -60,7 +28,6 @@ export default function LineCharts() {
           skip_empty_lines: true,
         });
         // console.log(records[0]);
->>>>>>> origin/Melwayz
 
         // setConfirmedCase(records);
         const newObj = { ...records };
@@ -85,7 +52,7 @@ export default function LineCharts() {
               });
             }
             if (records[index]["Country/Region"] === "Japan") {
-              data.Japan = records[index][dates[date]];
+              data[date].Japan = records[index][dates[date]];
             }
           }
           data[0].date = dates;

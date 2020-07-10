@@ -6,11 +6,13 @@ import AgeSumCard from "../src/components/Card/AgeSumCard";
 import ThailandSumCard from "../src/components/Card/ThailandSumCard";
 import LineCharts from "../src/components/Chart/LineCharts";
 import GlobalSumCard from "../src/components/Card/GlobalSumCard";
+import GlobalSelect from "../src/components/GlobalSelect";
 
 export default function index(props) {
   const { domesticDailyCase, domesticSum, domesticCase } = props;
 
   return (
+
     <div
       style={{
         width: "100vw",
@@ -21,9 +23,9 @@ export default function index(props) {
       <Head>
         <title>Covid-19 updates </title>
       </Head>
-      <div style={{ height: "250px" }}>
+      {/* <div style={{ height: "250px" }}>
         <SumCard domesticDailyCase={domesticDailyCase} />
-      </div>
+      </div> */}
       <div
         style={{
           display: "flex",
@@ -34,8 +36,8 @@ export default function index(props) {
           height: "600px",
         }}
       >
-        <GenderSumCard domesticSum={domesticSum} />
-        <AgeSumCard domesticCase={domesticCase} />
+        {/* <GenderSumCard domesticSum={domesticSum} />
+        <AgeSumCard domesticCase={domesticCase} /> */}
       </div>
       <div
         style={{
@@ -45,7 +47,7 @@ export default function index(props) {
           background: "white",
         }}
       >
-        <ThailandSumCard domesticSum={domesticSum} />
+        {/* <ThailandSumCard domesticSum={domesticSum} /> */}
         <div
           style={{
             display: "flex",
@@ -57,22 +59,26 @@ export default function index(props) {
             width: "100vw",
           }}
         >
-          <GlobalSumCard />
+          {/* <GlobalSumCard /> */}
+          <GlobalSelect />
+          <LineCharts />
+
         </div>
-        <LineCharts />
       </div>
+    </div>
   );
 }
+
 export async function getServerSideProps() {
   const domesticDailyCase = await CovidReport.getDomesticDailyCase();
   const domesticSum = await CovidReport.getDomesticSum();
   const domesticCase = await CovidReport.getDomesticCase();
 
   return {
-        props: {
-        domesticDailyCase,
-        domesticSum,
-        domesticCase,
+    props: {
+      domesticDailyCase,
+      domesticSum,
+      domesticCase,
     }, // will be passed to the page component as props
-  };
+  }
 }

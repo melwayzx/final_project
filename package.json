@@ -16,6 +16,7 @@
     "d3-fetch": "^1.2.0",
     "gray-matter": "^4.0.2",
     "mdbreact": "^4.27.0",
+    "navbar-react": "^1.0.4",
     "next": "9.4.4",
     "node-fetch": "^2.6.0",
     "reacharts": "^0.4.5",
