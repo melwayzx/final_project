@@ -45,37 +45,34 @@ export default function index(props) {
           background: "white",
         }}
       >
-        {/* <ThailandSumCard domesticSum={domesticSum} /> */}
-
+        <ThailandSumCard domesticSum={domesticSum} />
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            background: "#FAFAFA",
+            height: "200px",
+            position: "absolute",
+            width: "100vw",
+          }}
+        >
+          <GlobalSumCard />
+        </div>
+        <LineCharts />
       </div>
-      <div
-        style={{
-          // display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          background: "#FAFAFA",
-          height: "200px",
-          position: "absolute",
-          width: "100vw",
-        }}
-      >
-        <GlobalSumCard />
-      </div>
-      {/* <LineCharts /> */}
-    </div>
   );
 }
-
 export async function getServerSideProps() {
   const domesticDailyCase = await CovidReport.getDomesticDailyCase();
   const domesticSum = await CovidReport.getDomesticSum();
   const domesticCase = await CovidReport.getDomesticCase();
 
   return {
-    props: {
-      domesticDailyCase,
-      domesticSum,
-      domesticCase,
+        props: {
+        domesticDailyCase,
+        domesticSum,
+        domesticCase,
     }, // will be passed to the page component as props
   };
 }
