@@ -90,6 +90,7 @@ export default function LineCharts() {
       >
         <XAxis dataKey="date" tick={{ fontSize: 10 }} />
         <YAxis type="number" domain={["auto", maxData]} />
+        <CartesianGrid stroke="#DDDDDD" vertical={false} />
         <Tooltip />
         <Legend />
         <Line type="monotone" dataKey="Brazil" stroke="#8884d8" />
