@@ -10,11 +10,13 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
+import { timeFormatDefaultLocale } from "d3";
 
 export default function LineCharts() {
-  // const [confirmedCase, setConfirmedCase] = useState([]);
-  const data = [{}];
+  let data = [];
+  const newDates = [];
   const [mockData, setMockData] = useState();
+  const [maxData, setMaxData] = useState(0);
 
   useEffect(() => {
     axios({
@@ -27,11 +29,9 @@ export default function LineCharts() {
           columns: true,
           skip_empty_lines: true,
         });
-        // console.log(records[0]);
 
-        // setConfirmedCase(records);
         const newObj = { ...records };
-        const dates = [];
+        let dates = [];
         for (const key in newObj[0]) {
           if (
             key !== "Province/State" &&
@@ -43,20 +43,34 @@ export default function LineCharts() {
           }
         }
 
-        // console.log(records);
-        for (const date in dates) {
-          for (const index in records) {
-            if (records[index]["Country/Region"] === "Thailand") {
-              data.push({
-                Thailand: records[index][dates[date]],
-              });
+        for (let i in dates) {
+          data.push({ date: dates[i] });
+          for (let j in records) {
+            if (records[j]["Country/Region"] === "Italy") {
+              data[i].Italy = records[j][dates[i]];
             }
-            if (records[index]["Country/Region"] === "Japan") {
-              data.Japan = records[index][dates[date]];
+            if (records[j]["Country/Region"] === "Brazil") {
+              data[i].Brazil = records[j][dates[i]];
+            }
+            if (records[j]["Country/Region"] === "Japan") {
+              data[i].Japan = records[j][dates[i]];
             }
           }
-          data[0].date = dates;
         }
+
+        data = data.filter((item) => {
+          let cnt = 0;
+          for (const index in item) {
+            if (parseInt(item[index]) > 15000 && index !== 0) {
+              cnt += 1;
+            }
+            if (maxData < parseInt(item[index])) {
+              setMaxData((state) => parseInt(item[index]));
+            }
+          }
+          return cnt === Object.keys(item).length - 1;
+        });
+
         setMockData(data);
         console.log(mockData);
       })
@@ -65,16 +79,23 @@ export default function LineCharts() {
         console.error(err);
       });
   }, []);
+
   return (
     // <div></div>
     <div style={{ height: "1000px" }}>
-      <LineChart width={800} height={300} data={mockData}>
+      <LineChart
+        width={1000}
+        height={300}
+        data={mockData}
+        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+      >
         <XAxis dataKey="date" tick={{ fontSize: 10 }} />
-        <YAxis type="number" domain={[0, 5000]} />
+        <YAxis type="number" domain={[1, maxData]} />
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="Japan" stroke="#8884d8" />
-        <Line type="monotone" dataKey="Thailand" stroke="#82ca9d" />
+        <Line type="monotone" dataKey="Brazil" stroke="#8884d8" />
+        <Line type="monotone" dataKey="Italy" stroke="#82ca9d" />
+        <Line type="monotone" dataKey="Japan" stroke="#CE4A94" />
       </LineChart>
     </div>
   );
