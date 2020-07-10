@@ -88,7 +88,6 @@ export default function ThMap({ domesticSum }) {
 
 const transform = (report) => {
 
-
     const newObj = { ...report };
 
     for (const key in newObj.Province) {

@@ -10,11 +10,19 @@ export default function survey() {
   // }
   function calPoint(id) {
     if (id % 2 == 0) {
-      setPoint(state => state + 1)
+      setPoint(state => state + 1);
+      calRisk();
     }
+    calRisk();
     console.log(point);
   }
-
+  function calRisk(point) {
+    const x = "risk covid"
+    if (point > 5) {
+      return x;
+    }
+    console.log(x);
+  }
   return (
     <div>
       <form >

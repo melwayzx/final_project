@@ -1,12 +1,14 @@
 import parse from "csv-parse/lib/sync";
 import axios from "axios";
+import React, { useState } from "react";
 
 export default async function getConfirmGlobal() {
+  let records = {};
   const res = await fetch(
     "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv"
   );
-  console.log(res);
-  const records = parse(res.data, {
+  // console.log(res);
+  records = parse(res.data, {
     columns: true,
     skip_empty_lines: true,
   });
