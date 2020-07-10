@@ -89,7 +89,7 @@ export default function LineCharts() {
         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
       >
         <XAxis dataKey="date" tick={{ fontSize: 10 }} />
-        <YAxis type="number" domain={[1, maxData]} />
+        <YAxis type="number" domain={["auto", maxData]} />
         <Tooltip />
         <Legend />
         <Line type="monotone" dataKey="Brazil" stroke="#8884d8" />
