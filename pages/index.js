@@ -23,9 +23,10 @@ export default function index(props) {
       <Head>
         <title>Covid-19 updates </title>
       </Head>
-      {/* <div style={{ height: "250px" }}>
+      <div style={{ height: "250px" }}>
         <SumCard domesticDailyCase={domesticDailyCase} />
-      </div> */}
+      </div>
+
       <div
         style={{
           display: "flex",
@@ -36,8 +37,8 @@ export default function index(props) {
           height: "600px",
         }}
       >
-        {/* <GenderSumCard domesticSum={domesticSum} />
-        <AgeSumCard domesticCase={domesticCase} /> */}
+        <GenderSumCard domesticSum={domesticSum} />
+        <AgeSumCard domesticCase={domesticCase} />
       </div>
       <div
         style={{
@@ -60,8 +61,9 @@ export default function index(props) {
           }}
         >
           {/* <GlobalSumCard /> */}
+
           <GlobalSelect />
-          <LineCharts />
+          {/* <LineCharts /> */}
 
         </div>
       </div>
