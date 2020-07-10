@@ -50,12 +50,12 @@ export default function ThMap({ domesticSum }) {
       .append("path")
       .attr("d", path)
       .attr("vector-effect", "non-scaling-stroke")
-      // .on("mouseover", function (d) {
-      //   return tooltip.style("visibility", "visible").text(d.properties.name);
-      // })
-      // .on("mouseout", function () {
-      //   return tooltip.style("visibility", "hidden");
-      // })
+      .on("mouseover", function (d) {
+        return tooltip.style("visibility", "visible").text(d.properties.name);
+      })
+      .on("mouseout", function () {
+        return tooltip.style("visibility", "hidden");
+      })
 
       .style("fill", function (data) {
         if (domesticSum.Province[data.properties.name]?.level === "danger") {
@@ -74,40 +74,28 @@ export default function ThMap({ domesticSum }) {
   }, [data]);
 
   return (
-    <div style={{ ...mapStyle, stroke: "white" }}>
-      <svg
-        width={"100%"}
-        height={"100%"}
-        ref={svgRef}
-        style={{ position: "relative" }}
-      />
-      {/* <Tooltip title={domesticSum.Province} placement="top-start"></Tooltip>; */}
+    <div>
+      <div>ผู้ติดเชื้อในประเทศไทย จำแนกตามจังหวัด</div>
+      <div style={{ display: "flex", fontSize: "14px" }}>
+        <div style={{ color: "#C0392B", marginRight: "10px" }}>
+          อัพเดตล่าสุด
+        </div>
+        <div>{domesticSum.LastData}</div>
+      </div>
+      <div style={{ ...mapStyle, stroke: "white" }}>
+        <svg
+          width={"100%"}
+          height={"100%"}
+          ref={svgRef}
+          style={{ position: "relative" }}
+        />
+        {/* <Tooltip title={domesticSum.Province} placement="top-start"></Tooltip>; */}
+      </div>
     </div>
   );
 }
 
 const transform = (report) => {
-  //   report.Province["Phangnga"] = report.Province["Phang Nga"];
-  //   delete report.Province[report.Province["Phang Nga"]];
-
-  //   report.Province["Bangkok Metropolis"] = report.Province["Bangkok"];
-  //   delete report.Province["Bangkok"];
-
-  //   report.Province["Lop Buri"] = report.Province["Lopburi"];
-  //   delete report.Province["Lopburi"];
-
-  //   report.Province["Si Sa Ket"] = report.Province["Sisaket"];
-  //   delete report.Province["Sisaket"];
-
-  //   report.Province["Chonburi"] = report.Province["Chon Buri"];
-  //   delete report.Province["Chon Buri"];
-
-  //   report.Province["Buri Ram"] = report.Province["Buriram"];
-  //   delete report.Province["Buriram"];
-
-  //   report.Province["Nong Bua Lam Phu"] = report.Province["Nong Bua Lamphu"];
-  //   delete report.Province["Nong Bua Lamphu"];
-
   const newObj = { ...report };
 
   for (const key in newObj.Province) {
