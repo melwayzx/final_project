@@ -10,7 +10,6 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
-import { timeFormatDefaultLocale } from "d3";
 
 export default function LineCharts() {
   let data = [];
@@ -65,7 +64,7 @@ export default function LineCharts() {
               cnt += 1;
             }
             if (maxData < parseInt(item[index])) {
-              setMaxData((state) => parseInt(item[index]));
+              setMaxData(parseInt(item[index]));
             }
           }
           return cnt === Object.keys(item).length - 1;
