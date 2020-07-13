@@ -38,10 +38,16 @@ export default function LineCharts() {
             label: records[i][["Country/Region"]],
             value: records[i][["Country/Region"]],
           });
-          // console.log(records[i][["Country/Region"]]);
         }
-        setCountryList([...new Set(tempList)]);
-        console.log(countryList);
+
+        const unique = [];
+        tempList.map((x) =>
+          unique.filter((a) => a.label == x.label && a.value == x.value)
+            .length > 0
+            ? null
+            : unique.push(x)
+        );
+        setCountryList(unique);
 
         // const newObj = { ...records };
         // let dates = [];
