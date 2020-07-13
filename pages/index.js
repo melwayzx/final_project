@@ -7,12 +7,10 @@ import ThailandSumCard from "../src/components/Card/ThailandSumCard";
 import LineCharts from "../src/components/Chart/LineCharts";
 import GlobalSumCard from "../src/components/Card/GlobalSumCard";
 import GlobalSelect from "../src/components/GlobalSelect";
-import SearchCountry from "../src/components/SearchCountry";
 export default function index(props) {
   const { domesticDailyCase, domesticSum, domesticCase } = props;
 
   return (
-
     <div
       style={{
         width: "100vw",
@@ -61,10 +59,9 @@ export default function index(props) {
           }}
         >
           {/* <GlobalSumCard /> */}
-          <SearchCountry />
+          {/* <SearchCountry /> */}
           {/* <GlobalSelect /> */}
-          {/* <LineCharts /> */}
-
+          <LineCharts />
         </div>
       </div>
     </div>
@@ -82,5 +79,5 @@ export async function getServerSideProps() {
       domesticSum,
       domesticCase,
     }, // will be passed to the page component as props
-  }
+  };
 }
