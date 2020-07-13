@@ -48,16 +48,11 @@ export default function LineCharts() {
             if (records[j]["Country/Region"] === "Italy") {
               data[i].Italy = records[j][dates[i]];
             }
-<<<<<<< HEAD
-            if (records[index]["Country/Region"] === "Japan") {
-              data[date].Japan = records[index][dates[date]];
-=======
             if (records[j]["Country/Region"] === "Brazil") {
               data[i].Brazil = records[j][dates[i]];
             }
             if (records[j]["Country/Region"] === "Japan") {
               data[i].Japan = records[j][dates[i]];
->>>>>>> origin/Melwayz
             }
           }
         }
