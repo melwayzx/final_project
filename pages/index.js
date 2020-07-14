@@ -62,10 +62,6 @@ export default function index(props) {
           {/* <SearchCountry /> */}
           {/* <GlobalSelect /> */}
           <LineCharts />
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/Melwayz
         </div>
       </div>
     </div>
