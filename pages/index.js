@@ -61,9 +61,9 @@ export default function index(props) {
           }}
         >
           {/* <GlobalSumCard /> */}
-          <SearchCountry />
+          {/* <SearchCountry /> */}
           {/* <GlobalSelect /> */}
-          {/* <LineCharts /> */}
+          <LineCharts />
 
         </div>
       </div>
