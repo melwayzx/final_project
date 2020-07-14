@@ -222,6 +222,7 @@ export default function LineCharts() {
 
 const StyledWrapper = styled.div`
   display: flex;
+  width: 1000px;
   justify-content: flex-end;
 `;
 
