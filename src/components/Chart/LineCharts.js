@@ -26,6 +26,9 @@ export default function LineCharts() {
     "#E37737",
     "#5C3DC2",
   ];
+  const [urlData, setUrlData] = useState(
+    "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv"
+  );
   const [mockData, setMockData] = useState();
   const [maxData, setMaxData] = useState(0);
   const [countryList, setCountryList] = useState([]);
@@ -35,8 +38,7 @@ export default function LineCharts() {
   useEffect(() => {
     axios({
       method: "get",
-      url:
-        "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv",
+      url: urlData,
     })
       .then((response) => {
         const records = parse(response.data, {
@@ -52,6 +54,8 @@ export default function LineCharts() {
             value: records[i][["Country/Region"]],
           });
         }
+
+        // console.log(urlData);
 
         const unique = [];
         tempList.map((x) =>
@@ -115,13 +119,13 @@ export default function LineCharts() {
         // });
 
         setMockData(data);
-        console.log(mockData);
+        // console.log(mockData);
       })
 
       .catch((err) => {
         console.error(err);
       });
-  }, [selected]);
+  }, [selected, urlData]);
 
   function updateSelectCountry(e) {
     // temp.push(e);
@@ -136,21 +140,36 @@ export default function LineCharts() {
         <StyledButton
           buttonName="ผู้ติดเชื้อ"
           isSelectedButton={isSelectedButton}
-          onClick={() => setIsSelectedButton("ผู้ติดเชื้อ")}
+          onClick={() => {
+            setIsSelectedButton("ผู้ติดเชื้อ");
+            setUrlData(
+              "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv"
+            );
+          }}
         >
           ผู้ติดเชื้อ
         </StyledButton>
         <StyledButton
           buttonName="หายแล้ว"
           isSelectedButton={isSelectedButton}
-          onClick={() => setIsSelectedButton("หายแล้ว")}
+          onClick={() => {
+            setIsSelectedButton("หายแล้ว");
+            setUrlData(
+              "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv"
+            );
+          }}
         >
           หายแล้ว
         </StyledButton>
         <StyledButton
           buttonName="เสียชีวิต"
           isSelectedButton={isSelectedButton}
-          onClick={() => setIsSelectedButton("เสียชีวิต")}
+          onClick={() => {
+            setIsSelectedButton("เสียชีวิต");
+            setUrlData(
+              "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"
+            );
+          }}
         >
           เสียชีวิต
         </StyledButton>
