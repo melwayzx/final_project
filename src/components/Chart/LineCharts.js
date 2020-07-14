@@ -16,10 +16,21 @@ import styled from "styled-components";
 export default function LineCharts() {
   let data = [];
   const initialData = ["Italy", "Brazil", "Iran"];
+  const colours = [
+    "#F3BE43",
+    "#4FB2AC",
+    "#CE4A94",
+    "#BBCB48",
+    "#9541C1",
+    "#59B655",
+    "#E37737",
+    "#5C3DC2",
+  ];
   const [mockData, setMockData] = useState();
   const [maxData, setMaxData] = useState(0);
   const [countryList, setCountryList] = useState([]);
   const [selected, setSelected] = useState([]);
+  const [isSelectedButton, setIsSelectedButton] = useState("ผู้ติดเชื้อ");
 
   useEffect(() => {
     axios({
@@ -122,9 +133,27 @@ export default function LineCharts() {
   return (
     <div>
       <StyledWrapper>
-        <StyledButton>ผู้ติดเชื้อ</StyledButton>
-        <StyledButton>หายแล้ว</StyledButton>
-        <StyledButton>เสียชีวิต</StyledButton>
+        <StyledButton
+          buttonName="ผู้ติดเชื้อ"
+          isSelectedButton={isSelectedButton}
+          onClick={() => setIsSelectedButton("ผู้ติดเชื้อ")}
+        >
+          ผู้ติดเชื้อ
+        </StyledButton>
+        <StyledButton
+          buttonName="หายแล้ว"
+          isSelectedButton={isSelectedButton}
+          onClick={() => setIsSelectedButton("หายแล้ว")}
+        >
+          หายแล้ว
+        </StyledButton>
+        <StyledButton
+          buttonName="เสียชีวิต"
+          isSelectedButton={isSelectedButton}
+          onClick={() => setIsSelectedButton("เสียชีวิต")}
+        >
+          เสียชีวิต
+        </StyledButton>
         <div style={{ width: "250px", margin: "0px 5px " }}>
           {/* <h1>เลือกประเทศ</h1> */}
           <MultiSelect
@@ -152,14 +181,18 @@ export default function LineCharts() {
           <Tooltip />
           <Legend />
           {selected.length == 0
-            ? initialData.map((item) => (
-                <Line type="monotone" dataKey={item} stroke="#8884d8"></Line>
+            ? initialData.map((item, index) => (
+                <Line
+                  type="monotone"
+                  dataKey={item}
+                  stroke={colours[index]}
+                ></Line>
               ))
-            : selected.map((item) => (
+            : selected.map((item, index) => (
                 <Line
                   type="monotone"
                   dataKey={item.label}
-                  stroke="#8884d8"
+                  stroke={colours[index]}
                 ></Line>
               ))}
         </LineChart>
@@ -176,11 +209,32 @@ const StyledWrapper = styled.div`
 const StyledButton = styled.button`
   width: 100px;
   height: 40px;
-  background: #fff;
+  background: ${(props) =>
+    props.buttonName == props.isSelectedButton &&
+    props.buttonName == "ผู้ติดเชื้อ"
+      ? "#767676"
+      : props.buttonName == props.isSelectedButton &&
+        props.buttonName == "หายแล้ว"
+      ? "#4FB2AC"
+      : props.buttonName == props.isSelectedButton &&
+        props.buttonName == "เสียชีวิต"
+      ? "#CA3B33"
+      : "#fff"};
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
   transition: all 0.2s ease;
   font-family: Sukhumvit Set;
   margin: 0px 5px;
+  color: ${(props) =>
+    props.buttonName == props.isSelectedButton &&
+    props.buttonName == "ผู้ติดเชื้อ"
+      ? "#fff"
+      : props.buttonName == props.isSelectedButton &&
+        props.buttonName == "หายแล้ว"
+      ? "#fff"
+      : props.buttonName == props.isSelectedButton &&
+        props.buttonName == "เสียชีวิต"
+      ? "#fff"
+      : "#000"};
 `;
