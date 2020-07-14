@@ -11,13 +11,7 @@ import {
   Legend,
 } from "recharts";
 import MultiSelect from "react-multi-select-component";
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles({
-  table: {
-    width: 300,
-  },
-});
+import styled from "styled-components";
 
 export default function LineCharts() {
   let data = [];
@@ -26,7 +20,6 @@ export default function LineCharts() {
   const [maxData, setMaxData] = useState(0);
   const [countryList, setCountryList] = useState([]);
   const [selected, setSelected] = useState([]);
-  const classes = useStyles();
 
   useEffect(() => {
     axios({
@@ -97,18 +90,18 @@ export default function LineCharts() {
           }
         }
 
-        const newData = [...data].filter((item) => {
-          let cnt = 0;
-          for (const index in item) {
-            if (parseInt(item[index]) > 100 && index !== 0) {
-              cnt += 1;
-            }
-            if (maxData < parseInt(item[index])) {
-              setMaxData(parseInt(item[index]));
-            }
-          }
-          return cnt === Object.keys(item).length - 1;
-        });
+        // const newData = [...data].filter((item) => {
+        //   let cnt = 0;
+        //   for (const index in item) {
+        //     if (parseInt(item[index]) > 100 && index !== 0) {
+        //       cnt += 1;
+        //     }
+        //     if (maxData < parseInt(item[index])) {
+        //       setMaxData(parseInt(item[index]));
+        //     }
+        //   }
+        //   return cnt === Object.keys(item).length - 1;
+        // });
 
         setMockData(data);
         console.log(mockData);
@@ -128,18 +121,25 @@ export default function LineCharts() {
 
   return (
     <div>
-      <div style={{ width: "250px" }}>
-        {/* <h1>เลือกประเทศ</h1> */}
-        <MultiSelect
-          options={countryList}
-          value={selected}
-          onChange={function (e) {
-            updateSelectCountry(e);
-          }}
-          labelledBy={"Select"}
-        />
-      </div>
-      <div style={{ height: "1000px" }}>
+      <StyledWrapper>
+        <StyledButton>ผู้ติดเชื้อ</StyledButton>
+        <StyledButton>หายแล้ว</StyledButton>
+        <StyledButton>เสียชีวิต</StyledButton>
+        <div style={{ width: "250px", margin: "0px 5px " }}>
+          {/* <h1>เลือกประเทศ</h1> */}
+          <MultiSelect
+            options={countryList}
+            value={selected}
+            onChange={function (e) {
+              updateSelectCountry(e);
+            }}
+            labelledBy={"Select"}
+            primary={"เลือกประเทศ"}
+          />
+        </div>
+      </StyledWrapper>
+
+      <div style={{ padding: "40px 0" }}>
         <LineChart
           width={1000}
           height={300}
@@ -167,3 +167,20 @@ export default function LineCharts() {
     </div>
   );
 }
+
+const StyledWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+
+const StyledButton = styled.button`
+  width: 100px;
+  height: 40px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+  font-family: Sukhumvit Set;
+  margin: 0px 5px;
+`;
