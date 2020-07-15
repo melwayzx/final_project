@@ -23,28 +23,30 @@ export default function BarChartData({ domesticCase }) {
   let ageUndefined = 0;
 
   const age = domesticCase.Data.map((item) => {
-    if (item.Age <= 10) {
-      age0_10 += 1;
-    } else if (item.Age <= 20) {
-      age11_20 += 1;
-    } else if (item.Age <= 30) {
-      age21_30 += 1;
-    } else if (item.Age <= 40) {
-      age31_40 += 1;
-    } else if (item.Age <= 50) {
-      age41_50 += 1;
-    } else if (item.Age <= 60) {
-      age51_60 += 1;
-    } else if (item.Age <= 70) {
-      age61_70 += 1;
-    } else if (item.Age <= 80) {
-      age71_80 += 1;
-    } else if (item.Age <= 90) {
-      age81_90 += 1;
-    } else if (item.Age <= 100) {
-      age91_100 += 1;
-    } else {
-      ageUndefined += 1;
+    if (item.Age !== 0) {
+      if (item.Age <= 10) {
+        age0_10 += 1;
+      } else if (item.Age <= 20) {
+        age11_20 += 1;
+      } else if (item.Age <= 30) {
+        age21_30 += 1;
+      } else if (item.Age <= 40) {
+        age31_40 += 1;
+      } else if (item.Age <= 50) {
+        age41_50 += 1;
+      } else if (item.Age <= 60) {
+        age51_60 += 1;
+      } else if (item.Age <= 70) {
+        age61_70 += 1;
+      } else if (item.Age <= 80) {
+        age71_80 += 1;
+      } else if (item.Age <= 90) {
+        age81_90 += 1;
+      } else if (item.Age <= 100) {
+        age91_100 += 1;
+      } else {
+        ageUndefined += 1;
+      }
     }
   });
   const data = [
