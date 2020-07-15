@@ -12,6 +12,7 @@ import {
 } from "recharts";
 import MultiSelect from "react-multi-select-component";
 import styled from "styled-components";
+import Reset from "../../images/Convert.svg";
 
 export default function LineCharts() {
   let data = [];
@@ -187,6 +188,9 @@ export default function LineCharts() {
             primary={"เลือกประเทศ"}
           />
         </div>
+        <ResetButton onClick={() => setSelected([])}>
+          <Reset />
+        </ResetButton>
       </div>
 
       <div style={{ padding: "40px 0" }}>
@@ -262,4 +266,15 @@ const Button = styled.button`
   /* padding: 8px;
   box-sizing: border-box;
   text-align: center; */
+`;
+
+const ResetButton = styled.button`
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+  margin: 0px 5px;
 `;
