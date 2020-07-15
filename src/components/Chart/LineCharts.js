@@ -80,6 +80,7 @@ export default function LineCharts() {
           }
         }
 
+        //   let temp = 0;
         if (selected.length == 0) {
           for (let i in dates) {
             data.push({ date: dates[i] });
@@ -106,20 +107,30 @@ export default function LineCharts() {
           }
         }
 
-        const newData = [...data].filter((item) => {
-          let cnt = 0;
-          for (const index in item) {
-            if (parseInt(item[index]) > 100 && index !== 0) {
-              cnt += 1;
-            }
-            if (maxData < parseInt(item[index])) {
-              setMaxData(parseInt(item[index]));
+        // const newData = [...data].filter((item) => {
+        //   let cnt = 0;
+        //   for (const index in item) {
+        //     if (parseInt(item[index]) > 100 && index !== 0) {
+        //       cnt += 1;
+        //       if (temp < parseInt(item[index])) {
+        //         temp = parseInt(item[index]);
+        //       }
+        //     }
+        //   }
+        //   setMaxData(parseInt(temp));
+        //   return cnt === Object.keys(item).length - 1;
+        // });
+        let temp = 0;
+        for (let i in data) {
+          for (let j in data[i]) {
+            if (temp < parseInt(data[i][j])) {
+              temp = parseInt(data[i][j]);
             }
           }
-          return cnt === Object.keys(item).length - 1;
-        });
-
-        setMockData(newData);
+        }
+        // console.log(temp);
+        setMaxData(temp);
+        setMockData(data);
         // console.log(mockData);
       })
 
