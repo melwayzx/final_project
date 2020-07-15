@@ -5,6 +5,8 @@ import GenderSumCard from "../src/components/Card/GenderSumCard";
 import AgeSumCard from "../src/components/Card/AgeSumCard";
 import ThailandSumCard from "../src/components/Card/ThailandSumCard";
 import LineCharts from "../src/components/Chart/LineCharts";
+// import Global from "../src/components/GlobalData";
+
 import GlobalSumCard from "../src/components/Card/GlobalSumCard";
 import GlobalSelect from "../src/components/GlobalSelect";
 export default function index(props) {
@@ -21,6 +23,8 @@ export default function index(props) {
       <Head>
         <title>Covid-19 updates </title>
       </Head>
+      {/* <LineCharts /> */}
+
       <div style={{ height: "250px" }}>
         {/* <SumCard domesticDailyCase={domesticDailyCase} /> */}
       </div>
@@ -46,7 +50,8 @@ export default function index(props) {
           background: "white",
         }}
       >
-        {/* <ThailandSumCard domesticSum={domesticSum} /> */}
+
+
         <div
           style={{
             display: "flex",
@@ -61,7 +66,8 @@ export default function index(props) {
           {/* <GlobalSumCard /> */}
           {/* <SearchCountry /> */}
           {/* <GlobalSelect /> */}
-          <LineCharts />
+          <ThailandSumCard domesticSum={domesticSum} />
+
         </div>
       </div>
     </div>

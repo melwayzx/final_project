@@ -17,8 +17,8 @@ export default function ThMap({ domesticSum }) {
 
     const svg = d3.select(svgRef.current);
     svg
-      .append("rect")
-      .style("fill", "#fff")
+      .append("react")
+      .style("fill", data)
       .attr("width", width)
       .attr("height", height);
 
@@ -35,27 +35,41 @@ export default function ThMap({ domesticSum }) {
     const report = transform(domesticSum);
 
     mapLayer.selectAll("path").data(json.features);
-
     var tooltip = d3
       .select("body")
       .append("div")
-      // .style("position", "absolute")
-      .style("z-index", "10")
-      .style("visibility", "hidden");
+      .style("position", "absolute")
+      .style("z-index", "12")
+      .style("background", "lightpink")
+      .style("visibility", "hidden")
 
     mapLayer
       .selectAll("path")
       .data(json.features)
       .enter()
       .append("path")
+      .attr("stroke", "#C0392B")
+      .attr("stroke-width", 1)
+      .attr("fill", "white")
       .attr("d", path)
       .attr("vector-effect", "non-scaling-stroke")
-      .on("mouseover", function (d) {
-        return tooltip.style("visibility", "visible").text(d.properties.name);
+      .on("mouseover", function (d, i) {
+        d3.select(this).attr("fill", "red").attr("stroke-width", 3);
+        return tooltip.style("visibility", "visible").text(d.properties.name)
+
       })
-      .on("mouseout", function () {
+      .on("mousemove", function (d) {
+        tooltip.classed("visibility", "hidden")
+          .style("top", (d3.event.pageY) + "px")
+          .style("left", (d3.event.pageX + 10) + "px")
+          .text(d.properties.name);
+      })
+
+      .on("mouseout", function (d, i) {
+        d3.select(this).attr("fill", "white").attr("stroke-width", 1);
         return tooltip.style("visibility", "hidden");
       })
+
 
       .style("fill", function (data) {
         if (domesticSum.Province[data.properties.name]?.level === "danger") {
@@ -89,7 +103,7 @@ export default function ThMap({ domesticSum }) {
           ref={svgRef}
           style={{ position: "relative" }}
         />
-        {/* <Tooltip title={domesticSum.Province} placement="top-start"></Tooltip>; */}
+
       </div>
     </div>
   );
