@@ -288,4 +288,5 @@ const ResetButton = styled.button`
   box-sizing: border-box;
   transition: all 0.2s ease;
   margin: 0px 5px;
+  color: #fff;
 `;
