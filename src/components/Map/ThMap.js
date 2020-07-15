@@ -58,6 +58,7 @@ export default function ThMap({ domesticSum }) {
       })
 
       .style("fill", function (data) {
+        // console.log(report);
         if (domesticSum.Province[data.properties.name]?.level === "danger") {
           return "#800909";
         } else if (
@@ -72,6 +73,39 @@ export default function ThMap({ domesticSum }) {
         return "#DDDDDD";
       });
   }, [data]);
+
+  // console.log(data);
+  const transform = (report) => {
+    const newObj = { ...report };
+
+    for (const key in newObj.Province) {
+      if (newObj.Province.hasOwnProperty(key)) {
+        if (newObj.Province[key] > 1000) {
+          newObj.Province[key] = {
+            level: "danger",
+            count: newObj.Province[key],
+          };
+        } else if (newObj.Province[key] > 30) {
+          newObj.Province[key] = {
+            level: "caution",
+            count: newObj.Province[key],
+          };
+        } else if (newObj.Province[key] > 2) {
+          newObj.Province[key] = {
+            level: "normal",
+            count: newObj.Province[key],
+          };
+        } else {
+          newObj.Province[key] = {
+            level: "less",
+            count: newObj.Province[key],
+          };
+        }
+      }
+      console.log(newObj);
+      return newObj;
+    }
+  };
 
   return (
     <div>
@@ -95,39 +129,7 @@ export default function ThMap({ domesticSum }) {
   );
 }
 
-const transform = (report) => {
-  const newObj = { ...report };
-
-  for (const key in newObj.Province) {
-    if (newObj.Province.hasOwnProperty(key)) {
-      if (newObj.Province[key] > 1000) {
-        newObj.Province[key] = {
-          level: "danger",
-          count: newObj.Province[key],
-        };
-      } else if (newObj.Province[key] > 30) {
-        newObj.Province[key] = {
-          level: "caution",
-          count: newObj.Province[key],
-        };
-      } else if (newObj.Province[key] > 2) {
-        newObj.Province[key] = {
-          level: "normal",
-          count: newObj.Province[key],
-        };
-      } else {
-        newObj.Province[key] = {
-          level: "less",
-          count: newObj.Province[key],
-        };
-      }
-    }
-
-    return newObj;
-  };
-}
 const mapStyle = {
   height: 660,
   width: 800,
-}
-
+};
