@@ -78,7 +78,7 @@ export default async function getDomesticSum() {
       Spain: 0,
       British: 0,
     },
-    Gender: { Male: 0, Female: 0 },
+    Gender: { Male: 1, Female: 1 },
     LastData: "",
     UpdateDate: "",
     Source: "",
