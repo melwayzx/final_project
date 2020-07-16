@@ -102,7 +102,7 @@ export default function ThMap({ domesticSum }) {
           };
         }
       }
-      console.log(newObj);
+      // console.log(newObj);
       return newObj;
     }
   };
