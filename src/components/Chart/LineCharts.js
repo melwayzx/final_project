@@ -212,7 +212,7 @@ export default function LineCharts() {
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
         >
           <XAxis dataKey="date" tick={{ fontSize: 10 }} />
-          <YAxis type="number" domain={["auto", maxData]} />
+          <YAxis type="number" domain={[0, maxData]} />
           <CartesianGrid stroke="#DDDDDD" vertical={false} />
           <Tooltip />
           <Legend />
