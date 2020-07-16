@@ -23,12 +23,12 @@ export default function SumCard({ domesticDailyCase }) {
             </div>
             <div style={StyledText}>ประเทศไทย </div>
           </div>
-          <Button
+          {/* <Button
             href={"/covidScale"}
             name={"แบบประเมินความเสี่ยง"}
             StyledButtonContainer={StyledButtonContainer}
             StyledLink={StyledLink}
-          />
+          /> */}
         </div>
 
         <StatusCard domesticDailyCase={domesticDailyCase} />

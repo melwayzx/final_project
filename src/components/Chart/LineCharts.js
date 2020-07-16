@@ -12,6 +12,7 @@ import {
 } from "recharts";
 import MultiSelect from "react-multi-select-component";
 import styled from "styled-components";
+import Reset from "../../images/Convert.svg";
 
 export default function LineCharts() {
   let data = [];
@@ -79,6 +80,7 @@ export default function LineCharts() {
           }
         }
 
+        //   let temp = 0;
         if (selected.length == 0) {
           for (let i in dates) {
             data.push({ date: dates[i] });
@@ -110,14 +112,24 @@ export default function LineCharts() {
         //   for (const index in item) {
         //     if (parseInt(item[index]) > 100 && index !== 0) {
         //       cnt += 1;
-        //     }
-        //     if (maxData < parseInt(item[index])) {
-        //       setMaxData(parseInt(item[index]));
+        //       if (temp < parseInt(item[index])) {
+        //         temp = parseInt(item[index]);
+        //       }
         //     }
         //   }
+        //   setMaxData(parseInt(temp));
         //   return cnt === Object.keys(item).length - 1;
         // });
-
+        let temp = 0;
+        for (let i in data) {
+          for (let j in data[i]) {
+            if (temp < parseInt(data[i][j])) {
+              temp = parseInt(data[i][j]);
+            }
+          }
+        }
+        // console.log(temp);
+        setMaxData(temp);
         setMockData(data);
         // console.log(mockData);
       })
@@ -136,8 +148,10 @@ export default function LineCharts() {
 
   return (
     <div>
-      <StyledWrapper>
-        <StyledButton
+      <div
+        style={{ display: "flex", width: "1000px", justifyContent: "flex-end" }}
+      >
+        <Button
           buttonName="ผู้ติดเชื้อ"
           isSelectedButton={isSelectedButton}
           onClick={() => {
@@ -148,8 +162,8 @@ export default function LineCharts() {
           }}
         >
           ผู้ติดเชื้อ
-        </StyledButton>
-        <StyledButton
+        </Button>
+        <Button
           buttonName="หายแล้ว"
           isSelectedButton={isSelectedButton}
           onClick={() => {
@@ -160,8 +174,8 @@ export default function LineCharts() {
           }}
         >
           หายแล้ว
-        </StyledButton>
-        <StyledButton
+        </Button>
+        <Button
           buttonName="เสียชีวิต"
           isSelectedButton={isSelectedButton}
           onClick={() => {
@@ -172,7 +186,7 @@ export default function LineCharts() {
           }}
         >
           เสียชีวิต
-        </StyledButton>
+        </Button>
         <div style={{ width: "250px", margin: "0px 5px " }}>
           {/* <h1>เลือกประเทศ</h1> */}
           <MultiSelect
@@ -185,7 +199,10 @@ export default function LineCharts() {
             primary={"เลือกประเทศ"}
           />
         </div>
-      </StyledWrapper>
+        <ResetButton onClick={() => setSelected([])}>
+          <Reset />
+        </ResetButton>
+      </div>
 
       <div style={{ padding: "40px 0" }}>
         <LineChart
@@ -220,13 +237,13 @@ export default function LineCharts() {
   );
 }
 
-const StyledWrapper = styled.div`
-  display: flex;
-  width: 1000px;
-  justify-content: flex-end;
-`;
+// const StyledWrapper = styled.div`
+//   display: flex;
+//   width: 1000px;
+//   justify-content: flex-end;
+// `;
 
-const StyledButton = styled.button`
+const Button = styled.button`
   width: 100px;
   height: 40px;
   background: ${(props) =>
@@ -257,4 +274,19 @@ const StyledButton = styled.button`
         props.buttonName == "เสียชีวิต"
       ? "#fff"
       : "#000"};
+  /* padding: 8px;
+  box-sizing: border-box;
+  text-align: center; */
+`;
+
+const ResetButton = styled.button`
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+  margin: 0px 5px;
+  color: #fff;
 `;

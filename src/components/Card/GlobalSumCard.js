@@ -1,7 +1,14 @@
 export default function GlobalSumCard() {
   return (
-    <div style={{ marginTop: "30px" }}>
-      <div style={{ fontSize: "20px", textAlign: "center", marginTop: "30px" }}>
+    <div>
+      <div
+        style={{
+          fontSize: "30px",
+          textAlign: "center",
+          marginTop: "30px",
+          fontWeight: "700",
+        }}
+      >
         อัปเดตสถิติ COVID-19 ทั่วโลก
       </div>
       <div
@@ -17,6 +24,7 @@ export default function GlobalSumCard() {
           display: "flex",
           justifyContent: "space-evenly",
           marginTop: "30px",
+          width: "100vw",
         }}
       >
         <div

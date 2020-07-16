@@ -17,30 +17,48 @@ export default function StatusCard({ domesticDailyCase }) {
                 height: "40px",
               }}
             >
-              + {domesticDailyCase.NewConfirmed}
+              {domesticDailyCase.NewConfirmed >= 1
+                ? `+ ${domesticDailyCase.NewConfirmed}`
+                : domesticDailyCase.NewConfirmed == 0
+                ? `${domesticDailyCase.NewConfirmed}`
+                : domesticDailyCase.NewConfirmed}
             </div>{" "}
           </div>
           {domesticDailyCase.Confirmed.toLocaleString("en-US")}
         </div>
-        <div style={{ ...StyledBox, background: "#408F4D", gridArea: "b" }}>
+        <div style={{ ...StyledBox, background: "#4FB2AC", gridArea: "b" }}>
           <div style={{ fontSize: "16px" }}>หายแล้ว</div>
           {domesticDailyCase.Recovered.toLocaleString("en-US")}
-          <div style={StyledCount}>+ {domesticDailyCase.NewRecovered}</div>
+          <div style={StyledCount}>
+            {domesticDailyCase.NewRecovered >= 1
+              ? `+ ${domesticDailyCase.NewRecovered}`
+              : domesticDailyCase.NewRecovered == 0
+              ? `${domesticDailyCase.NewRecovered}`
+              : domesticDailyCase.NewRecovered}
+          </div>
         </div>
-        <div style={{ ...StyledBox, background: "#FFBC00", gridArea: "c" }}>
+        <div style={{ ...StyledBox, background: "#F3BE43", gridArea: "c" }}>
           <div style={{ fontSize: "16px" }}>กำลังรักษา</div>
           {domesticDailyCase.Hospitalized.toLocaleString("en-US")}
           <div style={StyledCount}>
             {" "}
-            {domesticDailyCase.NewHospitalized > 1
+            {domesticDailyCase.NewHospitalized >= 1
               ? `+ ${domesticDailyCase.NewHospitalized}`
+              : domesticDailyCase.NewHospitalized == 0
+              ? `${domesticDailyCase.NewHospitalized}`
               : domesticDailyCase.NewHospitalized}
           </div>
         </div>
-        <div style={{ ...StyledBox, background: "#C0392B", gridArea: "d" }}>
+        <div style={{ ...StyledBox, background: "#CA3B33", gridArea: "d" }}>
           <div style={{ fontSize: "16px" }}>เสียชีวิต</div>
           {domesticDailyCase.Deaths.toLocaleString("en-US")}
-          <div style={StyledCount}>+ {domesticDailyCase.NewDeaths}</div>
+          <div style={StyledCount}>
+            {domesticDailyCase.NewDeaths >= 1
+              ? `+ ${domesticDailyCase.NewDeaths}`
+              : domesticDailyCase.NewDeaths == 0
+              ? `${domesticDailyCase.NewDeaths}`
+              : domesticDailyCase.NewDeaths}
+          </div>
         </div>
       </div>
       <div
@@ -79,7 +97,7 @@ const StyledMainBox = {
   display: "flex",
   alignItems: "center",
   gridArea: "a",
-  background: "#566573",
+  background: "#767676",
   /* padding: 2rem 1.8rem, */
   justifyContent: "space-evenly",
   fontSize: 60,

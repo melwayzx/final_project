@@ -23,10 +23,9 @@ export default function index(props) {
       <Head>
         <title>Covid-19 updates </title>
       </Head>
-      <LineCharts />
 
       <div style={{ height: "250px" }}>
-        {/* <SumCard domesticDailyCase={domesticDailyCase} /> */}
+        <SumCard domesticDailyCase={domesticDailyCase} />
       </div>
 
       <div
@@ -39,8 +38,8 @@ export default function index(props) {
           height: "600px",
         }}
       >
-        {/* <GenderSumCard domesticSum={domesticSum} />
-        <AgeSumCard domesticCase={domesticCase} /> */}
+        <GenderSumCard domesticSum={domesticSum} />
+        <AgeSumCard domesticCase={domesticCase} />
       </div>
       <div
         style={{
@@ -50,6 +49,7 @@ export default function index(props) {
           background: "white",
         }}
       >
+<<<<<<< HEAD
 
 
         <div
@@ -69,7 +69,40 @@ export default function index(props) {
           <ThailandSumCard domesticSum={domesticSum} />
 
         </div>
+=======
+        <ThailandSumCard domesticSum={domesticSum} />
+>>>>>>> origin/Melwayz
       </div>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          background: "#FAFAFA",
+          height: "250px",
+          // position: "absolute",
+          width: "100vw",
+          marginBottom: "60px",
+          marginTop: "30px",
+        }}
+      >
+        <GlobalSumCard />
+      </div>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          background: "white",
+          // position: "absolute",
+          width: "100vw",
+          marginBottom: "30px",
+        }}
+      >
+        <LineCharts />
+      </div>
+      {/* <SearchCountry /> */}
+      {/* <GlobalSelect /> */}
     </div>
   );
 }
