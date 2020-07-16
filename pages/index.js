@@ -23,7 +23,7 @@ export default function index(props) {
       <Head>
         <title>Covid-19 updates </title>
       </Head>
-      {/* <LineCharts /> */}
+      <LineCharts />
 
       <div style={{ height: "250px" }}>
         {/* <SumCard domesticDailyCase={domesticDailyCase} /> */}

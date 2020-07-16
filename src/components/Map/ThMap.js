@@ -6,19 +6,18 @@ export default function ThMap({ domesticSum }) {
   const data = [
     {
       name: domesticSum.Province,
+
     },
   ];
 
   const svgRef = useRef();
-
   useEffect(() => {
     const width = 800;
     const height = 660;
-
     const svg = d3.select(svgRef.current);
     svg
-      .append("react")
-      .style("fill", data)
+      .append("rect")
+      .style("fill", "#fff")
       .attr("width", width)
       .attr("height", height);
 
@@ -34,43 +33,14 @@ export default function ThMap({ domesticSum }) {
 
     const report = transform(domesticSum);
 
-    mapLayer.selectAll("path").data(json.features);
-    var tooltip = d3
-      .select("body")
-      .append("div")
-      .style("position", "absolute")
-      .style("z-index", "12")
-      .style("background", "lightpink")
-      .style("visibility", "hidden")
-
-    mapLayer
-      .selectAll("path")
-      .data(json.features)
+    mapLayer.selectAll("path").data(json.features)
+    mapLayer.selectAll("path").data(json.features)
       .enter()
       .append("path")
       .attr("stroke", "#C0392B")
       .attr("stroke-width", 1)
-      .attr("fill", "white")
       .attr("d", path)
       .attr("vector-effect", "non-scaling-stroke")
-      .on("mouseover", function (d, i) {
-        d3.select(this).attr("fill", "red").attr("stroke-width", 3);
-        return tooltip.style("visibility", "visible").text(d.properties.name)
-
-      })
-      .on("mousemove", function (d) {
-        tooltip.classed("visibility", "hidden")
-          .style("top", (d3.event.pageY) + "px")
-          .style("left", (d3.event.pageX + 10) + "px")
-          .text(d.properties.name);
-      })
-
-      .on("mouseout", function (d, i) {
-        d3.select(this).attr("fill", "white").attr("stroke-width", 1);
-        return tooltip.style("visibility", "hidden");
-      })
-
-
       .style("fill", function (data) {
         if (domesticSum.Province[data.properties.name]?.level === "danger") {
           return "#800909";
@@ -84,7 +54,33 @@ export default function ThMap({ domesticSum }) {
           return "#F5C7CA";
         }
         return "#DDDDDD";
-      });
+      })
+      .on("mouseover", function (d, i) {
+        d3.select(this).attr("fill", data).attr("stroke-width", 3);
+        var x = d.properties.name
+        return tooltip.style("visibility", "visible").text(x)
+      })
+      .on("mousemove", function (d) {
+        tooltip.classed("visibility", "hidden")
+          .style("top", (d3.event.pageY) + "px")
+          .style("left", (d3.event.pageX + 10) + "px")
+          .text(d.properties.name)
+
+      })
+
+      .on("mouseout", function (d, i) {
+        d3.select(this).attr("fill", data).attr("stroke-width", 1);
+        return tooltip.style("visibility", "hidden");
+      })
+
+    var tooltip = d3
+      .select("body")
+      .append("div")
+      .style("position", "absolute")
+      .style("z-index", "12")
+      .style("background", "lightpink")
+      .style("visibility", "hidden")
+
   }, [data]);
 
   return (
