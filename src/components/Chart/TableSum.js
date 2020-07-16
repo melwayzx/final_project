@@ -8,7 +8,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-
+import axios from "axios";
 //const countryList = Object.keys(data.Country);
 const columns = [
     { id: 'country', label: 'ประเทศ', minWidth: 100 },
@@ -44,11 +44,11 @@ const useStyles = makeStyles({
     },
 });
 
-export default function TableSum() {
+export default function TableSum({ countryList }) {
     const classes = useStyles();
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
-
+    console.log({ countryList })
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
     };
@@ -69,8 +69,7 @@ export default function TableSum() {
                                     key={column.id}
                                     align={column.align}
                                     style={{ minWidth: column.minWidth }}
-                                >
-                                    {column.label}
+                                >{column.label}
                                 </TableCell>
                             ))}
                         </TableRow>

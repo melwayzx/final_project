@@ -5,8 +5,7 @@ import json from "./thailand.json";
 export default function ThMap({ domesticSum }) {
   const data = [
     {
-      name: domesticSum.Province,
-
+      name: domesticSum.Province
     },
   ];
 
@@ -33,7 +32,7 @@ export default function ThMap({ domesticSum }) {
 
     const report = transform(domesticSum);
 
-    mapLayer.selectAll("path").data(json.features)
+    //mapLayer.selectAll("path").data(json.features)
     mapLayer.selectAll("path").data(json.features)
       .enter()
       .append("path")
@@ -42,16 +41,12 @@ export default function ThMap({ domesticSum }) {
       .attr("d", path)
       .attr("vector-effect", "non-scaling-stroke")
       .style("fill", function (data) {
-        // console.log(report);
+        //console.log(domesticSum.Province[data.properties.name]);
         if (domesticSum.Province[data.properties.name]?.level === "danger") {
           return "#800909";
-        } else if (
-          domesticSum.Province[data.properties.name]?.level === "caution"
-        ) {
+        } else if (domesticSum.Province[data.properties.name]?.level === "caution") {
           return "#E35F5B";
-        } else if (
-          domesticSum.Province[data.properties.name]?.level === "normal"
-        ) {
+        } else if (domesticSum.Province[data.properties.name]?.level === "normal") {
           return "#F5C7CA";
         }
         return "#DDDDDD";
@@ -81,6 +76,11 @@ export default function ThMap({ domesticSum }) {
       .style("z-index", "12")
       .style("background", "lightpink")
       .style("visibility", "hidden")
+
+    // for(i in data){
+
+    // }
+
 
   }, [data]);
 
@@ -112,7 +112,7 @@ export default function ThMap({ domesticSum }) {
           };
         }
       }
-      console.log(newObj);
+      // console.log(newObj);
       return newObj;
     }
   };

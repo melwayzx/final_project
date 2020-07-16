@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import parse from "csv-parse/lib/sync";
+import TableSum from '../Chart/TableSum';
 import {
   LineChart,
   Line,
@@ -13,6 +14,7 @@ import {
 import MultiSelect from "react-multi-select-component";
 import styled from "styled-components";
 import Reset from "../../images/Convert.svg";
+import { Table } from "@material-ui/core";
 
 export default function LineCharts() {
   let data = [];
@@ -128,10 +130,10 @@ export default function LineCharts() {
             }
           }
         }
-        // console.log(temp);
+        //console.log(temp);
         setMaxData(temp);
         setMockData(data);
-        // console.log(mockData);
+        //console.log(mockData);
       })
 
       .catch((err) => {
@@ -143,13 +145,14 @@ export default function LineCharts() {
     // temp.push(e);
     // console.log(temp);
     setSelected(e);
-    console.log(selected);
+    // console.log(selected);
   }
 
   return (
     <div>
+      <TableSum countryList={countryList} />
       <div
-        style={{ display: "flex", width: "1000px", justifyContent: "flex-end" }}
+        style={{ display: "flex", width: "1000px", justifyContent: "flex-end", paddingTop: "100px" }}
       >
         <Button
           buttonName="ผู้ติดเชื้อ"
@@ -218,21 +221,24 @@ export default function LineCharts() {
           <Legend />
           {selected.length == 0
             ? initialData.map((item, index) => (
-                <Line
-                  type="monotone"
-                  dataKey={item}
-                  stroke={colours[index]}
-                ></Line>
-              ))
+              <Line
+                type="monotone"
+                dataKey={item}
+                stroke={colours[index]}
+              ></Line>
+            ))
             : selected.map((item, index) => (
-                <Line
-                  type="monotone"
-                  dataKey={item.label}
-                  stroke={colours[index]}
-                ></Line>
-              ))}
+              <Line
+                type="monotone"
+                dataKey={item.label}
+                stroke={colours[index]}
+              ></Line>
+            ))}
+
         </LineChart>
       </div>
+
+
     </div>
   );
 }
@@ -248,15 +254,15 @@ const Button = styled.button`
   height: 40px;
   background: ${(props) =>
     props.buttonName == props.isSelectedButton &&
-    props.buttonName == "ผู้ติดเชื้อ"
+      props.buttonName == "ผู้ติดเชื้อ"
       ? "#767676"
       : props.buttonName == props.isSelectedButton &&
         props.buttonName == "หายแล้ว"
-      ? "#4FB2AC"
-      : props.buttonName == props.isSelectedButton &&
-        props.buttonName == "เสียชีวิต"
-      ? "#CA3B33"
-      : "#fff"};
+        ? "#4FB2AC"
+        : props.buttonName == props.isSelectedButton &&
+          props.buttonName == "เสียชีวิต"
+          ? "#CA3B33"
+          : "#fff"};
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
@@ -265,15 +271,15 @@ const Button = styled.button`
   margin: 0px 5px;
   color: ${(props) =>
     props.buttonName == props.isSelectedButton &&
-    props.buttonName == "ผู้ติดเชื้อ"
+      props.buttonName == "ผู้ติดเชื้อ"
       ? "#fff"
       : props.buttonName == props.isSelectedButton &&
         props.buttonName == "หายแล้ว"
-      ? "#fff"
-      : props.buttonName == props.isSelectedButton &&
-        props.buttonName == "เสียชีวิต"
-      ? "#fff"
-      : "#000"};
+        ? "#fff"
+        : props.buttonName == props.isSelectedButton &&
+          props.buttonName == "เสียชีวิต"
+          ? "#fff"
+          : "#000"};
   /* padding: 8px;
   box-sizing: border-box;
   text-align: center; */
