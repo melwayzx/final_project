@@ -12,26 +12,26 @@ import axios from "axios";
 //const countryList = Object.keys(data.Country);
 const columns = [
     { id: 'country', label: 'ประเทศ', minWidth: 100 },
-    { id: 'infect', label: 'ผู้ติดเชื้อสะสม', minWidth: 100 },
-    { id: 'well', label: 'หายแล้ว', minWidth: 100 },
-    { id: 'dead', label: 'ตาย', minWidth: 100 },
+    { id: 'confirmed', label: 'ผู้ติดเชื้อสะสม', minWidth: 100 },
+    { id: 'recovered', label: 'หายแล้ว', minWidth: 100 },
+    { id: 'deaths', label: 'ตาย', minWidth: 100 },
 ];
 
-function createData(country, infect, well, dead) {
+function createData(country, confirmed, recovered, deaths) {
 
-    return { country, infect, well, dead };
+    return { country, confirmed, recovered, deaths };
 }
 
 const rows = [
-    createData('India', 1324171354, 1324171354, 24),
-    createData('China', 1324171354, 1403500365, 24),
-    createData('Italy', 1324171354, 60483973, 24),
-    createData('United States', 1324171354, 327167434, 24),
-    createData('Canada', 132417135, 37602103, 24),
-    createData('Australia', 132417135, 25475400, 24),
-    createData('Germany', 132417135, 83019200, 24),
-    createData('Ireland', 132417135, 4857000, 24),
-    createData('Mexico', 132417135, 126577691, 24),
+    // createData('India', 1324171354, 1324171354, 24),
+    // createData('China', 1324171354, 1403500365, 24),
+    // createData('Italy', 1324171354, 60483973, 24),
+    // createData('United States', 1324171354, 327167434, 24),
+    // createData('Canada', 132417135, 37602103, 24),
+    // createData('Australia', 132417135, 25475400, 24),
+    // createData('Germany', 132417135, 83019200, 24),
+    // createData('Ireland', 132417135, 4857000, 24),
+    // createData('Mexico', 132417135, 126577691, 24),
 
 ];
 
@@ -44,11 +44,11 @@ const useStyles = makeStyles({
     },
 });
 
-export default function TableSum({ countryList }) {
+export default function TableSum({ sumCountry }) {
     const classes = useStyles();
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
-    console.log({ countryList })
+    // console.log({ sumCountry })
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
     };
@@ -87,12 +87,17 @@ export default function TableSum({ countryList }) {
                                             </TableCell>
                                         );
                                     })} */}
-                                    {countryList.map((item) => (
+
+
+
+                                    {/* {sumCountry.map((item) => (
                                         <TableCell
                                             key={item.label}
                                         >{item.label}
                                         </TableCell>
-                                    ))}
+                                    ))} */}
+
+
 
                                 </TableRow>
                             );

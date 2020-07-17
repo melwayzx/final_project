@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import parse from "csv-parse/lib/sync";
-import TableSum from '../Chart/TableSum';
+
 import {
   LineChart,
   Line,
@@ -150,7 +150,7 @@ export default function LineCharts() {
 
   return (
     <div>
-      <TableSum countryList={countryList} />
+
       <div
         style={{ display: "flex", width: "1000px", justifyContent: "flex-end", paddingTop: "100px" }}
       >

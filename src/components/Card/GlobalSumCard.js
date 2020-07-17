@@ -1,7 +1,7 @@
 import react, { useEffect, useState } from "react";
 import axios from "axios";
 import parse from "csv-parse/lib/sync";
-
+import TableSum from '../Chart/TableSum';
 export default function GlobalSumCard() {
   const [confirmed, setConfirmed] = useState(0);
   const [recovered, setRecovered] = useState(0);
@@ -75,14 +75,17 @@ export default function GlobalSumCard() {
                 parseInt(unique[i].confirmed);
               unique[i].recovered =
                 parseInt(records[j][["Recovered"]]) +
-                parseInt(unique[i].confirmed);
+                parseInt(unique[i].recovered);
               unique[i].deaths =
                 parseInt(records[j][["Deaths"]]) +
-                parseInt(unique[i].confirmed);
+                parseInt(unique[i].deaths);
             }
           }
         }
+
         setSumCountry(unique);
+        console.log(sumCountry);
+
       })
       .catch((err) => {
         console.error(err);
@@ -92,7 +95,10 @@ export default function GlobalSumCard() {
       setConfirmed(0);
       setRecovered(0);
       setDeaths(0);
+      setSumCountry(sumCountry);
+
     };
+
   }, []);
 
   return (
@@ -125,7 +131,9 @@ export default function GlobalSumCard() {
           </div>
           <div style={StyledTypeText}>เสียชีวิต</div>
         </div>
+
       </div>
+      <TableSum sumCountry={sumCountry} />
     </div>
   );
 }
