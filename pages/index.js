@@ -58,7 +58,6 @@ export default function index(props) {
           background: "#FAFAFA",
           height: "250px",
           // position: "absolute",
-          width: "100vw",
           marginBottom: "60px",
           marginTop: "30px",
         }}
