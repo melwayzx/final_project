@@ -7,14 +7,15 @@ export default function GlobalSumCard() {
   const [recovered, setRecovered] = useState(0);
   const [deaths, setDeaths] = useState(0);
   const [date, setDate] = useState("");
+  const [sumCountry, setSumCountry] = useState();
 
-  // var confirmed = 1000;
-  // var recovered = 1000;
-  // var deaths = 1000;
   useEffect(() => {
     var d = new Date();
     var date = d.getDate();
     date = date - 2;
+    if (date < 10) {
+      date = "0" + date;
+    }
     var month = d.getMonth();
     month = month + 1;
     if (month < 10) {
@@ -48,12 +49,45 @@ export default function GlobalSumCard() {
           );
           setDeaths((deaths) => parseInt(records[i].Deaths) + deaths);
         }
-
         setDate(records[0].Last_Update);
+
+        let tempList = [];
+        for (const i in records) {
+          tempList.push({
+            country: records[i][["Country_Region"]],
+            confirmed: 0,
+            recovered: 0,
+            deaths: 0,
+          });
+        }
+        const unique = [];
+        tempList.map((x) =>
+          unique.filter((a) => a.country == x.country).length > 0
+            ? null
+            : unique.push(x)
+        );
+
+        for (const i in unique) {
+          for (const j in records) {
+            if (unique[i].country === records[j][["Country_Region"]]) {
+              unique[i].confirmed =
+                parseInt(records[j][["Confirmed"]]) +
+                parseInt(unique[i].confirmed);
+              unique[i].recovered =
+                parseInt(records[j][["Recovered"]]) +
+                parseInt(unique[i].confirmed);
+              unique[i].deaths =
+                parseInt(records[j][["Deaths"]]) +
+                parseInt(unique[i].confirmed);
+            }
+          }
+        }
+        setSumCountry(unique);
       })
       .catch((err) => {
         console.error(err);
       });
+
     return () => {
       setConfirmed(0);
       setRecovered(0);
