@@ -65,11 +65,11 @@ export default function TableSum({ countryList }) {
                     <TableHead>
                         <TableRow>
                             {columns.map((column) => (
-                                <TableCell
+                                < TableCell
                                     key={column.id}
                                     align={column.align}
                                     style={{ minWidth: column.minWidth }}
-                                >{column.label}
+                                > {column.label}
                                 </TableCell>
                             ))}
                         </TableRow>
@@ -78,14 +78,22 @@ export default function TableSum({ countryList }) {
                         {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
                             return (
                                 <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                                    {columns.map((column) => {
+
+                                    {/* {columns.map((column) => {
                                         const value = row[column.id];
                                         return (
                                             <TableCell key={column.id} align={column.align}>
                                                 {column.format && typeof value === 'number' ? column.format(value) : value}
                                             </TableCell>
                                         );
-                                    })}
+                                    })} */}
+                                    {countryList.map((item) => (
+                                        <TableCell
+                                            key={item.label}
+                                        >{item.label}
+                                        </TableCell>
+                                    ))}
+
                                 </TableRow>
                             );
                         })}
@@ -93,7 +101,7 @@ export default function TableSum({ countryList }) {
                 </Table>
             </TableContainer>
             <TablePagination
-                rowsPerPageOptions={[10, 25, 100]}
+                rowsPerPageOptions={[5, 10, 25, 100]}
                 component="div"
                 count={rows.length}
                 rowsPerPage={rowsPerPage}
@@ -101,6 +109,6 @@ export default function TableSum({ countryList }) {
                 onChangePage={handleChangePage}
                 onChangeRowsPerPage={handleChangeRowsPerPage}
             />
-        </Paper>
+        </Paper >
     );
 }
