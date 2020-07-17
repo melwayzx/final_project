@@ -1,7 +1,6 @@
 import BarChartData from "../Chart/BarChartData";
 
 export default function AgeSumCard({ domesticCase }) {
-  // console.log(domesticSum);
   return (
     <div
       style={{
