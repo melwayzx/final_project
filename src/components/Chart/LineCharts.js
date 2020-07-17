@@ -16,7 +16,7 @@ import Reset from "../../images/Convert.svg";
 
 export default function LineCharts() {
   let data = [];
-  const initialData = ["Italy", "Brazil", "Iran"];
+  const initialData = ["Italy", "Brazil", "US"];
   const colours = [
     "#F3BE43",
     "#4FB2AC",
@@ -80,7 +80,7 @@ export default function LineCharts() {
           }
         }
 
-        //   let temp = 0;
+        // condition for return data
         if (selected.length == 0) {
           for (let i in dates) {
             data.push({ date: dates[i] });
@@ -88,7 +88,12 @@ export default function LineCharts() {
               for (let k in initialData) {
                 if (records[j]["Country/Region"] === initialData[k]) {
                   const name = initialData[k];
-                  data[i][name] = records[j][dates[i]];
+                  if (data[i][name] == undefined) {
+                    data[i][name] = records[j][dates[i]];
+                  } else {
+                    data[i][name] =
+                      parseInt(records[j][dates[i]]) + parseInt(data[i][name]);
+                  }
                 }
               }
             }
@@ -100,26 +105,18 @@ export default function LineCharts() {
               for (let k in selected) {
                 if (records[j]["Country/Region"] === selected[k].label) {
                   const name = selected[k].label;
-                  data[i][name] = records[j][dates[i]];
+                  if (data[i][name] == undefined) {
+                    data[i][name] = records[j][dates[i]];
+                  } else {
+                    data[i][name] =
+                      parseInt(records[j][dates[i]]) + parseInt(data[i][name]);
+                  }
                 }
               }
             }
           }
         }
 
-        // const newData = [...data].filter((item) => {
-        //   let cnt = 0;
-        //   for (const index in item) {
-        //     if (parseInt(item[index]) > 100 && index !== 0) {
-        //       cnt += 1;
-        //       if (temp < parseInt(item[index])) {
-        //         temp = parseInt(item[index]);
-        //       }
-        //     }
-        //   }
-        //   setMaxData(parseInt(temp));
-        //   return cnt === Object.keys(item).length - 1;
-        // });
         let temp = 0;
         for (let i in data) {
           for (let j in data[i]) {
@@ -131,7 +128,7 @@ export default function LineCharts() {
         // console.log(temp);
         setMaxData(temp);
         setMockData(data);
-        // console.log(mockData);
+        console.log(mockData);
       })
 
       .catch((err) => {
@@ -143,7 +140,7 @@ export default function LineCharts() {
     // temp.push(e);
     // console.log(temp);
     setSelected(e);
-    console.log(selected);
+    // console.log(selected);
   }
 
   return (
@@ -219,6 +216,7 @@ export default function LineCharts() {
           {selected.length == 0
             ? initialData.map((item, index) => (
                 <Line
+                  key={index}
                   type="monotone"
                   dataKey={item}
                   stroke={colours[index]}
@@ -226,6 +224,7 @@ export default function LineCharts() {
               ))
             : selected.map((item, index) => (
                 <Line
+                  key={index}
                   type="monotone"
                   dataKey={item.label}
                   stroke={colours[index]}
