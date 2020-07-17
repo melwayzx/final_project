@@ -1,7 +1,6 @@
 import react, { useEffect, useState } from "react";
 import axios from "axios";
 import parse from "csv-parse/lib/sync";
-import AgeSumCard from "../Card/AgeSumCard";
 
 export default function GlobalSumCard() {
   const [confirmed, setConfirmed] = useState(0);
@@ -83,6 +82,7 @@ export default function GlobalSumCard() {
           }
         }
         setSumCountry(unique);
+        // console.log(sumCountry);
       })
       .catch((err) => {
         console.error(err);
@@ -92,6 +92,7 @@ export default function GlobalSumCard() {
       setConfirmed(0);
       setRecovered(0);
       setDeaths(0);
+      setSumCountry(sumCountry);
     };
   }, []);
 
@@ -126,7 +127,6 @@ export default function GlobalSumCard() {
           <div style={StyledTypeText}>เสียชีวิต</div>
         </div>
       </div>
-      <AgeSumCard sumCountry={sumCountry} />
     </div>
   );
 }
