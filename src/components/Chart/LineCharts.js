@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import parse from "csv-parse/lib/sync";
+
 import {
   LineChart,
   Line,
@@ -13,8 +14,9 @@ import {
 import MultiSelect from "react-multi-select-component";
 import styled from "styled-components";
 import Reset from "../../images/Convert.svg";
+import { Table } from "@material-ui/core";
 
-export default function LineCharts() {
+export default function LineCharts({ sumCountry }) {
   let data = [];
   const initialData = ["Italy", "Brazil", "US"];
   const colours = [
@@ -125,10 +127,10 @@ export default function LineCharts() {
             }
           }
         }
-        // console.log(temp);
+        //console.log(temp);
         setMaxData(temp);
         setMockData(data);
-        console.log(mockData);
+        // console.log(mockData);
       })
 
       .catch((err) => {
@@ -146,7 +148,12 @@ export default function LineCharts() {
   return (
     <div>
       <div
-        style={{ display: "flex", width: "1000px", justifyContent: "flex-end" }}
+        style={{
+          display: "flex",
+          width: "1000px",
+          justifyContent: "flex-end",
+          paddingTop: "100px",
+        }}
       >
         <Button
           buttonName="ผู้ติดเชื้อ"
@@ -220,6 +227,7 @@ export default function LineCharts() {
                   type="monotone"
                   dataKey={item}
                   stroke={colours[index]}
+                  dot={false}
                 ></Line>
               ))
             : selected.map((item, index) => (
@@ -228,6 +236,7 @@ export default function LineCharts() {
                   type="monotone"
                   dataKey={item.label}
                   stroke={colours[index]}
+                  dot={false}
                 ></Line>
               ))}
         </LineChart>

@@ -5,16 +5,14 @@ import json from "./thailand.json";
 export default function ThMap({ domesticSum }) {
   const data = [
     {
-      name: domesticSum.Province,
+      name: domesticSum.Province
     },
   ];
 
   const svgRef = useRef();
-
   useEffect(() => {
     const width = 800;
     const height = 660;
-
     const svg = d3.select(svgRef.current);
     svg
       .append("rect")
@@ -34,44 +32,56 @@ export default function ThMap({ domesticSum }) {
 
     const report = transform(domesticSum);
 
-    mapLayer.selectAll("path").data(json.features);
+    //mapLayer.selectAll("path").data(json.features)
+    mapLayer.selectAll("path").data(json.features)
+      .enter()
+      .append("path")
+      .attr("stroke", "#C0392B")
+      .attr("stroke-width", 1)
+      .attr("d", path)
+      .attr("vector-effect", "non-scaling-stroke")
+      .style("fill", function (data) {
+        //console.log(domesticSum.Province[data.properties.name]);
+        if (domesticSum.Province[data.properties.name]?.level === "danger") {
+          return "#800909";
+        } else if (domesticSum.Province[data.properties.name]?.level === "caution") {
+          return "#E35F5B";
+        } else if (domesticSum.Province[data.properties.name]?.level === "normal") {
+          return "#F5C7CA";
+        }
+        return "#DDDDDD";
+      })
+      .on("mouseover", function (d, i) {
+        d3.select(this).attr("fill", data).attr("stroke-width", 3);
+        var x = d.properties.name
+        return tooltip.style("visibility", "visible").text(x)
+      })
+      .on("mousemove", function (d) {
+        tooltip.classed("visibility", "hidden")
+          .style("top", (d3.event.pageY) + "px")
+          .style("left", (d3.event.pageX + 10) + "px")
+          .text(d.properties.name)
+
+      })
+
+      .on("mouseout", function (d, i) {
+        d3.select(this).attr("fill", data).attr("stroke-width", 1);
+        return tooltip.style("visibility", "hidden");
+      })
 
     var tooltip = d3
       .select("body")
       .append("div")
-      // .style("position", "absolute")
-      .style("z-index", "10")
-      .style("visibility", "hidden");
+      .style("position", "absolute")
+      .style("z-index", "12")
+      .style("background", "lightpink")
+      .style("visibility", "hidden")
 
-    mapLayer
-      .selectAll("path")
-      .data(json.features)
-      .enter()
-      .append("path")
-      .attr("d", path)
-      .attr("vector-effect", "non-scaling-stroke")
-      .on("mouseover", function (d) {
-        return tooltip.style("visibility", "visible").text(d.properties.name);
-      })
-      .on("mouseout", function () {
-        return tooltip.style("visibility", "hidden");
-      })
+    // for(i in data){
 
-      .style("fill", function (data) {
-        // console.log(report);
-        if (domesticSum.Province[data.properties.name]?.level === "danger") {
-          return "#800909";
-        } else if (
-          domesticSum.Province[data.properties.name]?.level === "caution"
-        ) {
-          return "#E35F5B";
-        } else if (
-          domesticSum.Province[data.properties.name]?.level === "normal"
-        ) {
-          return "#F5C7CA";
-        }
-        return "#DDDDDD";
-      });
+    // }
+
+
   }, [data]);
 
   // console.log(data);
@@ -123,7 +133,7 @@ export default function ThMap({ domesticSum }) {
           ref={svgRef}
           style={{ position: "relative" }}
         />
-        {/* <Tooltip title={domesticSum.Province} placement="top-start"></Tooltip>; */}
+
       </div>
     </div>
   );

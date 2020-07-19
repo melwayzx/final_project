@@ -5,9 +5,9 @@ import GenderSumCard from "../src/components/Card/GenderSumCard";
 import AgeSumCard from "../src/components/Card/AgeSumCard";
 import ThailandSumCard from "../src/components/Card/ThailandSumCard";
 import LineCharts from "../src/components/Chart/LineCharts";
-// import Global from "../src/components/GlobalData";
 import GlobalSumCard from "../src/components/Card/GlobalSumCard";
 import GlobalSelect from "../src/components/GlobalSelect";
+import TableSum from "../src/components/Chart/TableSum";
 export default function index(props) {
   const { domesticDailyCase, domesticSum, domesticCase } = props;
 
@@ -56,7 +56,6 @@ export default function index(props) {
           alignItems: "center",
           justifyContent: "center",
           background: "#FAFAFA",
-          height: "250px",
           // position: "absolute",
           marginBottom: "60px",
           marginTop: "30px",
@@ -77,8 +76,6 @@ export default function index(props) {
       >
         <LineCharts />
       </div>
-      {/* <SearchCountry /> */}
-      {/* <GlobalSelect /> */}
     </div>
   );
 }
