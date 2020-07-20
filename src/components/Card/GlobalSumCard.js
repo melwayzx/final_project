@@ -4,11 +4,16 @@ import parse from "csv-parse/lib/sync";
 import TableSum from "../Chart/TableSum";
 
 export default function GlobalSumCard() {
-  const [confirmed, setConfirmed] = useState(0);
-  const [recovered, setRecovered] = useState(0);
-  const [deaths, setDeaths] = useState(0);
-  const [date, setDate] = useState("");
-  const [sumCountry, setSumCountry] = useState();
+  // const [confirmed, setConfirmed] = useState(0);
+  // const [recovered, setRecovered] = useState(0);
+  // const [deaths, setDeaths] = useState(0);
+  // const [updateDate, setUpdateDate] = useState("");
+  const [sumCount, setSumCount] = useState({
+    confirmed: 0,
+    recovered: 0,
+    deaths: 0,
+    updateDate: "",
+  });
 
   useEffect(() => {
     var d = new Date();
@@ -40,61 +45,58 @@ export default function GlobalSumCard() {
           skip_empty_lines: true,
         });
 
-        // console.log(records);
-        for (const i in records) {
-          setConfirmed(
-            (confirmed) => parseInt(records[i].Confirmed) + confirmed
-          );
-          setRecovered(
-            (recovered) => parseInt(records[i].Recovered) + recovered
-          );
-          setDeaths((deaths) => parseInt(records[i].Deaths) + deaths);
-        }
-        setDate(records[0].Last_Update);
+        console.log(records);
 
-        let tempList = [];
-        for (const i in records) {
-          tempList.push({
-            country: records[i][["Country_Region"]],
-            confirmed: 0,
-            recovered: 0,
-            deaths: 0,
-          });
-        }
-        const unique = [];
-        tempList.map((x) =>
-          unique.filter((a) => a.country == x.country).length > 0
-            ? null
-            : unique.push(x)
+        console.time();
+        const confirmed = [...records].reduce(
+          (prev, curr) => parseInt(prev) + parseInt(curr.Confirmed),
+          0
         );
 
-        // for (const i in unique) {
-        //   for (const j in records) {
-        //     if (unique[i].country === records[j][["Country_Region"]]) {
-        //       unique[i].confirmed =
-        //         parseInt(records[j][["Confirmed"]]) +
-        //         parseInt(unique[i].confirmed);
-        //       unique[i].recovered =
-        //         parseInt(records[j][["Recovered"]]) +
-        //         parseInt(unique[i].recovered);
-        //       unique[i].deaths =
-        //         parseInt(records[j][["Deaths"]]) + parseInt(unique[i].deaths);
-        //     }
-        //   }
-        // }
+        const recovered = [...records].reduce(
+          (prev, curr) => parseInt(prev) + parseInt(curr.Recovered),
+          0
+        );
 
-        // setSumCountry(unique);
-        // console.log(sumCountry);
+        const deaths = [...records].reduce(
+          (prev, curr) => parseInt(prev) + parseInt(curr.Deaths),
+          0
+        );
+        setSumCount({
+          confirmed: confirmed,
+          recovered: recovered,
+          deaths: deaths,
+          updateDate: records[0].Last_Update,
+        });
+        // console.log(confirmed, recovered, deaths);
+        console.timeEnd();
+
+        // console.time();
+
+        // for (const i in records) {
+        //   setConfirmed(
+        //     (confirmed) => parseInt(records[i].Confirmed) + confirmed
+        //   );
+        //   setRecovered(
+        //     (recovered) => parseInt(records[i].Recovered) + recovered
+        //   );
+        //   setDeaths((deaths) => parseInt(records[i].Deaths) + deaths);
+        // }
+        // console.timeEnd();
+
+        // setUpdateDate(records[0].Last_Update);
+
+        console.log(sumCount);
       })
       .catch((err) => {
         console.error(err);
       });
 
-    return () => {
-      setConfirmed(0);
-      setRecovered(0);
-      setDeaths(0);
-    };
+    // return () => {
+    //   setConfirmed(0);
+    //   setRecovered(0);
+    //   setDeaths(0);
+    // };
   }, []);
 
   return (
@@ -104,31 +106,30 @@ export default function GlobalSumCard() {
         style={{ display: "flex", fontSize: "14px", justifyContent: "center" }}
       >
         <div style={StyledSubTitle}>อัพเดตล่าสุด</div>
-        <div>{date}</div>
+        <div>{sumCount.updateDate}</div>
       </div>
       <div style={StyledWrapper}>
         <div style={StyledBox}>
           <div style={{ ...StyledText, color: "#767676" }}>
-            {confirmed.toLocaleString("en-US")}
+            {sumCount.confirmed.toLocaleString("en-US")}
           </div>
           <div style={StyledTypeText}>ผู้ติดเชื้อสะสม</div>
         </div>
         <div style={StyedLine}></div>
         <div style={StyledBox}>
           <div style={{ ...StyledText, color: "#4FB2AC" }}>
-            {recovered.toLocaleString("en-US")}
+            {sumCount.recovered.toLocaleString("en-US")}
           </div>
           <div style={StyledTypeText}>หายแล้ว</div>
         </div>
         <div style={StyedLine}></div>
         <div style={StyledBox}>
           <div style={{ ...StyledText, color: "#CA3B33" }}>
-            {deaths.toLocaleString("en-US")}
+            {sumCount.deaths.toLocaleString("en-US")}
           </div>
           <div style={StyledTypeText}>เสียชีวิต</div>
         </div>
       </div>
-      {/* <TableSum sumCountry={sumCountry} /> */}
     </div>
   );
 }
