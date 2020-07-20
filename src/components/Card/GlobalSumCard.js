@@ -77,15 +77,13 @@ export default function GlobalSumCard() {
                 parseInt(records[j][["Recovered"]]) +
                 parseInt(unique[i].recovered);
               unique[i].deaths =
-                parseInt(records[j][["Deaths"]]) +
-                parseInt(unique[i].deaths);
+                parseInt(records[j][["Deaths"]]) + parseInt(unique[i].deaths);
             }
           }
         }
 
         setSumCountry(unique);
-        console.log(sumCountry);
-
+        // console.log(sumCountry);
       })
       .catch((err) => {
         console.error(err);
@@ -96,7 +94,6 @@ export default function GlobalSumCard() {
       setRecovered(0);
       setDeaths(0);
       setSumCountry(sumCountry);
-
     };
 
   }, []);

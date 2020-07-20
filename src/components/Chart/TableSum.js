@@ -22,18 +22,18 @@ function createData(country, confirmed, recovered, deaths) {
     return { country, confirmed, recovered, deaths };
 }
 
-const rows = [
-    // createData('India', 1324171354, 1324171354, 24),
-    // createData('China', 1324171354, 1403500365, 24),
-    // createData('Italy', 1324171354, 60483973, 24),
-    // createData('United States', 1324171354, 327167434, 24),
-    // createData('Canada', 132417135, 37602103, 24),
-    // createData('Australia', 132417135, 25475400, 24),
-    // createData('Germany', 132417135, 83019200, 24),
-    // createData('Ireland', 132417135, 4857000, 24),
-    // createData('Mexico', 132417135, 126577691, 24),
+// const rows = [
+//     // createData('India', 1324171354, 1324171354, 24),
+//     // createData('China', 1324171354, 1403500365, 24),
+//     // createData('Italy', 1324171354, 60483973, 24),
+//     // createData('United States', 1324171354, 327167434, 24),
+//     // createData('Canada', 132417135, 37602103, 24),
+//     // createData('Australia', 132417135, 25475400, 24),
+//     // createData('Germany', 132417135, 83019200, 24),
+//     // createData('Ireland', 132417135, 4857000, 24),
+//     // createData('Mexico', 132417135, 126577691, 24),
 
-];
+// ];
 
 const useStyles = makeStyles({
     root: {
@@ -75,18 +75,18 @@ export default function TableSum({ sumCountry }) {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+                        {sumCountry.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
                             return (
                                 <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
 
-                                    {/* {columns.map((column) => {
+                                    {columns.map((column) => {
                                         const value = row[column.id];
                                         return (
                                             <TableCell key={column.id} align={column.align}>
                                                 {column.format && typeof value === 'number' ? column.format(value) : value}
                                             </TableCell>
                                         );
-                                    })} */}
+                                    })}
 
 
 
