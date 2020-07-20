@@ -14,11 +14,11 @@ import {
 import MultiSelect from "react-multi-select-component";
 import styled from "styled-components";
 import Reset from "../../images/Convert.svg";
-import { Table } from "@material-ui/core";
+import TableSum from "../Chart/TableSum";
 
 export default function LineCharts({ sumCountry }) {
   let data = [];
-  const initialData = ["Italy", "Brazil", "US"];
+  const initialData = ["India", "Brazil", "US", "Russia", "South Africa"];
   const colours = [
     "#F3BE43",
     "#4FB2AC",
@@ -130,7 +130,7 @@ export default function LineCharts({ sumCountry }) {
         //console.log(temp);
         setMaxData(temp);
         setMockData(data);
-        // console.log(mockData);
+        console.log(mockData);
       })
 
       .catch((err) => {
@@ -216,7 +216,11 @@ export default function LineCharts({ sumCountry }) {
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
         >
           <XAxis dataKey="date" tick={{ fontSize: 10 }} />
-          <YAxis type="number" domain={[0, maxData]} />
+          <YAxis
+            type="number"
+            domain={[0, maxData]}
+            // ticks={[0, ]}
+          />
           <CartesianGrid stroke="#DDDDDD" vertical={false} />
           <Tooltip />
           <Legend />
@@ -241,6 +245,7 @@ export default function LineCharts({ sumCountry }) {
               ))}
         </LineChart>
       </div>
+      <TableSum />
     </div>
   );
 }
