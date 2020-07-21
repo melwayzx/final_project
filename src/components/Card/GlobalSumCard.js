@@ -111,7 +111,7 @@ export default function GlobalSumCard() {
         }
 
         const sortUnique = unique.sort((a, b) => b.confirmed - a.confirmed);
-        console.log(sortUnique);
+        // console.log(sortUnique);
         setSumCountry(unique);
 
         // console.time();
@@ -129,7 +129,7 @@ export default function GlobalSumCard() {
 
         // setUpdateDate(records[0].Last_Update);
 
-        console.log(sumCount);
+        // console.log(sumCount);
       })
       .catch((err) => {
         console.error(err);
