@@ -102,7 +102,7 @@ export default function ThMap({ domesticSum }) {
           .classed("visibility", "hidden")
           .style("top", d3.event.pageY + "px")
           .style("left", d3.event.pageX + 10 + "px")
-          .text(d.properties.name + " " + d.properties.count + " คน")
+          .text(d.properties.TH + " " + d.properties.count + " คน")
           .attr("stroke", "#DDDD");
       })
 

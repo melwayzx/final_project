@@ -271,23 +271,23 @@ export default function LineCharts({ sumCountry }) {
           <Legend />
           {selected.length == 0
             ? initialData.map((item, index) => (
-                <Line
-                  key={index}
-                  type="monotone"
-                  dataKey={item}
-                  stroke={colours[index]}
-                  dot={false}
-                ></Line>
-              ))
+              <Line
+                key={index}
+                type="monotone"
+                dataKey={item}
+                stroke={colours[index]}
+                dot={false}
+              ></Line>
+            ))
             : selected.map((item, index) => (
-                <Line
-                  key={index}
-                  type="monotone"
-                  dataKey={item.label}
-                  stroke={colours[index]}
-                  dot={false}
-                ></Line>
-              ))}
+              <Line
+                key={index}
+                type="monotone"
+                dataKey={item.label}
+                stroke={colours[index]}
+                dot={false}
+              ></Line>
+            ))}
         </LineChart>
       </div>
     </div>
@@ -299,15 +299,15 @@ const Button = styled.button`
   height: 40px;
   background: ${(props) =>
     props.buttonName == props.isSelectedButton &&
-    props.buttonName == "ผู้ติดเชื้อ"
+      props.buttonName == "ผู้ติดเชื้อ"
       ? "#767676"
       : props.buttonName == props.isSelectedButton &&
         props.buttonName == "หายแล้ว"
-      ? "#4FB2AC"
-      : props.buttonName == props.isSelectedButton &&
-        props.buttonName == "เสียชีวิต"
-      ? "#CA3B33"
-      : "#fff"};
+        ? "#4FB2AC"
+        : props.buttonName == props.isSelectedButton &&
+          props.buttonName == "เสียชีวิต"
+          ? "#CA3B33"
+          : "#fff"};
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
@@ -316,15 +316,15 @@ const Button = styled.button`
   margin: 0px 5px;
   color: ${(props) =>
     props.buttonName == props.isSelectedButton &&
-    props.buttonName == "ผู้ติดเชื้อ"
+      props.buttonName == "ผู้ติดเชื้อ"
       ? "#fff"
       : props.buttonName == props.isSelectedButton &&
         props.buttonName == "หายแล้ว"
-      ? "#fff"
-      : props.buttonName == props.isSelectedButton &&
-        props.buttonName == "เสียชีวิต"
-      ? "#fff"
-      : "#000"};
+        ? "#fff"
+        : props.buttonName == props.isSelectedButton &&
+          props.buttonName == "เสียชีวิต"
+          ? "#fff"
+          : "#000"};
   /* padding: 8px;
   box-sizing: border-box;
   text-align: center; */
