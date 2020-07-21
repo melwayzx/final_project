@@ -173,6 +173,7 @@ export default function GlobalSumCard() {
           <div style={StyledTypeText}>เสียชีวิต</div>
         </div>
       </div>
+      <div>สรุปจำนวนผู้ติดเชื้อทั่วโลกจำแนกตามประเทศ</div>
       <div style={StyledTable}>
         <TableSum sumCountry={sumCountry} />
       </div>
