@@ -130,7 +130,7 @@ export default function LineCharts({ sumCountry }) {
         //console.log(temp);
         setMaxData(temp);
         setMockData(data);
-        console.log(mockData);
+        // console.log(mockData);
       })
 
       .catch((err) => {
