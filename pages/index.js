@@ -6,11 +6,17 @@ import AgeSumCard from "../src/components/Card/AgeSumCard";
 import ThailandSumCard from "../src/components/Card/ThailandSumCard";
 import LineCharts from "../src/components/Chart/LineCharts";
 import GlobalSumCard from "../src/components/Card/GlobalSumCard";
-// import Navbar from "react-bootstrap/Navbar";
+import THLineChart from "../src/components/Chart/THLineChart";
 
 export default function index(props) {
-  const { domesticDailyCase, domesticSum, domesticCase } = props;
+  const {
+    domesticDailyCase,
+    domesticSum,
+    domesticCase,
+    domesticTimeline,
+  } = props;
 
+  // console.log(domesticTimeline);
   return (
     <div>
       <div
@@ -40,6 +46,17 @@ export default function index(props) {
         >
           <GenderSumCard domesticSum={domesticSum} />
           <AgeSumCard domesticCase={domesticCase} />
+        </div>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            background: "white",
+            height: "500px",
+          }}
+        >
+          <THLineChart domesticTimeline={domesticTimeline.Data} />
         </div>
         <div
           style={{
@@ -86,12 +103,14 @@ export async function getServerSideProps() {
   const domesticDailyCase = await CovidReport.getDomesticDailyCase();
   const domesticSum = await CovidReport.getDomesticSum();
   const domesticCase = await CovidReport.getDomesticCase();
+  const domesticTimeline = await CovidReport.getDomesticTimeline();
 
   return {
     props: {
       domesticDailyCase,
       domesticSum,
       domesticCase,
+      domesticTimeline,
     }, // will be passed to the page component as props
   };
 }
