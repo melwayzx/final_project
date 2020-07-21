@@ -6,6 +6,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import json from "../Map/thailand.json";
 // import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles({
