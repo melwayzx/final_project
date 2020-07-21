@@ -56,7 +56,6 @@ export default function index(props) {
           alignItems: "center",
           justifyContent: "center",
           background: "#FAFAFA",
-          height: "250px",
           // position: "absolute",
           marginBottom: "60px",
           marginTop: "30px",
@@ -75,10 +74,8 @@ export default function index(props) {
           marginBottom: "30px",
         }}
       >
-
-
+        <LineCharts />
       </div>
-      <LineCharts />
     </div>
   );
 }
