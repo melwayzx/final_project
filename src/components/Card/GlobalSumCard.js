@@ -176,7 +176,7 @@ export default function GlobalSumCard() {
       <div
         style={{
           fontWeight: 700,
-          fontSze: "larger",
+          fontSize: "18px",
           marginLeft: "110px",
           marginTop: "20px",
         }}

@@ -51,7 +51,13 @@ export default function TableSum({ sumCountry }) {
                 <TableCell
                   key={column.id}
                   align={column.align}
-                  style={{ minWidth: column.minWidth }}
+                  style={{
+                    minWidth: column.minWidth,
+                    fontFamily: "Sukhumvit Set",
+                    fontWeight: "700",
+                    color: "#AF3233",
+                    textAlign: "center",
+                  }}
                 >
                   {" "}
                   {column.label}
@@ -68,7 +74,15 @@ export default function TableSum({ sumCountry }) {
                     {columns.map((column) => {
                       const value = row[column.id];
                       return (
-                        <TableCell key={column.id} align={column.align}>
+                        <TableCell
+                          key={column.id}
+                          align={column.align}
+                          style={{
+                            fontFamily: "Sukhumvit Set",
+                            fontWeight: "500",
+                            textAlign: "center",
+                          }}
+                        >
                           {column.format && typeof value === "number"
                             ? column.format(value).toLocaleString("en-US")
                             : value.toLocaleString("en-US")}

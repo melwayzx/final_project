@@ -244,9 +244,13 @@ export default function LineCharts({ sumCountry }) {
             primary={"เลือกประเทศ"}
           />
         </div>
-        <ResetButton onClick={() => setSelected([])}>
+
+        <button
+          style={{ ...ResetButton, padding: "0px" }}
+          onClick={() => setSelected([])}
+        >
           <Reset />
-        </ResetButton>
+        </button>
       </div>
 
       <div style={{ padding: "40px 0" }}>
@@ -290,12 +294,6 @@ export default function LineCharts({ sumCountry }) {
   );
 }
 
-// const StyledWrapper = styled.div`
-//   display: flex;
-//   width: 1000px;
-//   justify-content: flex-end;
-// `;
-
 const Button = styled.button`
   width: 100px;
   height: 40px;
@@ -332,14 +330,14 @@ const Button = styled.button`
   text-align: center; */
 `;
 
-const ResetButton = styled.button`
-  width: 40px;
-  height: 40px;
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  transition: all 0.2s ease;
-  margin: 0px 5px;
-  color: #fff;
-`;
+const ResetButton = {
+  width: "40px",
+  height: "40px",
+  background: " #fff",
+  border: "1px solid #ccc",
+  borderRadius: "4px",
+  boxSizing: "border-box",
+  transition: "all 0.2s ease",
+  margin: "0px 5px",
+  color: " #fff",
+};

@@ -71,7 +71,7 @@ export default function index(props) {
           background: "white",
           // position: "absolute",
           width: "100vw",
-          marginBottom: "30px",
+          marginBottom: "20px",
         }}
       >
         <LineCharts />
