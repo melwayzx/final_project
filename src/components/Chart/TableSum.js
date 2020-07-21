@@ -31,7 +31,7 @@ export default function TableSum({ sumCountry }) {
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   //   const [data, setData] = useState([]);
 
-  console.log(sumCountry);
+  // console.log(sumCountry);
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
