@@ -55,7 +55,7 @@ export default function GlobalSumCard() {
 
         // console.log(records);
 
-        console.time();
+        // console.time();
         const confirmed = [...records].reduce(
           (prev, curr) => parseInt(prev) + parseInt(curr.Confirmed),
           0
@@ -77,7 +77,7 @@ export default function GlobalSumCard() {
           updateDate: records[0].Last_Update,
         });
         // console.log(confirmed, recovered, deaths);
-        console.timeEnd();
+        // console.timeEnd();
 
         let tempList = [];
         for (const i in records) {
@@ -177,7 +177,7 @@ export default function GlobalSumCard() {
         style={{
           fontWeight: 700,
           fontSize: "18px",
-          marginLeft: "110px",
+          marginLeft: "140px",
           marginTop: "20px",
         }}
       >
@@ -233,4 +233,5 @@ const StyledTable = {
   display: "flex",
   marginTop: "20px",
   marginBottom: "30px",
+  width: "100vw",
 };
