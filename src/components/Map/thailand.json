@@ -4,7 +4,7 @@
   "features": [
     {
       "type": "Feature",
-      "properties": { "name": "Mae Hong Son" },
+      "properties": { "name": "Mae Hong Son", "count": 0 },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -530,7 +530,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Chumphon" },
+      "properties": { "name": "Chumphon" , "count": 0},
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -959,7 +959,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Nakhon Si Thammarat" },
+      "properties": { "name": "Nakhon Si Thammarat" , "count": 0},
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -1369,7 +1369,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Phuket" },
+      "properties": { "name": "Phuket" , "count": 0 },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -1460,7 +1460,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Phangnga" },
+      "properties": { "name": "Phangnga" , "count": 0},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -1880,7 +1880,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Ranong" },
+      "properties": { "name": "Ranong" , "count": 0 },
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -2305,7 +2305,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Surat Thani" },
+      "properties": { "name": "Surat Thani" , "count": 0},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -2969,7 +2969,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Krabi" },
+      "properties": { "name": "Krabi" , "count": 0},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -3317,7 +3317,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Phatthalung" },
+      "properties": { "name": "Phatthalung", "count": 0 },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -3482,7 +3482,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Satun" },
+      "properties": { "name": "Satun", "count": 0 },
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -3953,7 +3953,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Songkhla" },
+      "properties": { "name": "Songkhla" , "count": 0},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -4241,7 +4241,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Trang" },
+      "properties": { "name": "Trang" , "count": 0},
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -4551,7 +4551,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Yala" },
+      "properties": { "name": "Yala" , "count": 0},
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -4785,7 +4785,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Chiang Rai" },
+      "properties": { "name": "Chiang Rai", "count": 0 },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -5267,7 +5267,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Chiang Mai" },
+      "properties": { "name": "Chiang Mai", "count": 0 },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -6248,7 +6248,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Lampang" },
+      "properties": { "name": "Lampang" , "count": 0 },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -7009,7 +7009,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Lamphun" },
+      "properties": { "name": "Lamphun" , "count": 0},
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -7399,7 +7399,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Nan" },
+      "properties": { "name": "Nan" , "count": 0},
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -7831,7 +7831,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Phayao" },
+      "properties": { "name": "Phayao" , "count": 0},
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -8197,7 +8197,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Phrae" },
+      "properties": { "name": "Phrae", "count": 0 },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -8607,7 +8607,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Phitsanulok" },
+      "properties": { "name": "Phitsanulok" , "count": 0},
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -9068,7 +9068,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Sukhothai" },
+      "properties": { "name": "Sukhothai" , "count": 0},
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -9482,7 +9482,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Uttaradit" },
+      "properties": { "name": "Uttaradit" , "count": 0},
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -9871,7 +9871,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Kanchanaburi" },
+      "properties": { "name": "Kanchanaburi", "count": 0 },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -10329,7 +10329,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Kamphaeng Phet" },
+      "properties": { "name": "Kamphaeng Phet" , "count": 0},
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -10652,7 +10652,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Phichit" },
+      "properties": { "name": "Phichit" , "count": 0},
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -10866,7 +10866,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Phetchabun" },
+      "properties": { "name": "Phetchabun" , "count": 0},
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -11392,7 +11392,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Suphan Buri" },
+      "properties": { "name": "Suphan Buri" , "count": 0},
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -11726,7 +11726,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Tak" },
+      "properties": { "name": "Tak", "count": 0 },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -12457,7 +12457,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Uthai Thani" },
+      "properties": { "name": "Uthai Thani", "count": 0 },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -12796,7 +12796,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Ang Thong" },
+      "properties": { "name": "Ang Thong" , "count": 0},
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -12934,7 +12934,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Chai Nat" },
+      "properties": { "name": "Chai Nat" , "count": 0},
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -13128,7 +13128,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Lop Buri" },
+      "properties": { "name": "Lop Buri" , "count": 0},
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -13440,7 +13440,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Nakhon Nayok" },
+      "properties": { "name": "Nakhon Nayok" , "count": 0},
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -13651,7 +13651,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Prachin Buri" },
+      "properties": { "name": "Prachin Buri", "count": 0 },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -14002,7 +14002,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Nakhon Sawan" },
+      "properties": { "name": "Nakhon Sawan" , "count": 0},
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -14444,7 +14444,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Phra Nakhon Si Ayutthaya" },
+      "properties": { "name": "Phra Nakhon Si Ayutthaya", "count": 0 },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -14626,7 +14626,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Pathum Thani" },
+      "properties": { "name": "Pathum Thani" , "count": 0},
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -14690,7 +14690,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Sing Buri" },
+      "properties": { "name": "Sing Buri" , "count": 0},
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -14837,7 +14837,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "Saraburi" },
+      "properties": { "name": "Saraburi" , "count": 0},
       "geometry": {
         "type": "Polygon",
         "coordinates": [

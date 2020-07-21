@@ -5,7 +5,7 @@ import json from "./thailand.json";
 export default function ThMap({ domesticSum }) {
   const data = [
     {
-      name: domesticSum.Province
+      name: domesticSum.Province,
     },
   ];
 
@@ -30,44 +30,86 @@ export default function ThMap({ domesticSum }) {
     xym.translate([width / 2, height / 2]);
     xym.scale(2500);
 
-    const report = transform(domesticSum);
+    for (const j in domesticSum.Province) {
+      for (const i in json.features) {
+        if (j === json.features[i].properties.name) {
+          json.features[i].properties.count = domesticSum.Province[j];
+        }
+        if (json.features[i].properties.name == "Bangkok Metropolis") {
+          json.features[i].properties.count = domesticSum.Province["Bangkok"];
+        }
+        if (json.features[i].properties.name == "Phangnga") {
+          json.features[i].properties.count = domesticSum.Province["Phang Nga"];
+        }
+        if (json.features[i].properties.name == "Lop Buri") {
+          json.features[i].properties.count = domesticSum.Province["Lopburi"];
+        }
+        if (json.features[i].properties.name == "Si Sa Ket") {
+          json.features[i].properties.count = domesticSum.Province["Sisaket"];
+        }
+        if (json.features[i].properties.name == "Phangnga") {
+          json.features[i].properties.count = domesticSum.Province["Phang Nga"];
+        }
+        if (json.features[i].properties.name == "Chonburi") {
+          json.features[i].properties.count = domesticSum.Province["Chon Buri"];
+        }
+        if (json.features[i].properties.name == "Buri Ram") {
+          json.features[i].properties.count = domesticSum.Province["Buriram"];
+        }
+        if (json.features[i].properties.name == "Nong Bua Lam Phu") {
+          json.features[i].properties.count =
+            domesticSum.Province["Nong Bua Lamphu"];
+        }
+        if (json.features[i].properties.count > 1000) {
+          json.features[i].properties.level = "danger";
+        } else if (json.features[i].properties.count > 30) {
+          json.features[i].properties.level = "caution";
+        } else if (json.features[i].properties.count > 2) {
+          json.features[i].properties.level = "normal";
+        } else {
+          json.features[i].properties.level = "less";
+        }
+      }
+    }
 
-    //mapLayer.selectAll("path").data(json.features)
-    mapLayer.selectAll("path").data(json.features)
+    mapLayer
+      .selectAll("path")
+      .data(json.features)
       .enter()
       .append("path")
-      .attr("stroke", "#C0392B")
+      .attr("stroke", "#fff")
       .attr("stroke-width", 1)
       .attr("d", path)
       .attr("vector-effect", "non-scaling-stroke")
       .style("fill", function (data) {
         //console.log(domesticSum.Province[data.properties.name]);
-        if (domesticSum.Province[data.properties.name]?.level === "danger") {
+        if (data.properties.level === "danger") {
           return "#800909";
-        } else if (domesticSum.Province[data.properties.name]?.level === "caution") {
+        } else if (data.properties.level === "caution") {
           return "#E35F5B";
-        } else if (domesticSum.Province[data.properties.name]?.level === "normal") {
+        } else if (data.properties.level === "normal") {
           return "#F5C7CA";
         }
         return "#DDDDDD";
       })
       .on("mouseover", function (d, i) {
         d3.select(this).attr("fill", data).attr("stroke-width", 3);
-        var x = d.properties.name
-        return tooltip.style("visibility", "visible").text(x)
+        var x = d.properties.name;
+        return tooltip.style("visibility", "visible").text(x);
       })
       .on("mousemove", function (d) {
-        tooltip.classed("visibility", "hidden")
-          .style("top", (d3.event.pageY) + "px")
-          .style("left", (d3.event.pageX + 10) + "px")
-          .text(d.properties.name)
-
+        tooltip
+          .classed("visibility", "hidden")
+          .style("top", d3.event.pageY + "px")
+          .style("left", d3.event.pageX + 10 + "px")
+          .text(d.properties.name + " " + d.properties.count + " คน")
+          .attr("stroke", "#DDDD");
       })
 
       .on("mouseout", function (d, i) {
         d3.select(this).attr("fill", data).attr("stroke-width", 1);
         return tooltip.style("visibility", "hidden");
-      })
+      });
 
     var tooltip = d3
       .select("body")
@@ -75,13 +117,11 @@ export default function ThMap({ domesticSum }) {
       .style("position", "absolute")
       .style("z-index", "12")
       .style("background", "lightpink")
-      .style("visibility", "hidden")
+      .style("visibility", "hidden");
 
     // for(i in data){
 
     // }
-
-
   }, [data]);
 
   // console.log(data);
@@ -112,7 +152,7 @@ export default function ThMap({ domesticSum }) {
           };
         }
       }
-      // console.log(newObj);
+      console.log(newObj);
       return newObj;
     }
   };
@@ -133,7 +173,6 @@ export default function ThMap({ domesticSum }) {
           ref={svgRef}
           style={{ position: "relative" }}
         />
-
       </div>
     </div>
   );
