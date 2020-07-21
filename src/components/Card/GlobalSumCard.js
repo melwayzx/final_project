@@ -14,6 +14,14 @@ export default function GlobalSumCard() {
     deaths: 0,
     updateDate: "",
   });
+  const [sumCountry, setSumCountry] = useState([
+    {
+      country: "",
+      confirmed: 0,
+      recovered: 0,
+      deaths: 0,
+    },
+  ]);
 
   useEffect(() => {
     var d = new Date();
@@ -45,7 +53,7 @@ export default function GlobalSumCard() {
           skip_empty_lines: true,
         });
 
-        console.log(records);
+        // console.log(records);
 
         console.time();
         const confirmed = [...records].reduce(
@@ -70,6 +78,41 @@ export default function GlobalSumCard() {
         });
         // console.log(confirmed, recovered, deaths);
         console.timeEnd();
+
+        let tempList = [];
+        for (const i in records) {
+          tempList.push({
+            country: records[i][["Country_Region"]],
+            confirmed: 0,
+            recovered: 0,
+            deaths: 0,
+          });
+        }
+        const unique = [];
+        tempList.map((x) =>
+          unique.filter((a) => a.country == x.country).length > 0
+            ? null
+            : unique.push(x)
+        );
+
+        for (const i in unique) {
+          for (const j in records) {
+            if (unique[i].country === records[j][["Country_Region"]]) {
+              unique[i].confirmed =
+                parseInt(records[j][["Confirmed"]]) +
+                parseInt(unique[i].confirmed);
+              unique[i].recovered =
+                parseInt(records[j][["Recovered"]]) +
+                parseInt(unique[i].recovered);
+              unique[i].deaths =
+                parseInt(records[j][["Deaths"]]) + parseInt(unique[i].deaths);
+            }
+          }
+        }
+
+        const sortUnique = unique.sort((a, b) => b.confirmed - a.confirmed);
+        console.log(sortUnique);
+        setSumCountry(unique);
 
         // console.time();
 
@@ -130,6 +173,9 @@ export default function GlobalSumCard() {
           <div style={StyledTypeText}>เสียชีวิต</div>
         </div>
       </div>
+      <div style={StyledTable}>
+        <TableSum sumCountry={sumCountry} />
+      </div>
     </div>
   );
 }
@@ -166,4 +212,11 @@ const StyledWrapper = {
   justifyContent: "space-evenly",
   marginTop: "30px",
   width: "100vw",
+};
+
+const StyledTable = {
+  justifyContent: " center",
+  display: "flex",
+  marginTop: "20px",
+  marginBottom: "30px",
 };
