@@ -124,44 +124,13 @@ export default function ThMap({ domesticSum }) {
     // }
   }, [data]);
 
-  // console.log(data);
-  const transform = (report) => {
-    const newObj = { ...report };
-
-    for (const key in newObj.Province) {
-      if (newObj.Province.hasOwnProperty(key)) {
-        if (newObj.Province[key] > 1000) {
-          newObj.Province[key] = {
-            level: "danger",
-            count: newObj.Province[key],
-          };
-        } else if (newObj.Province[key] > 30) {
-          newObj.Province[key] = {
-            level: "caution",
-            count: newObj.Province[key],
-          };
-        } else if (newObj.Province[key] > 2) {
-          newObj.Province[key] = {
-            level: "normal",
-            count: newObj.Province[key],
-          };
-        } else {
-          newObj.Province[key] = {
-            level: "less",
-            count: newObj.Province[key],
-          };
-        }
-      }
-      console.log(newObj);
-      return newObj;
-    }
-  };
-
   return (
     <div>
-      <div>ผู้ติดเชื้อในประเทศไทย จำแนกตามจังหวัด</div>
+      <div style={{ fontWeight: 700, fontSize: "18px" }}>
+        ผู้ติดเชื้อในประเทศไทย จำแนกตามจังหวัด
+      </div>
       <div style={{ display: "flex", fontSize: "14px" }}>
-        <div style={{ color: "#C0392B", marginRight: "10px" }}>
+        <div style={{ color: "#C0392B", marginRight: "10px", fontWeight: 600 }}>
           อัพเดตล่าสุด
         </div>
         <div>{domesticSum.LastData}</div>

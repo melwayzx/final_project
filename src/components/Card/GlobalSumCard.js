@@ -173,7 +173,16 @@ export default function GlobalSumCard() {
           <div style={StyledTypeText}>เสียชีวิต</div>
         </div>
       </div>
-      <div>สรุปจำนวนผู้ติดเชื้อทั่วโลกจำแนกตามประเทศ</div>
+      <div
+        style={{
+          fontWeight: 700,
+          fontSze: "larger",
+          marginLeft: "110px",
+          marginTop: "20px",
+        }}
+      >
+        ผู้ติดเชื้อทั่วโลกจำแนกตามประเทศ
+      </div>
       <div style={StyledTable}>
         <TableSum sumCountry={sumCountry} />
       </div>
@@ -194,7 +203,11 @@ const StyledTitle = {
   fontWeight: "700",
 };
 
-const StyledSubTitle = { color: "#C0392B", marginRight: "10px" };
+const StyledSubTitle = {
+  color: "#C0392B",
+  marginRight: "10px",
+  fontWeight: 600,
+};
 
 const StyledTypeText = { color: "black", fontSize: "15px" };
 

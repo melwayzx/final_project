@@ -37,8 +37,30 @@ export default function LineCharts({ sumCountry }) {
   const [countryList, setCountryList] = useState([]);
   const [selected, setSelected] = useState([]);
   const [isSelectedButton, setIsSelectedButton] = useState("ผู้ติดเชื้อ");
+  const [date, setDate] = useState("");
 
   useEffect(() => {
+    var d = new Date();
+    var date = d.getDate();
+    date = date - 2;
+    if (date < 10) {
+      date = "0" + date;
+    }
+    var month = d.getMonth();
+    month = month + 1;
+    if (month < 10) {
+      month = "0" + month;
+    }
+    var year = d.getFullYear();
+    var fileDate =
+      year.toString() +
+      "-" +
+      month.toString() +
+      "-" +
+      date.toString() +
+      "  " +
+      "00:00:00";
+    setDate(fileDate);
     axios({
       method: "get",
       url: urlData,
@@ -152,9 +174,28 @@ export default function LineCharts({ sumCountry }) {
           display: "flex",
           width: "1000px",
           justifyContent: "flex-end",
-          paddingTop: "100px",
         }}
       >
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            marginRight: "60px",
+          }}
+        >
+          <div style={{ fontWeight: 700, fontSize: "18px" }}>
+            เปรียบเทียบแนวโน้มผู้ติดเชื้อตามประเทศ
+          </div>
+          <div style={{ display: "flex", fontSize: "14px" }}>
+            <div
+              style={{ color: "#C0392B", marginRight: "10px", fontWeight: 600 }}
+            >
+              อัพเดตล่าสุด
+            </div>
+            <div>{date}</div>
+          </div>
+        </div>
+
         <Button
           buttonName="ผู้ติดเชื้อ"
           isSelectedButton={isSelectedButton}

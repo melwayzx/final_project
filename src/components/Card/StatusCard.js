@@ -69,7 +69,12 @@ export default function StatusCard({ domesticDailyCase }) {
         }}
       >
         <div
-          style={{ color: "#C23D3D", marginRight: "10px", fontSize: "14px" }}
+          style={{
+            color: "#C23D3D",
+            marginRight: "10px",
+            fontSize: "14px",
+            fontWeight: 600,
+          }}
         >
           อัพเดตล่าสุด
         </div>
