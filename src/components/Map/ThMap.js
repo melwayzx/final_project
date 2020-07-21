@@ -30,10 +30,6 @@ export default function ThMap({ domesticSum }) {
     xym.translate([width / 2, height / 2]);
     xym.scale(2500);
 
-    // const report = transform(domesticSum);
-
-    console.log(domesticSum);
-
     for (const j in domesticSum.Province) {
       for (const i in json.features) {
         if (j === json.features[i].properties.name) {
@@ -64,6 +60,15 @@ export default function ThMap({ domesticSum }) {
           json.features[i].properties.count =
             domesticSum.Province["Nong Bua Lamphu"];
         }
+        if (json.features[i].properties.count > 1000) {
+          json.features[i].properties.level = "danger";
+        } else if (json.features[i].properties.count > 30) {
+          json.features[i].properties.level = "caution";
+        } else if (json.features[i].properties.count > 2) {
+          json.features[i].properties.level = "normal";
+        } else {
+          json.features[i].properties.level = "less";
+        }
       }
     }
 
@@ -78,15 +83,11 @@ export default function ThMap({ domesticSum }) {
       .attr("vector-effect", "non-scaling-stroke")
       .style("fill", function (data) {
         //console.log(domesticSum.Province[data.properties.name]);
-        if (domesticSum.Province[data.properties.name]?.level === "danger") {
+        if (data.properties.level === "danger") {
           return "#800909";
-        } else if (
-          domesticSum.Province[data.properties.name]?.level === "caution"
-        ) {
+        } else if (data.properties.level === "caution") {
           return "#E35F5B";
-        } else if (
-          domesticSum.Province[data.properties.name]?.level === "normal"
-        ) {
+        } else if (data.properties.level === "normal") {
           return "#F5C7CA";
         }
         return "#DDDDDD";
@@ -101,7 +102,8 @@ export default function ThMap({ domesticSum }) {
           .classed("visibility", "hidden")
           .style("top", d3.event.pageY + "px")
           .style("left", d3.event.pageX + 10 + "px")
-          .text(d.properties.name + " " + d.properties.count);
+          .text(d.properties.name + " " + d.properties.count + " คน")
+          .attr("stroke", "#DDDD");
       })
 
       .on("mouseout", function (d, i) {
