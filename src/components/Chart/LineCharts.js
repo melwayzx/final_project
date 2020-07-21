@@ -245,7 +245,6 @@ export default function LineCharts({ sumCountry }) {
               ))}
         </LineChart>
       </div>
-      <TableSum />
     </div>
   );
 }
