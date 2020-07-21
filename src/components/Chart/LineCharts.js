@@ -247,7 +247,10 @@ export default function LineCharts({ sumCountry }) {
 
         <button
           style={{ ...ResetButton, padding: "0px" }}
-          onClick={() => setSelected([])}
+          onClick={() => {
+            setSelected([]);
+            setIsSelectedButton("ผู้ติดเชื้อ");
+          }}
         >
           <Reset />
         </button>
