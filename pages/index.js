@@ -6,75 +6,77 @@ import AgeSumCard from "../src/components/Card/AgeSumCard";
 import ThailandSumCard from "../src/components/Card/ThailandSumCard";
 import LineCharts from "../src/components/Chart/LineCharts";
 import GlobalSumCard from "../src/components/Card/GlobalSumCard";
-import GlobalSelect from "../src/components/GlobalSelect";
-import TableSum from "../src/components/Chart/TableSum";
+// import Navbar from "react-bootstrap/Navbar";
+
 export default function index(props) {
   const { domesticDailyCase, domesticSum, domesticCase } = props;
 
   return (
-    <div
-      style={{
-        width: "100vw",
-        paddingTop: "150px",
-        fontFamily: "Sukhumvit Set",
-      }}
-    >
-      <Head>
-        <title>Covid-19 updates </title>
-      </Head>
-
-      <div style={{ height: "250px" }}>
-        <SumCard domesticDailyCase={domesticDailyCase} />
-      </div>
-
+    <div>
       <div
         style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          marginTop: "125px",
-          background: "#FAFAFA",
-          height: "600px",
-        }}
-      >
-        <GenderSumCard domesticSum={domesticSum} />
-        <AgeSumCard domesticCase={domesticCase} />
-      </div>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          background: "white",
-        }}
-      >
-        <ThailandSumCard domesticSum={domesticSum} />
-      </div>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          background: "#FAFAFA",
-          // position: "absolute",
-          marginBottom: "60px",
-          marginTop: "30px",
-        }}
-      >
-        <GlobalSumCard />
-      </div>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          background: "white",
-          // position: "absolute",
           width: "100vw",
-          marginBottom: "20px",
+          paddingTop: "150px",
+          fontFamily: "Sukhumvit Set",
         }}
       >
-        <LineCharts />
+        <Head>
+          <title>Covid-19 updates </title>
+        </Head>
+
+        <div style={{ height: "250px" }}>
+          <SumCard domesticDailyCase={domesticDailyCase} />
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            marginTop: "125px",
+            background: "#FAFAFA",
+            height: "600px",
+          }}
+        >
+          <GenderSumCard domesticSum={domesticSum} />
+          <AgeSumCard domesticCase={domesticCase} />
+        </div>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            background: "white",
+          }}
+        >
+          <ThailandSumCard domesticSum={domesticSum} />
+        </div>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            background: "#FAFAFA",
+            // position: "absolute",
+            marginBottom: "60px",
+            marginTop: "30px",
+          }}
+        >
+          <GlobalSumCard />
+        </div>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            background: "white",
+            // position: "absolute",
+            width: "100vw",
+            marginBottom: "20px",
+          }}
+        >
+          <LineCharts />
+        </div>
       </div>
     </div>
   );
