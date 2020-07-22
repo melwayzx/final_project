@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import * as d3 from "d3";
 import json from "./thailand.json";
+import { colors } from "@material-ui/core";
 
 export default function ThMap({ domesticSum }) {
   const data = [
@@ -97,12 +98,14 @@ export default function ThMap({ domesticSum }) {
         var x = d.properties.name;
         return tooltip.style("visibility", "visible").text(x);
       })
+
       .on("mousemove", function (d) {
         tooltip
           .classed("visibility", "hidden")
           .style("top", d3.event.pageY + "px")
           .style("left", d3.event.pageX + 10 + "px")
-          .text(d.properties.TH + " " + d.properties.count + " คน")
+          .html(d.properties.TH + " " + d.properties.count + " คน")
+
           .attr("stroke", "#DDDD");
       })
 
@@ -116,7 +119,11 @@ export default function ThMap({ domesticSum }) {
       .append("div")
       .style("position", "absolute")
       .style("z-index", "12")
-      .style("background", "lightpink")
+      .style("background", "white")
+      .style("font-family", "Sukhumvit Set")
+      .style("border-radius", "5px")
+      .style("padding", "20px")
+      .style("box-shadow", "0px 2px 4px rgba(0, 0, 0, 0.25)")
       .style("visibility", "hidden");
 
     // for(i in data){
