@@ -33,13 +33,25 @@ export default function index(props) {
         <div style={{ height: "250px" }}>
           <SumCard domesticDailyCase={domesticDailyCase} />
         </div>
-
         <div
           style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            background: "#FAFAFA",
+            height: "400px",
             marginTop: "125px",
+            // width: "100vw",
+          }}
+        >
+          <THLineChart domesticTimeline={domesticTimeline.Data} />
+        </div>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            // marginTop: "125px",
             background: "#FAFAFA",
             height: "600px",
           }}
@@ -47,17 +59,7 @@ export default function index(props) {
           <GenderSumCard domesticSum={domesticSum} />
           <AgeSumCard domesticCase={domesticCase} />
         </div>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            background: "white",
-            height: "500px",
-          }}
-        >
-          <THLineChart domesticTimeline={domesticTimeline.Data} />
-        </div>
+
         <div
           style={{
             display: "flex",
