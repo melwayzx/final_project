@@ -11,14 +11,14 @@ import json from "../Map/thailand.json";
 
 const useStyles = makeStyles({
   table: {
-    width: 400,
+    width: 450,
   },
 });
 
 export default function SimpleTable({ data }) {
   const classes = useStyles();
 
-  console.log(data);
+  // console.log(data);
   // const provinceList = Object.keys(data.Province);
   // const sortData = data.features.sort(
   //   (a, b) => b.properties.count - a.properties.count
@@ -28,16 +28,12 @@ export default function SimpleTable({ data }) {
   return (
     <Table className={classes.table} aria-label="a dense table">
       <div style={StyledTableHeader}>
-        <div
-          style={{ padding: "0px 15px", color: "#AF3233", fontWeight: "600" }}
-        >
-          ประเทศ
-        </div>
+        <div style={{ color: "#AF3233", fontWeight: "600" }}>อันดับ</div>
+        <div style={{ color: "#AF3233", fontWeight: "600" }}>ประเทศ</div>
         <div
           style={{
             color: "#AF3233",
             fontWeight: "600",
-            paddingLeft: "20px",
           }}
         >
           ผู้ติดเชื้อ
@@ -54,7 +50,7 @@ export default function SimpleTable({ data }) {
           style={{
             color: "#AF3233",
             fontWeight: "600",
-            paddingRight: "13px",
+            paddingRight: "10px",
           }}
         >
           เสียชีวิต
@@ -64,7 +60,8 @@ export default function SimpleTable({ data }) {
         <TableBody>
           {data.map((item, index) => (
             <TableRow key={index}>
-              <TableCell align="left">{item.country}</TableCell>
+              <TableCell align="left">{index + 1}</TableCell>
+              <TableCell align="center">{item.country}</TableCell>
               <TableCell align="center">
                 {item.confirmed.toLocaleString("en-US")}
               </TableCell>
@@ -84,12 +81,12 @@ export default function SimpleTable({ data }) {
 
 const StyledTableContainer = {
   height: "300px",
-  width: "400px",
+  width: "450px",
   overflow: "auto",
   color: "white",
 };
 const StyledTableHeader = {
-  width: "400px",
+  width: "450px",
   display: "flex",
   justifyContent: "space-between",
 };
