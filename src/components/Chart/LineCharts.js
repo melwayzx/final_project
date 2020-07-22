@@ -172,7 +172,7 @@ export default function LineCharts({ sumCountry }) {
       <div
         style={{
           display: "flex",
-          width: "1030px",
+          width: "1200px",
           justifyContent: "flex-end",
         }}
       >
@@ -236,6 +236,7 @@ export default function LineCharts({ sumCountry }) {
           {/* <h1>เลือกประเทศ</h1> */}
           <MultiSelect
             options={countryList}
+            hasSelectAll={false}
             value={selected}
             onChange={function (e) {
               updateSelectCountry(e);
@@ -258,8 +259,8 @@ export default function LineCharts({ sumCountry }) {
 
       <div style={{ padding: "40px 0" }}>
         <LineChart
-          width={1050}
-          height={300}
+          width={1200}
+          height={350}
           data={mockData}
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
         >
@@ -280,6 +281,7 @@ export default function LineCharts({ sumCountry }) {
                   dataKey={item}
                   stroke={colours[index]}
                   dot={false}
+                  strokeWidth={3}
                 ></Line>
               ))
             : selected.map((item, index) => (
@@ -289,6 +291,7 @@ export default function LineCharts({ sumCountry }) {
                   dataKey={item.label}
                   stroke={colours[index]}
                   dot={false}
+                  strokeWidth={3}
                 ></Line>
               ))}
         </LineChart>
