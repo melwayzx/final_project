@@ -172,7 +172,7 @@ export default function LineCharts({ sumCountry }) {
       <div
         style={{
           display: "flex",
-          width: "1000px",
+          width: "1030px",
           justifyContent: "flex-end",
         }}
       >
@@ -183,7 +183,7 @@ export default function LineCharts({ sumCountry }) {
             marginRight: "60px",
           }}
         >
-          <div style={{ fontWeight: 700, fontSize: "18px" }}>
+          <div style={{ fontWeight: 700, fontSize: "1.4vw" }}>
             เปรียบเทียบแนวโน้มผู้ติดเชื้อตามประเทศ
           </div>
           <div style={{ display: "flex", fontSize: "14px" }}>
@@ -258,7 +258,7 @@ export default function LineCharts({ sumCountry }) {
 
       <div style={{ padding: "40px 0" }}>
         <LineChart
-          width={1000}
+          width={1050}
           height={300}
           data={mockData}
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}

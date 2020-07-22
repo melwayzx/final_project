@@ -13,7 +13,7 @@ export default function GenderSumCard({ domesticSum }) {
         marginRight: "150px",
       }}
     >
-      <div style={{ fontWeight: 700, fontSize: "18px" }}>
+      <div style={{ fontWeight: 700, fontSize: "1.4vw" }}>
         ผู้ติดเชื้อในประเทศไทย จำแนกตามเพศ
       </div>
       <div style={{ display: "flex", fontSize: "14px" }}>

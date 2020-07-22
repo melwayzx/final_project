@@ -11,7 +11,7 @@ export default function AgeSumCard({ domesticCase }) {
         justifyContent: "center",
       }}
     >
-      <div style={{ fontWeight: 700, fontSize: "18px" }}>
+      <div style={{ fontWeight: 700, fontSize: "1.4vw" }}>
         ผู้ติดเชื้อในประเทศไทย จำแนกตามอายุ
       </div>
       <div style={{ display: "flex", fontSize: "14px" }}>
