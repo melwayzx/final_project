@@ -181,10 +181,10 @@ export default function GlobalSumCard() {
           marginTop: "20px",
         }}
       >
-        ผู้ติดเชื้อทั่วโลกจำแนกตามประเทศ
+        {/* ผู้ติดเชื้อทั่วโลกจำแนกตามประเทศ */}
       </div>
       <div style={StyledTable}>
-        <TableSum sumCountry={sumCountry} />
+        <TableSum data={sumCountry} />
       </div>
     </div>
   );
