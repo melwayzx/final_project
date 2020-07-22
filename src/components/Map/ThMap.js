@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import * as d3 from "d3";
-import json from "./thailand.json";
+// import json from "./thailand.json";
 import { colors } from "@material-ui/core";
 
 export default function ThMap({ domesticSum }) {
@@ -31,51 +31,9 @@ export default function ThMap({ domesticSum }) {
     xym.translate([width / 2, height / 2]);
     xym.scale(2500);
 
-    for (const j in domesticSum.Province) {
-      for (const i in json.features) {
-        if (j === json.features[i].properties.name) {
-          json.features[i].properties.count = domesticSum.Province[j];
-        }
-        if (json.features[i].properties.name == "Bangkok Metropolis") {
-          json.features[i].properties.count = domesticSum.Province["Bangkok"];
-        }
-        if (json.features[i].properties.name == "Phangnga") {
-          json.features[i].properties.count = domesticSum.Province["Phang Nga"];
-        }
-        if (json.features[i].properties.name == "Lop Buri") {
-          json.features[i].properties.count = domesticSum.Province["Lopburi"];
-        }
-        if (json.features[i].properties.name == "Si Sa Ket") {
-          json.features[i].properties.count = domesticSum.Province["Sisaket"];
-        }
-        if (json.features[i].properties.name == "Phangnga") {
-          json.features[i].properties.count = domesticSum.Province["Phang Nga"];
-        }
-        if (json.features[i].properties.name == "Chonburi") {
-          json.features[i].properties.count = domesticSum.Province["Chon Buri"];
-        }
-        if (json.features[i].properties.name == "Buri Ram") {
-          json.features[i].properties.count = domesticSum.Province["Buriram"];
-        }
-        if (json.features[i].properties.name == "Nong Bua Lam Phu") {
-          json.features[i].properties.count =
-            domesticSum.Province["Nong Bua Lamphu"];
-        }
-        if (json.features[i].properties.count > 1000) {
-          json.features[i].properties.level = "danger";
-        } else if (json.features[i].properties.count > 30) {
-          json.features[i].properties.level = "caution";
-        } else if (json.features[i].properties.count > 2) {
-          json.features[i].properties.level = "normal";
-        } else {
-          json.features[i].properties.level = "less";
-        }
-      }
-    }
-
     mapLayer
       .selectAll("path")
-      .data(json.features)
+      .data(domesticSum.features)
       .enter()
       .append("path")
       .attr("stroke", "#fff")

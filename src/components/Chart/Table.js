@@ -11,14 +11,19 @@ import json from "../Map/thailand.json";
 
 const useStyles = makeStyles({
   table: {
-    width: 300,
+    width: 275,
   },
 });
 
 export default function SimpleTable({ data }) {
   const classes = useStyles();
 
-  const provinceList = Object.keys(data.Province);
+  console.log(data.features);
+  // const provinceList = Object.keys(data.Province);
+  const sortData = data.features.sort(
+    (a, b) => b.properties.count - a.properties.count
+  );
+  console.log(sortData);
 
   return (
     // <TableContainer component={Paper}>
@@ -47,12 +52,16 @@ export default function SimpleTable({ data }) {
       </div>
       <div style={StyledTableContainer}>
         <TableBody>
-          {provinceList.map((province) => (
-            <TableRow key={province}>
-              <TableCell component="th" scope="row">
-                {province}
+          {data.features.map((item, index) => (
+            <TableRow key={index}>
+              <TableCell
+                component="th"
+                scope="row"
+                style={{ paddingRight: "60px" }}
+              >
+                {item.properties.TH}
               </TableCell>
-              <TableCell align="right">{data.Province[province]}</TableCell>
+              <TableCell align="right">{item.properties.count}</TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -64,12 +73,12 @@ export default function SimpleTable({ data }) {
 
 const StyledTableContainer = {
   height: "600px",
-  width: "300px",
+  width: "275px",
   overflow: "auto",
   color: "white",
 };
 const StyledTableHeader = {
-  width: "300px",
+  width: "275px",
   display: "flex",
   justifyContent: "space-between",
 };
