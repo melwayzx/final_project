@@ -76,7 +76,7 @@ export default function StatusCard({ domesticDailyCase }) {
             fontWeight: 600,
           }}
         >
-          อัพเดตล่าสุด
+          อัปเดตล่าสุด
         </div>
         <div style={{ fontSize: "14px" }}>{domesticDailyCase.UpdateDate}</div>
       </div>

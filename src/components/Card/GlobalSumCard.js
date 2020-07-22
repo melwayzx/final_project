@@ -148,7 +148,7 @@ export default function GlobalSumCard() {
       <div
         style={{ display: "flex", fontSize: "14px", justifyContent: "center" }}
       >
-        <div style={StyledSubTitle}>อัพเดตล่าสุด</div>
+        <div style={StyledSubTitle}>อัปเดตล่าสุด</div>
         <div>{sumCount.updateDate}</div>
       </div>
       <div style={StyledWrapper}>

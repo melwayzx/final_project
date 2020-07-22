@@ -190,7 +190,7 @@ export default function LineCharts({ sumCountry }) {
             <div
               style={{ color: "#C0392B", marginRight: "10px", fontWeight: 600 }}
             >
-              อัพเดตล่าสุด
+              อัปเดตล่าสุด
             </div>
             <div>{date}</div>
           </div>

@@ -131,7 +131,7 @@ export default function ThMap({ domesticSum }) {
       </div>
       <div style={{ display: "flex", fontSize: "14px" }}>
         <div style={{ color: "#C0392B", marginRight: "10px", fontWeight: 600 }}>
-          อัพเดตล่าสุด
+          อัปเดตล่าสุด
         </div>
         <div>{domesticSum.LastData}</div>
       </div>
