@@ -55,7 +55,7 @@ export default function LineCharts({ domesticTimeline }) {
           จำนวนผู้ติดเชื้อรายวัน
         </div>
         <LineChart
-          width={600}
+          width={650}
           height={300}
           data={dailyConfirmed}
           // margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
@@ -85,7 +85,7 @@ export default function LineCharts({ domesticTimeline }) {
           จำนวนผู้ติดเชื้อสะสมรายวัน
         </div>
         <LineChart
-          width={500}
+          width={550}
           height={300}
           data={sumConfirmed}
           // margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
