@@ -42,12 +42,16 @@ export default function ThMap({ domesticSum }) {
       .attr("vector-effect", "non-scaling-stroke")
       .style("fill", function (data) {
         //console.log(domesticSum.Province[data.properties.name]);
-        if (data.properties.level === "danger") {
+        if (data.properties.level === "5") {
           return "#800909";
-        } else if (data.properties.level === "caution") {
-          return "#E35F5B";
-        } else if (data.properties.level === "normal") {
-          return "#F5C7CA";
+        } else if (data.properties.level === "4") {
+          return "#D83F3F";
+        } else if (data.properties.level === "3") {
+          return "#FFA7A7";
+        } else if (data.properties.level === "2") {
+          return "#FFCACA";
+        } else if (data.properties.level === "1") {
+          return "#FFE2E2";
         }
         return "#DDDDDD";
       })

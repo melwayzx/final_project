@@ -37,13 +37,17 @@ export default function ThailandSumCard({ domesticSum }) {
           domesticSum.Province["Nong Bua Lamphu"];
       }
       if (json.features[i].properties.count > 1000) {
-        json.features[i].properties.level = "danger";
-      } else if (json.features[i].properties.count > 30) {
-        json.features[i].properties.level = "caution";
-      } else if (json.features[i].properties.count > 2) {
-        json.features[i].properties.level = "normal";
+        json.features[i].properties.level = "5";
+      } else if (json.features[i].properties.count > 90) {
+        json.features[i].properties.level = "4";
+      } else if (json.features[i].properties.count > 20) {
+        json.features[i].properties.level = "3";
+      } else if (json.features[i].properties.count > 10) {
+        json.features[i].properties.level = "2";
+      } else if (json.features[i].properties.count > 0) {
+        json.features[i].properties.level = "1";
       } else {
-        json.features[i].properties.level = "less";
+        json.features[i].properties.level = "0";
       }
     }
   }
