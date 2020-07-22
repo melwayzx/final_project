@@ -57,11 +57,13 @@ export default function SimpleTable({ data }) {
               <TableCell
                 component="th"
                 scope="row"
-                style={{ paddingRight: "60px" }}
+                style={{ paddingRight: "60px", fontFamily: "Sukhumvit Set" }}
               >
                 {item.properties.TH}
               </TableCell>
-              <TableCell align="right">{item.properties.count}</TableCell>
+              <TableCell align="right" style={{ fontFamily: "Sukhumvit Set" }}>
+                {item.properties.count}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
