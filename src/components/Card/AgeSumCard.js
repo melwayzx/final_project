@@ -1,6 +1,6 @@
 import BarChartData from "../Chart/BarChartData";
 
-export default function AgeSumCard({ domesticCase }) {
+export default function AgeSumCard({ domesticCase, updateDate }) {
   return (
     <div
       style={{
@@ -18,7 +18,7 @@ export default function AgeSumCard({ domesticCase }) {
         <div style={{ color: "#C0392B", marginRight: "10px", fontWeight: 600 }}>
           อัปเดตล่าสุด
         </div>
-        <div>{domesticCase.LastData}</div>
+        <div>{updateDate}</div>
       </div>
       <BarChartData domesticCase={domesticCase} />
     </div>

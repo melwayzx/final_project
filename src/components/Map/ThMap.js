@@ -3,7 +3,7 @@ import * as d3 from "d3";
 // import json from "./thailand.json";
 import { colors } from "@material-ui/core";
 
-export default function ThMap({ domesticSum }) {
+export default function ThMap({ domesticSum, updateDate }) {
   const data = [
     {
       name: domesticSum.Province,
@@ -102,7 +102,7 @@ export default function ThMap({ domesticSum }) {
         <div style={{ color: "#C0392B", marginRight: "10px", fontWeight: 600 }}>
           อัปเดตล่าสุด
         </div>
-        <div>{domesticSum.LastData}</div>
+        <div>{updateDate}</div>
       </div>
       <div style={{ ...mapStyle, stroke: "white" }}>
         <svg

@@ -3,7 +3,7 @@ import ThailandMap from "../Map/ThMap";
 import Table from "../Chart/Table";
 import json from "../Map/thailand.json";
 
-export default function ThailandSumCard({ domesticSum }) {
+export default function ThailandSumCard({ domesticSum, updateDate }) {
   // console.log(domesticSum);
 
   for (const j in domesticSum.Province) {
@@ -64,7 +64,7 @@ export default function ThailandSumCard({ domesticSum }) {
     >
       <div style={{ display: "flex", marginTop: "40px" }}>
         {/* <ThailandMap domesticSum={domesticSum} /> */}
-        <ThailandMap domesticSum={json} />
+        <ThailandMap domesticSum={json} updateDate={updateDate} />
 
         {/* <div style={TableContainer}> */}
         <div style={{ marginTop: "50px" }}>

@@ -16,7 +16,7 @@ import styled from "styled-components";
 import Reset from "../../images/Convert.svg";
 import TableSum from "../Chart/TableSum";
 
-export default function LineCharts({ sumCountry }) {
+export default function LineCharts({ sumCountry, updateDate }) {
   let data = [];
   const initialData = ["India", "Brazil", "US", "Russia", "South Africa"];
   const colours = [
@@ -173,7 +173,7 @@ export default function LineCharts({ sumCountry }) {
         style={{
           display: "flex",
           width: "1200px",
-          justifyContent: "flex-end",
+          justifyContent: "space-between",
         }}
       >
         <div
@@ -188,73 +188,78 @@ export default function LineCharts({ sumCountry }) {
           </div>
           <div style={{ display: "flex", fontSize: "14px" }}>
             <div
-              style={{ color: "#C0392B", marginRight: "10px", fontWeight: 600 }}
+              style={{
+                color: "#C0392B",
+                marginRight: "10px",
+                fontWeight: 600,
+              }}
             >
               อัปเดตล่าสุด
             </div>
-            <div>{date}</div>
+            <div>{updateDate}</div>
           </div>
         </div>
-
-        <Button
-          buttonName="ผู้ติดเชื้อ"
-          isSelectedButton={isSelectedButton}
-          onClick={() => {
-            setIsSelectedButton("ผู้ติดเชื้อ");
-            setUrlData(
-              "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv"
-            );
-          }}
-        >
-          ผู้ติดเชื้อ
-        </Button>
-        <Button
-          buttonName="หายแล้ว"
-          isSelectedButton={isSelectedButton}
-          onClick={() => {
-            setIsSelectedButton("หายแล้ว");
-            setUrlData(
-              "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv"
-            );
-          }}
-        >
-          หายแล้ว
-        </Button>
-        <Button
-          buttonName="เสียชีวิต"
-          isSelectedButton={isSelectedButton}
-          onClick={() => {
-            setIsSelectedButton("เสียชีวิต");
-            setUrlData(
-              "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"
-            );
-          }}
-        >
-          เสียชีวิต
-        </Button>
-        <div style={{ width: "250px", margin: "0px 5px " }}>
-          {/* <h1>เลือกประเทศ</h1> */}
-          <MultiSelect
-            options={countryList}
-            hasSelectAll={false}
-            value={selected}
-            onChange={function (e) {
-              updateSelectCountry(e);
+        <div style={{ display: "flex" }}>
+          <Button
+            buttonName="ผู้ติดเชื้อ"
+            isSelectedButton={isSelectedButton}
+            onClick={() => {
+              setIsSelectedButton("ผู้ติดเชื้อ");
+              setUrlData(
+                "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv"
+              );
             }}
-            labelledBy={"Select"}
-            primary={"เลือกประเทศ"}
-          />
-        </div>
+          >
+            ผู้ติดเชื้อ
+          </Button>
+          <Button
+            buttonName="หายแล้ว"
+            isSelectedButton={isSelectedButton}
+            onClick={() => {
+              setIsSelectedButton("หายแล้ว");
+              setUrlData(
+                "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv"
+              );
+            }}
+          >
+            หายแล้ว
+          </Button>
+          <Button
+            buttonName="เสียชีวิต"
+            isSelectedButton={isSelectedButton}
+            onClick={() => {
+              setIsSelectedButton("เสียชีวิต");
+              setUrlData(
+                "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"
+              );
+            }}
+          >
+            เสียชีวิต
+          </Button>
+          <div style={{ width: "250px", margin: "0px 5px " }}>
+            {/* <h1>เลือกประเทศ</h1> */}
+            <MultiSelect
+              options={countryList}
+              hasSelectAll={false}
+              value={selected}
+              onChange={function (e) {
+                updateSelectCountry(e);
+              }}
+              labelledBy={"Select"}
+              primary={"เลือกประเทศ"}
+            />
+          </div>
 
-        <button
-          style={{ ...ResetButton, padding: "0px" }}
-          onClick={() => {
-            setSelected([]);
-            setIsSelectedButton("ผู้ติดเชื้อ");
-          }}
-        >
-          <Reset />
-        </button>
+          <button
+            style={{ ...ResetButton, padding: "0px" }}
+            onClick={() => {
+              setSelected([]);
+              setIsSelectedButton("ผู้ติดเชื้อ");
+            }}
+          >
+            <Reset />
+          </button>
+        </div>
       </div>
 
       <div style={{ padding: "40px 0" }}>

@@ -4,7 +4,7 @@ import parse from "csv-parse/lib/sync";
 import TableSum from "../Chart/TableSum";
 import GlobalSumLineChart from "../Chart/GlobalSumLineChart";
 
-export default function GlobalSumCard() {
+export default function GlobalSumCard({ updateDate }) {
   // const [confirmed, setConfirmed] = useState(0);
   // const [recovered, setRecovered] = useState(0);
   // const [deaths, setDeaths] = useState(0);
@@ -150,7 +150,7 @@ export default function GlobalSumCard() {
         style={{ display: "flex", fontSize: "14px", justifyContent: "center" }}
       >
         <div style={StyledSubTitle}>อัปเดตล่าสุด</div>
-        <div>{sumCount.updateDate}</div>
+        <div>{updateDate}</div>
       </div>
       <div style={StyledWrapper}>
         <div style={StyledBox}>
@@ -184,7 +184,9 @@ export default function GlobalSumCard() {
       >
         {/* ผู้ติดเชื้อทั่วโลกจำแนกตามประเทศ */}
       </div>
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      <div
+        style={{ display: "flex", justifyContent: "center", marginTop: "60px" }}
+      >
         <div style={StyledTable}>
           <TableSum data={sumCountry} />
         </div>

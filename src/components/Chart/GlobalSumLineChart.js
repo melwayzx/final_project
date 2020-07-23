@@ -63,11 +63,14 @@ export default function GlobalSumLineChart() {
   }, []);
 
   return (
-    <div>
+    <div style={{ padding: "0 40px" }}>
       {" "}
+      <div style={{ fontWeight: 700, fontSize: "1.4vw", marginBottom: "20px" }}>
+        จำนวนผู้ติดเชื้อสะสมรวมทั่วโลก
+      </div>
       <LineChart
         width={700}
-        height={350}
+        height={300}
         data={data}
         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
       >
