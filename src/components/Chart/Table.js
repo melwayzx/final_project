@@ -18,22 +18,15 @@ const useStyles = makeStyles({
 export default function SimpleTable({ data }) {
   const classes = useStyles();
 
-  console.log(data.features);
+  // console.log(data.features);
   // const provinceList = Object.keys(data.Province);
   const sortData = data.features.sort(
     (a, b) => b.properties.count - a.properties.count
   );
-  console.log(sortData);
+  // console.log(sortData);
 
   return (
-    // <TableContainer component={Paper}>
     <Table className={classes.table} aria-label="simple table">
-      {/* <TableHead>
-        <TableRow>
-          <TableCell>จังหวัด</TableCell>
-          <TableCell align="right">ผู้ติดเชื้อ</TableCell>
-        </TableRow>
-      </TableHead> */}
       <div style={StyledTableHeader}>
         <div
           style={{ padding: "0px 15px", color: "#AF3233", fontWeight: "600" }}
@@ -69,7 +62,6 @@ export default function SimpleTable({ data }) {
         </TableBody>
       </div>
     </Table>
-    // </TableContainer>
   );
 }
 
