@@ -2,8 +2,9 @@ import react, { useEffect, useState } from "react";
 import axios from "axios";
 import parse from "csv-parse/lib/sync";
 import TableSum from "../Chart/TableSum";
+import GlobalSumLineChart from "../Chart/GlobalSumLineChart";
 
-export default function GlobalSumCard() {
+export default function GlobalSumCard({ updateDate }) {
   // const [confirmed, setConfirmed] = useState(0);
   // const [recovered, setRecovered] = useState(0);
   // const [deaths, setDeaths] = useState(0);
@@ -148,8 +149,8 @@ export default function GlobalSumCard() {
       <div
         style={{ display: "flex", fontSize: "14px", justifyContent: "center" }}
       >
-        <div style={StyledSubTitle}>อัพเดตล่าสุด</div>
-        <div>{sumCount.updateDate}</div>
+        <div style={StyledSubTitle}>อัปเดตล่าสุด</div>
+        <div>{updateDate}</div>
       </div>
       <div style={StyledWrapper}>
         <div style={StyledBox}>
@@ -181,10 +182,17 @@ export default function GlobalSumCard() {
           marginTop: "20px",
         }}
       >
-        ผู้ติดเชื้อทั่วโลกจำแนกตามประเทศ
+        {/* ผู้ติดเชื้อทั่วโลกจำแนกตามประเทศ */}
       </div>
-      <div style={StyledTable}>
-        <TableSum sumCountry={sumCountry} />
+      <div
+        style={{ display: "flex", justifyContent: "center", marginTop: "60px" }}
+      >
+        <div style={StyledTable}>
+          <TableSum data={sumCountry} />
+        </div>
+        <div styled={{ padding: "10px 40px" }}>
+          <GlobalSumLineChart />
+        </div>
       </div>
     </div>
   );
@@ -217,13 +225,13 @@ const StyledBox = {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  padding: "10px",
+  padding: "0 50px",
   boxSizing: "border-box",
 };
 
 const StyledWrapper = {
   display: "flex",
-  justifyContent: "space-evenly",
+  justifyContent: "center",
   marginTop: "30px",
   width: "100vw",
 };
@@ -231,7 +239,6 @@ const StyledWrapper = {
 const StyledTable = {
   justifyContent: " center",
   display: "flex",
-  marginTop: "20px",
-  marginBottom: "30px",
-  width: "100vw",
+  padding: "0 40px",
+  width: "450px",
 };

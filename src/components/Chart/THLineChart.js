@@ -33,8 +33,8 @@ export default function LineCharts({ domesticTimeline }) {
     sumConfirmed.push({
       date: domesticTimeline[i].Date,
       ผู้ติดเชื้อสะสม: domesticTimeline[i].Confirmed,
-      จำนวนผู้ติดเชื้อที่รักษาหาย: domesticTimeline[i].Recovered,
-      จำนวนผู้เสียชีวิต: domesticTimeline[i].Deaths,
+      หายแล้ว: domesticTimeline[i].Recovered,
+      เสียชีวิต: domesticTimeline[i].Deaths,
     });
   }
   // console.log(dailyConfirmed);
@@ -42,17 +42,23 @@ export default function LineCharts({ domesticTimeline }) {
 
   return (
     <div style={{ padding: "40px 0", display: "flex" }}>
-      <div style={{ display: "flex", flexDirection: "column" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          marginRight: "90px",
+        }}
+      >
         <div
-          style={{ fontWeight: 700, fontSize: "18px", marginBottom: "10px" }}
+          style={{ fontWeight: 700, fontSize: "1.4vw", marginBottom: "10px" }}
         >
           จำนวนผู้ติดเชื้อรายวัน
         </div>
         <LineChart
-          width={725}
+          width={550}
           height={300}
           data={dailyConfirmed}
-          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+          // margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
         >
           <XAxis dataKey="date" tick={{ fontSize: 10 }} />
           <YAxis
@@ -68,26 +74,27 @@ export default function LineCharts({ domesticTimeline }) {
             dataKey="ผู้ติดเชื้อรายวัน"
             stroke={"#F08080"}
             dot={false}
+            strokeWidth={3}
           ></Line>
         </LineChart>
       </div>
       <div style={{ display: "flex", flexDirection: "column" }}>
         <div
-          style={{ fontWeight: 700, fontSize: "18px", marginBottom: "10px" }}
+          style={{ fontWeight: 700, fontSize: "1.4vw", marginBottom: "10px" }}
         >
           จำนวนผู้ติดเชื้อสะสมรายวัน
         </div>
         <LineChart
-          width={650}
+          width={550}
           height={300}
           data={sumConfirmed}
-          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+          // margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
         >
           <XAxis dataKey="date" tick={{ fontSize: 10 }} />
           <YAxis
-            type="number"
-            // domain={[0, maxData]}
-            // ticks={[0, ]}
+          // type="number"
+          // domain={[0, maxData]}
+          // ticks={[0, ]}
           />
           <CartesianGrid stroke="#DDDDDD" vertical={false} />
           <Tooltip />
@@ -97,17 +104,20 @@ export default function LineCharts({ domesticTimeline }) {
             dataKey="ผู้ติดเชื้อสะสม"
             stroke={"#F3BE43"}
             dot={false}
+            strokeWidth={2}
           ></Line>
           <Line
             type="monotone"
-            dataKey="จำนวนผู้ติดเชื้อที่รักษาหาย"
+            dataKey="หายแล้ว"
             stroke={"#4FB2AC"}
             dot={false}
+            strokeWidth={2}
           ></Line>
           <Line
             type="monotone"
-            dataKey="จำนวนผู้เสียชีวิต"
+            dataKey="เสียชีวิต"
             stroke={"#CA3B33"}
+            strokeWidth={2}
             dot={false}
           ></Line>
         </LineChart>

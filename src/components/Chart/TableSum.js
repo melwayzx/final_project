@@ -1,109 +1,92 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
-import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
-
-const columns = [
-  { id: "country", label: "ประเทศ", minWidth: 100 },
-  { id: "confirmed", label: "ผู้ติดเชื้อสะสม", minWidth: 100 },
-  { id: "recovered", label: "หายแล้ว", minWidth: 100 },
-  { id: "deaths", label: "ตาย", minWidth: 100 },
-];
+import json from "../Map/thailand.json";
+// import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles({
-  root: {
-    width: "80%",
-  },
-  container: {
-    maxHeight: 440,
+  table: {
+    width: 450,
   },
 });
 
-export default function TableSum({ sumCountry }) {
+export default function SimpleTable({ data }) {
   const classes = useStyles();
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  //   const [data, setData] = useState([]);
 
-  // console.log(sumCountry);
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
-  };
+  // console.log(data);
+  // const provinceList = Object.keys(data.Province);
+  // const sortData = data.features.sort(
+  //   (a, b) => b.properties.count - a.properties.count
+  // );
+  // console.log(sortData);
 
   return (
-    <Paper className={classes.root}>
-      <TableContainer className={classes.container}>
-        <Table stickyHeader aria-label="sticky table">
-          <TableHead>
-            <TableRow>
-              {columns.map((column) => (
-                <TableCell
-                  key={column.id}
-                  align={column.align}
-                  style={{
-                    minWidth: column.minWidth,
-                    fontFamily: "Sukhumvit Set",
-                    fontWeight: "700",
-                    color: "#AF3233",
-                    textAlign: "center",
-                  }}
-                >
-                  {" "}
-                  {column.label}
-                </TableCell>
-              ))}
+    <Table className={classes.table} aria-label="a dense table">
+      <div style={StyledTableHeader}>
+        <div style={{ color: "#AF3233", fontWeight: "600" }}>อันดับ</div>
+        <div style={{ color: "#AF3233", fontWeight: "600" }}>ประเทศ</div>
+        <div
+          style={{
+            color: "#AF3233",
+            fontWeight: "600",
+          }}
+        >
+          ผู้ติดเชื้อ
+        </div>
+        <div
+          style={{
+            color: "#AF3233",
+            fontWeight: "600",
+          }}
+        >
+          หายแล้ว
+        </div>
+        <div
+          style={{
+            color: "#AF3233",
+            fontWeight: "600",
+            paddingRight: "10px",
+          }}
+        >
+          เสียชีวิต
+        </div>
+      </div>
+      <div style={StyledTableContainer}>
+        <TableBody>
+          {data.map((item, index) => (
+            <TableRow key={index}>
+              <TableCell align="left">{index + 1}</TableCell>
+              <TableCell align="center">{item.country}</TableCell>
+              <TableCell align="center">
+                {item.confirmed.toLocaleString("en-US")}
+              </TableCell>
+              <TableCell align="center">
+                {item.recovered.toLocaleString("en-US")}
+              </TableCell>
+              <TableCell align="center">
+                {item.deaths.toLocaleString("en-US")}
+              </TableCell>
             </TableRow>
-          </TableHead>
-          <TableBody>
-            {sumCountry
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => {
-                return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                    {columns.map((column) => {
-                      const value = row[column.id];
-                      return (
-                        <TableCell
-                          key={column.id}
-                          align={column.align}
-                          style={{
-                            fontFamily: "Sukhumvit Set",
-                            fontWeight: "500",
-                            textAlign: "center",
-                          }}
-                        >
-                          {column.format && typeof value === "number"
-                            ? column.format(value).toLocaleString("en-US")
-                            : value.toLocaleString("en-US")}
-                        </TableCell>
-                      );
-                    })}
-                  </TableRow>
-                );
-              })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[5, 10, 25, 100]}
-        component="div"
-        count={sumCountry.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onChangePage={handleChangePage}
-        onChangeRowsPerPage={handleChangeRowsPerPage}
-      />
-    </Paper>
+          ))}
+        </TableBody>
+      </div>
+    </Table>
   );
 }
+
+const StyledTableContainer = {
+  height: "300px",
+  width: "450px",
+  overflow: "auto",
+  color: "white",
+};
+const StyledTableHeader = {
+  width: "450px",
+  display: "flex",
+  justifyContent: "space-between",
+};

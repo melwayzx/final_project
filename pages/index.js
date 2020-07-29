@@ -16,6 +16,13 @@ export default function index(props) {
     domesticTimeline,
   } = props;
 
+  const dates = new Date();
+  const day = dates.getDate();
+  let month = dates.getMonth();
+  month = month + 1;
+  const year = dates.getFullYear();
+  const updateDate = day + "/" + month + "/" + year;
+
   // console.log(domesticTimeline);
   return (
     <div>
@@ -31,21 +38,10 @@ export default function index(props) {
         </Head>
 
         <div style={{ height: "250px" }}>
-          <SumCard domesticDailyCase={domesticDailyCase} />
-        </div>
-
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            marginTop: "125px",
-            background: "#FAFAFA",
-            height: "600px",
-          }}
-        >
-          <GenderSumCard domesticSum={domesticSum} />
-          <AgeSumCard domesticCase={domesticCase} />
+          <SumCard
+            domesticDailyCase={domesticDailyCase}
+            updateDate={updateDate}
+          />
         </div>
         <div
           style={{
@@ -53,7 +49,9 @@ export default function index(props) {
             alignItems: "center",
             justifyContent: "center",
             background: "white",
-            height: "500px",
+            height: "400px",
+            marginTop: "125px",
+            // width: "100vw",
           }}
         >
           <THLineChart domesticTimeline={domesticTimeline.Data} />
@@ -63,10 +61,24 @@ export default function index(props) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            // marginTop: "125px",
+            background: "#FAFAFA",
+            height: "600px",
+          }}
+        >
+          <GenderSumCard domesticSum={domesticSum} updateDate={updateDate} />
+          <AgeSumCard domesticCase={domesticCase} updateDate={updateDate} />
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
             background: "white",
           }}
         >
-          <ThailandSumCard domesticSum={domesticSum} />
+          <ThailandSumCard domesticSum={domesticSum} updateDate={updateDate} />
         </div>
         <div
           style={{
@@ -79,7 +91,7 @@ export default function index(props) {
             marginTop: "30px",
           }}
         >
-          <GlobalSumCard />
+          <GlobalSumCard updateDate={updateDate} />
         </div>
         <div
           style={{
@@ -92,7 +104,7 @@ export default function index(props) {
             marginBottom: "20px",
           }}
         >
-          <LineCharts />
+          <LineCharts updateDate={updateDate} />
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import PieChartData from "../Chart/PieChartData";
 
-export default function GenderSumCard({ domesticSum }) {
+export default function GenderSumCard({ domesticSum, updateDate }) {
   // console.log(domesticSum);
   return (
     <div
@@ -13,14 +13,14 @@ export default function GenderSumCard({ domesticSum }) {
         marginRight: "150px",
       }}
     >
-      <div style={{ fontWeight: 700, fontSize: "18px" }}>
+      <div style={{ fontWeight: 700, fontSize: "1.4vw" }}>
         ผู้ติดเชื้อในประเทศไทย จำแนกตามเพศ
       </div>
       <div style={{ display: "flex", fontSize: "14px" }}>
         <div style={{ color: "#C0392B", marginRight: "10px", fontWeight: 600 }}>
-          อัพเดตล่าสุด
+          อัปเดตล่าสุด
         </div>
-        <div>{domesticSum.LastData}</div>
+        <div>{updateDate}</div>
       </div>
 
       <PieChartData domesticSum={domesticSum} />

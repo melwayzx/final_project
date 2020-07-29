@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function StatusCard({ domesticDailyCase }) {
+export default function StatusCard({ domesticDailyCase, updateDate }) {
   return (
     <div style={{ fontFamily: "Sukhumvit Set" }}>
       <div style={StyledWrapper}>
@@ -76,9 +76,9 @@ export default function StatusCard({ domesticDailyCase }) {
             fontWeight: 600,
           }}
         >
-          อัพเดตล่าสุด
+          อัปเดตล่าสุด
         </div>
-        <div style={{ fontSize: "14px" }}>{domesticDailyCase.UpdateDate}</div>
+        <div style={{ fontSize: "14px" }}>{updateDate}</div>
       </div>
     </div>
   );

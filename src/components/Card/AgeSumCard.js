@@ -1,6 +1,6 @@
 import BarChartData from "../Chart/BarChartData";
 
-export default function AgeSumCard({ domesticCase }) {
+export default function AgeSumCard({ domesticCase, updateDate }) {
   return (
     <div
       style={{
@@ -11,14 +11,14 @@ export default function AgeSumCard({ domesticCase }) {
         justifyContent: "center",
       }}
     >
-      <div style={{ fontWeight: 700, fontSize: "18px" }}>
+      <div style={{ fontWeight: 700, fontSize: "1.4vw" }}>
         ผู้ติดเชื้อในประเทศไทย จำแนกตามอายุ
       </div>
       <div style={{ display: "flex", fontSize: "14px" }}>
         <div style={{ color: "#C0392B", marginRight: "10px", fontWeight: 600 }}>
-          อัพเดตล่าสุด
+          อัปเดตล่าสุด
         </div>
-        <div>{domesticCase.LastData}</div>
+        <div>{updateDate}</div>
       </div>
       <BarChartData domesticCase={domesticCase} />
     </div>

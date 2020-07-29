@@ -11,24 +11,22 @@ import TableRow from "@material-ui/core/TableRow";
 
 const useStyles = makeStyles({
   table: {
-    width: 300,
+    width: 275,
   },
 });
 
 export default function SimpleTable({ data }) {
   const classes = useStyles();
 
-  const provinceList = Object.keys(data.Province);
+  // console.log(data.features);
+  // const provinceList = Object.keys(data.Province);
+  const sortData = data.features.sort(
+    (a, b) => b.properties.count - a.properties.count
+  );
+  // console.log(sortData);
 
   return (
-    // <TableContainer component={Paper}>
     <Table className={classes.table} aria-label="simple table">
-      {/* <TableHead>
-        <TableRow>
-          <TableCell>จังหวัด</TableCell>
-          <TableCell align="right">ผู้ติดเชื้อ</TableCell>
-        </TableRow>
-      </TableHead> */}
       <div style={StyledTableHeader}>
         <div
           style={{ padding: "0px 15px", color: "#AF3233", fontWeight: "600" }}
@@ -47,29 +45,34 @@ export default function SimpleTable({ data }) {
       </div>
       <div style={StyledTableContainer}>
         <TableBody>
-          {provinceList.map((province) => (
-            <TableRow key={province}>
-              <TableCell component="th" scope="row">
-                {province}
+          {data.features.map((item, index) => (
+            <TableRow key={index}>
+              <TableCell
+                component="th"
+                scope="row"
+                style={{ paddingRight: "60px", fontFamily: "Sukhumvit Set" }}
+              >
+                {item.properties.TH}
               </TableCell>
-              <TableCell align="right">{data.Province[province]}</TableCell>
+              <TableCell align="right" style={{ fontFamily: "Sukhumvit Set" }}>
+                {item.properties.count}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
       </div>
     </Table>
-    // </TableContainer>
   );
 }
 
 const StyledTableContainer = {
   height: "600px",
-  width: "300px",
+  width: "275px",
   overflow: "auto",
   color: "white",
 };
 const StyledTableHeader = {
-  width: "300px",
+  width: "275px",
   display: "flex",
   justifyContent: "space-between",
 };

@@ -1,7 +1,7 @@
 import StatusCard from "./StatusCard";
 import Button from "../Button";
 
-export default function SumCard({ domesticDailyCase }) {
+export default function SumCard({ domesticDailyCase, updateDate }) {
   // console.log(domesticDailyCase);
   return (
     <div>
@@ -31,7 +31,10 @@ export default function SumCard({ domesticDailyCase }) {
           /> */}
         </div>
 
-        <StatusCard domesticDailyCase={domesticDailyCase} />
+        <StatusCard
+          domesticDailyCase={domesticDailyCase}
+          updateDate={updateDate}
+        />
       </div>
     </div>
   );

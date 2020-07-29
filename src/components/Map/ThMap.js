@@ -1,8 +1,9 @@
 import React, { useRef, useEffect } from "react";
 import * as d3 from "d3";
-import json from "./thailand.json";
+// import json from "./thailand.json";
+import { colors } from "@material-ui/core";
 
-export default function ThMap({ domesticSum }) {
+export default function ThMap({ domesticSum, updateDate }) {
   const data = [
     {
       name: domesticSum.Province,
@@ -30,51 +31,9 @@ export default function ThMap({ domesticSum }) {
     xym.translate([width / 2, height / 2]);
     xym.scale(2500);
 
-    for (const j in domesticSum.Province) {
-      for (const i in json.features) {
-        if (j === json.features[i].properties.name) {
-          json.features[i].properties.count = domesticSum.Province[j];
-        }
-        if (json.features[i].properties.name == "Bangkok Metropolis") {
-          json.features[i].properties.count = domesticSum.Province["Bangkok"];
-        }
-        if (json.features[i].properties.name == "Phangnga") {
-          json.features[i].properties.count = domesticSum.Province["Phang Nga"];
-        }
-        if (json.features[i].properties.name == "Lop Buri") {
-          json.features[i].properties.count = domesticSum.Province["Lopburi"];
-        }
-        if (json.features[i].properties.name == "Si Sa Ket") {
-          json.features[i].properties.count = domesticSum.Province["Sisaket"];
-        }
-        if (json.features[i].properties.name == "Phangnga") {
-          json.features[i].properties.count = domesticSum.Province["Phang Nga"];
-        }
-        if (json.features[i].properties.name == "Chonburi") {
-          json.features[i].properties.count = domesticSum.Province["Chon Buri"];
-        }
-        if (json.features[i].properties.name == "Buri Ram") {
-          json.features[i].properties.count = domesticSum.Province["Buriram"];
-        }
-        if (json.features[i].properties.name == "Nong Bua Lam Phu") {
-          json.features[i].properties.count =
-            domesticSum.Province["Nong Bua Lamphu"];
-        }
-        if (json.features[i].properties.count > 1000) {
-          json.features[i].properties.level = "danger";
-        } else if (json.features[i].properties.count > 30) {
-          json.features[i].properties.level = "caution";
-        } else if (json.features[i].properties.count > 2) {
-          json.features[i].properties.level = "normal";
-        } else {
-          json.features[i].properties.level = "less";
-        }
-      }
-    }
-
     mapLayer
       .selectAll("path")
-      .data(json.features)
+      .data(domesticSum.features)
       .enter()
       .append("path")
       .attr("stroke", "#fff")
@@ -83,12 +42,16 @@ export default function ThMap({ domesticSum }) {
       .attr("vector-effect", "non-scaling-stroke")
       .style("fill", function (data) {
         //console.log(domesticSum.Province[data.properties.name]);
-        if (data.properties.level === "danger") {
+        if (data.properties.level === "5") {
           return "#800909";
-        } else if (data.properties.level === "caution") {
-          return "#E35F5B";
-        } else if (data.properties.level === "normal") {
-          return "#F5C7CA";
+        } else if (data.properties.level === "4") {
+          return "#D83F3F";
+        } else if (data.properties.level === "3") {
+          return "#FFA7A7";
+        } else if (data.properties.level === "2") {
+          return "#FFCACA";
+        } else if (data.properties.level === "1") {
+          return "#FFE2E2";
         }
         return "#DDDDDD";
       })
@@ -97,12 +60,14 @@ export default function ThMap({ domesticSum }) {
         var x = d.properties.name;
         return tooltip.style("visibility", "visible").text(x);
       })
+
       .on("mousemove", function (d) {
         tooltip
           .classed("visibility", "hidden")
           .style("top", d3.event.pageY + "px")
           .style("left", d3.event.pageX + 10 + "px")
-          .text(d.properties.TH + " " + d.properties.count + " คน")
+          .html(d.properties.TH + " " + d.properties.count + " คน")
+
           .attr("stroke", "#DDDD");
       })
 
@@ -116,7 +81,11 @@ export default function ThMap({ domesticSum }) {
       .append("div")
       .style("position", "absolute")
       .style("z-index", "12")
-      .style("background", "lightpink")
+      .style("background", "white")
+      .style("font-family", "Sukhumvit Set")
+      .style("border-radius", "5px")
+      .style("padding", "20px")
+      .style("box-shadow", "0px 2px 4px rgba(0, 0, 0, 0.25)")
       .style("visibility", "hidden");
 
     // for(i in data){
@@ -126,14 +95,14 @@ export default function ThMap({ domesticSum }) {
 
   return (
     <div>
-      <div style={{ fontWeight: 700, fontSize: "18px" }}>
+      <div style={{ fontWeight: 700, fontSize: "1.4vw" }}>
         ผู้ติดเชื้อในประเทศไทย จำแนกตามจังหวัด
       </div>
       <div style={{ display: "flex", fontSize: "14px" }}>
         <div style={{ color: "#C0392B", marginRight: "10px", fontWeight: 600 }}>
-          อัพเดตล่าสุด
+          อัปเดตล่าสุด
         </div>
-        <div>{domesticSum.LastData}</div>
+        <div>{updateDate}</div>
       </div>
       <div style={{ ...mapStyle, stroke: "white" }}>
         <svg

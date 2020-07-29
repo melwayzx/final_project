@@ -16,7 +16,7 @@ import styled from "styled-components";
 import Reset from "../../images/Convert.svg";
 import TableSum from "../Chart/TableSum";
 
-export default function LineCharts({ sumCountry }) {
+export default function LineCharts({ sumCountry, updateDate }) {
   let data = [];
   const initialData = ["India", "Brazil", "US", "Russia", "South Africa"];
   const colours = [
@@ -172,8 +172,8 @@ export default function LineCharts({ sumCountry }) {
       <div
         style={{
           display: "flex",
-          width: "1000px",
-          justifyContent: "flex-end",
+          width: "1200px",
+          justifyContent: "space-between",
         }}
       >
         <div
@@ -183,83 +183,89 @@ export default function LineCharts({ sumCountry }) {
             marginRight: "60px",
           }}
         >
-          <div style={{ fontWeight: 700, fontSize: "18px" }}>
+          <div style={{ fontWeight: 700, fontSize: "1.4vw" }}>
             เปรียบเทียบแนวโน้มผู้ติดเชื้อตามประเทศ
           </div>
           <div style={{ display: "flex", fontSize: "14px" }}>
             <div
-              style={{ color: "#C0392B", marginRight: "10px", fontWeight: 600 }}
+              style={{
+                color: "#C0392B",
+                marginRight: "10px",
+                fontWeight: 600,
+              }}
             >
-              อัพเดตล่าสุด
+              อัปเดตล่าสุด
             </div>
-            <div>{date}</div>
+            <div>{updateDate}</div>
           </div>
         </div>
-
-        <Button
-          buttonName="ผู้ติดเชื้อ"
-          isSelectedButton={isSelectedButton}
-          onClick={() => {
-            setIsSelectedButton("ผู้ติดเชื้อ");
-            setUrlData(
-              "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv"
-            );
-          }}
-        >
-          ผู้ติดเชื้อ
-        </Button>
-        <Button
-          buttonName="หายแล้ว"
-          isSelectedButton={isSelectedButton}
-          onClick={() => {
-            setIsSelectedButton("หายแล้ว");
-            setUrlData(
-              "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv"
-            );
-          }}
-        >
-          หายแล้ว
-        </Button>
-        <Button
-          buttonName="เสียชีวิต"
-          isSelectedButton={isSelectedButton}
-          onClick={() => {
-            setIsSelectedButton("เสียชีวิต");
-            setUrlData(
-              "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"
-            );
-          }}
-        >
-          เสียชีวิต
-        </Button>
-        <div style={{ width: "250px", margin: "0px 5px " }}>
-          {/* <h1>เลือกประเทศ</h1> */}
-          <MultiSelect
-            options={countryList}
-            value={selected}
-            onChange={function (e) {
-              updateSelectCountry(e);
+        <div style={{ display: "flex" }}>
+          <Button
+            buttonName="ผู้ติดเชื้อ"
+            isSelectedButton={isSelectedButton}
+            onClick={() => {
+              setIsSelectedButton("ผู้ติดเชื้อ");
+              setUrlData(
+                "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv"
+              );
             }}
-            labelledBy={"Select"}
-            primary={"เลือกประเทศ"}
-          />
-        </div>
+          >
+            ผู้ติดเชื้อ
+          </Button>
+          <Button
+            buttonName="หายแล้ว"
+            isSelectedButton={isSelectedButton}
+            onClick={() => {
+              setIsSelectedButton("หายแล้ว");
+              setUrlData(
+                "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv"
+              );
+            }}
+          >
+            หายแล้ว
+          </Button>
+          <Button
+            buttonName="เสียชีวิต"
+            isSelectedButton={isSelectedButton}
+            onClick={() => {
+              setIsSelectedButton("เสียชีวิต");
+              setUrlData(
+                "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"
+              );
+            }}
+          >
+            เสียชีวิต
+          </Button>
+          <div style={{ width: "250px", margin: "0px 5px " }}>
+            {/* <h1>เลือกประเทศ</h1> */}
+            <MultiSelect
+              options={countryList}
+              hasSelectAll={false}
+              value={selected}
+              onChange={function (e) {
+                updateSelectCountry(e);
+              }}
+              labelledBy={"Select"}
+              primary={"เลือกประเทศ"}
+            />
+          </div>
 
-        <button
-          style={{ ...ResetButton, padding: "0px" }}
-          onClick={() => {
-            setSelected([]);
-            setIsSelectedButton("ผู้ติดเชื้อ");
-          }}
-        >
-          <Reset />
-        </button>
+          <button
+            style={{ ...ResetButton, padding: "0px" }}
+            onClick={() => {
+              setSelected([]);
+              setIsSelectedButton("ผู้ติดเชื้อ");
+            }}
+          >
+            <Reset />
+          </button>
+        </div>
       </div>
 
       <div style={{ padding: "40px 0" }}>
         <LineChart
-          width={1000}
-          height={300}
+          width={1200}
+          height={350}
           data={mockData}
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
         >
@@ -280,6 +286,7 @@ export default function LineCharts({ sumCountry }) {
                   dataKey={item}
                   stroke={colours[index]}
                   dot={false}
+                  strokeWidth={3}
                 ></Line>
               ))
             : selected.map((item, index) => (
@@ -289,6 +296,7 @@ export default function LineCharts({ sumCountry }) {
                   dataKey={item.label}
                   stroke={colours[index]}
                   dot={false}
+                  strokeWidth={3}
                 ></Line>
               ))}
         </LineChart>
