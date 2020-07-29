@@ -2,6 +2,9 @@ import StatusCard from "./StatusCard";
 import Button from "../Button";
 import react, { useEffect, useState } from "react";
 import services from "../../services";
+import { Loader } from 'semantic-ui-react'
+
+
 
 export default function SumCard() {
   const [domesticDailyCase, setDomesticDailyCase] = useState({});
@@ -19,7 +22,12 @@ export default function SumCard() {
   }, []);
 
   if (domesticDailyCase.Deaths == undefined) {
-    return "loading...";
+    return <div class="ui segment">
+      <div class="ui active inverted dimmer">
+        <div class="ui text loader">Loading</div>
+      </div>
+      <p></p>
+    </div>;
   }
 
   return <View domesticDailyCase={domesticDailyCase} updateDate={updateDate} />;
