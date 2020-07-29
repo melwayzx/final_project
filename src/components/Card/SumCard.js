@@ -19,7 +19,7 @@ export default function SumCard() {
   }, []);
 
   if (domesticDailyCase.Deaths == undefined) {
-    return "loading...";
+    return <div style={{ textAlign: "center" }}>"loading..." </div>;
   }
 
   return <View domesticDailyCase={domesticDailyCase} updateDate={updateDate} />;
