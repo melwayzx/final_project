@@ -1,6 +1,30 @@
 import BarChartData from "../Chart/BarChartData";
+import { useState, useEffect } from "react";
+import services from "../../services";
 
-export default function AgeSumCard({ domesticCase, updateDate }) {
+export default function AgeSumCard() {
+  const [domesticCase, setDomesticCase] = useState([]);
+  const dates = new Date();
+  const day = dates.getDate();
+  let month = dates.getMonth();
+  month = month + 1;
+  const year = dates.getFullYear();
+  const updateDate = day + "/" + month + "/" + year;
+
+  useEffect(() => {
+    const data = services.getDomesticCase().then((data) => {
+      setDomesticCase(data);
+    });
+  }, []);
+
+  if (domesticCase.length == 0) {
+    return "loading...";
+  }
+
+  return <View domesticCase={domesticCase} updateDate={updateDate} />;
+}
+
+function View({ domesticCase, updateDate }) {
   return (
     <div
       style={{
@@ -24,5 +48,3 @@ export default function AgeSumCard({ domesticCase, updateDate }) {
     </div>
   );
 }
-
-const StyledTitle = {};
