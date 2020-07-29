@@ -1,8 +1,31 @@
 import StatusCard from "./StatusCard";
 import Button from "../Button";
+import react, { useEffect, useState } from "react";
+import services from "../../services";
 
-export default function SumCard({ domesticDailyCase, updateDate }) {
-  // console.log(domesticDailyCase);
+export default function SumCard() {
+  const [domesticDailyCase, setDomesticDailyCase] = useState({});
+  const dates = new Date();
+  const day = dates.getDate();
+  let month = dates.getMonth();
+  month = month + 1;
+  const year = dates.getFullYear();
+  const updateDate = day + "/" + month + "/" + year;
+
+  useEffect(() => {
+    const data = services.getDomesticDailyCase().then((data) => {
+      setDomesticDailyCase(data);
+    });
+  }, []);
+
+  if (domesticDailyCase.Deaths == undefined) {
+    return "loading...";
+  }
+
+  return <View domesticDailyCase={domesticDailyCase} updateDate={updateDate} />;
+}
+
+function View({ domesticDailyCase, updateDate }) {
   return (
     <div>
       <div style={StyledContainer}>
@@ -24,11 +47,11 @@ export default function SumCard({ domesticDailyCase, updateDate }) {
             <div style={StyledText}>ประเทศไทย </div>
           </div>
           {/* <Button
-            href={"/covidScale"}
-            name={"แบบประเมินความเสี่ยง"}
-            StyledButtonContainer={StyledButtonContainer}
-            StyledLink={StyledLink}
-          /> */}
+      href={"/covidScale"}
+      name={"แบบประเมินความเสี่ยง"}
+      StyledButtonContainer={StyledButtonContainer}
+      StyledLink={StyledLink}
+    /> */}
         </div>
 
         <StatusCard

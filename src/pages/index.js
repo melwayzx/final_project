@@ -1,5 +1,4 @@
 import Head from "next/head";
-import services from "../services";
 import SumCard from "../components/Card/SumCard";
 import GenderSumCard from "../components/Card/GenderSumCard";
 import AgeSumCard from "../components/Card/AgeSumCard";
@@ -8,32 +7,7 @@ import LineCharts from "../components/Chart/LineCharts";
 import GlobalSumCard from "../components/Card/GlobalSumCard";
 import THLineChart from "../components/Chart/THLineChart";
 
-export default function index(props) {
-  const {
-    domesticDailyCase,
-    domesticSum,
-    domesticCase,
-    domesticTimeline,
-    globalConfirmed,
-    globalDeaths,
-    globalRecovered,
-  } = props;
-
-  const dates = new Date();
-  const day = dates.getDate();
-  let month = dates.getMonth();
-  month = month + 1;
-  const year = dates.getFullYear();
-  const updateDate = day + "/" + month + "/" + year;
-
-  // console.log(`domesticDailyCase`, domesticDailyCase);
-  // console.log(`domesticSum`, domesticSum);
-  // console.log(`domesticCase`, domesticCase);
-  // console.log(`domesticTimeline`, domesticTimeline);
-  // console.log(`globalConfirmed`, globalConfirmed);
-  // console.log(`globalDeaths`, globalDeaths);
-  // console.log(`globalRecovered`, globalRecovered);
-
+export default function index() {
   return (
     <div>
       <div
@@ -48,10 +22,7 @@ export default function index(props) {
         </Head>
 
         <div style={{ height: "250px" }}>
-          <SumCard
-            domesticDailyCase={domesticDailyCase}
-            updateDate={updateDate}
-          />
+          <SumCard />
         </div>
         <div
           style={{
@@ -64,9 +35,9 @@ export default function index(props) {
             // width: "100vw",
           }}
         >
-          <THLineChart domesticTimeline={domesticTimeline.Data} />
+          <THLineChart />
         </div>
-        <div
+        {/* <div
           style={{
             display: "flex",
             alignItems: "center",
@@ -115,30 +86,30 @@ export default function index(props) {
           }}
         >
           <LineCharts updateDate={updateDate} />
-        </div>
+        </div> */}
       </div>
     </div>
   );
 }
 
-export async function getServerSideProps() {
-  const domesticDailyCase = await services.getDomesticDailyCase();
-  const domesticSum = await services.getDomesticSum();
-  const domesticCase = await services.getDomesticCase();
-  const domesticTimeline = await services.getDomesticTimeline();
-  const globalConfirmed = await services.getGlobalConfirmed();
-  const globalDeaths = await services.getGlobalDeaths();
-  const globalRecovered = await services.getGlobalRecovered();
+// export async function getServerSideProps() {
+//   const domesticDailyCase = await services.getDomesticDailyCase();
+// const domesticSum = await services.getDomesticSum();
+// const domesticCase = await services.getDomesticCase();
+// const domesticTimeline = await services.getDomesticTimeline();
+// const globalConfirmed = await services.getGlobalConfirmed();
+// const globalDeaths = await services.getGlobalDeaths();
+// const globalRecovered = await services.getGlobalRecovered();
 
-  return {
-    props: {
-      domesticDailyCase,
-      domesticSum,
-      domesticCase,
-      domesticTimeline,
-      globalConfirmed,
-      globalDeaths,
-      globalRecovered,
-    }, // will be passed to the page component as props
-  };
-}
+// return {
+//   props: {
+//     domesticDailyCase,
+// domesticSum,
+// domesticCase,
+// domesticTimeline,
+// globalConfirmed,
+// globalDeaths,
+// globalRecovered,
+//     }, // will be passed to the page component as props
+//   };
+// }
