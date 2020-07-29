@@ -1,12 +1,12 @@
 import Head from "next/head";
-import CovidReport from "../src/services/covid-reports";
-import SumCard from "../src/components/Card/SumCard";
-import GenderSumCard from "../src/components/Card/GenderSumCard";
-import AgeSumCard from "../src/components/Card/AgeSumCard";
-import ThailandSumCard from "../src/components/Card/ThailandSumCard";
-import LineCharts from "../src/components/Chart/LineCharts";
-import GlobalSumCard from "../src/components/Card/GlobalSumCard";
-import THLineChart from "../src/components/Chart/THLineChart";
+import services from "../services";
+import SumCard from "../components/Card/SumCard";
+import GenderSumCard from "../components/Card/GenderSumCard";
+import AgeSumCard from "../components/Card/AgeSumCard";
+import ThailandSumCard from "../components/Card/ThailandSumCard";
+import LineCharts from "../components/Chart/LineCharts";
+import GlobalSumCard from "../components/Card/GlobalSumCard";
+import THLineChart from "../components/Chart/THLineChart";
 
 export default function index(props) {
   const {
@@ -19,24 +19,24 @@ export default function index(props) {
     globalRecovered,
   } = props;
 
-  // const dates = new Date();
-  // const day = dates.getDate();
-  // let month = dates.getMonth();
-  // month = month + 1;
-  // const year = dates.getFullYear();
-  // const updateDate = day + "/" + month + "/" + year;
+  const dates = new Date();
+  const day = dates.getDate();
+  let month = dates.getMonth();
+  month = month + 1;
+  const year = dates.getFullYear();
+  const updateDate = day + "/" + month + "/" + year;
 
-  console.log(`domesticDailyCase`, domesticDailyCase);
-  console.log(`domesticSum`, domesticSum);
-  console.log(`domesticCase`, domesticCase);
-  console.log(`domesticTimeline`, domesticTimeline);
-  console.log(`globalConfirmed`, globalConfirmed);
-  console.log(`globalDeaths`, globalDeaths);
-  console.log(`globalRecovered`, globalRecovered);
+  // console.log(`domesticDailyCase`, domesticDailyCase);
+  // console.log(`domesticSum`, domesticSum);
+  // console.log(`domesticCase`, domesticCase);
+  // console.log(`domesticTimeline`, domesticTimeline);
+  // console.log(`globalConfirmed`, globalConfirmed);
+  // console.log(`globalDeaths`, globalDeaths);
+  // console.log(`globalRecovered`, globalRecovered);
 
   return (
     <div>
-      {/* <div
+      <div
         style={{
           width: "100vw",
           paddingTop: "150px",
@@ -116,19 +116,19 @@ export default function index(props) {
         >
           <LineCharts updateDate={updateDate} />
         </div>
-      </div> */}
+      </div>
     </div>
   );
 }
 
 export async function getServerSideProps() {
-  const domesticDailyCase = await CovidReport.getDomesticDailyCase();
-  const domesticSum = await CovidReport.getDomesticSum();
-  const domesticCase = await CovidReport.getDomesticCase();
-  const domesticTimeline = await CovidReport.getDomesticTimeline();
-  const globalConfirmed = await CovidReport.getGlobalConfirmed();
-  const globalDeaths = await CovidReport.getGlobalDeaths();
-  const globalRecovered = await CovidReport.getGlobalRecovered();
+  const domesticDailyCase = await services.getDomesticDailyCase();
+  const domesticSum = await services.getDomesticSum();
+  const domesticCase = await services.getDomesticCase();
+  const domesticTimeline = await services.getDomesticTimeline();
+  const globalConfirmed = await services.getGlobalConfirmed();
+  const globalDeaths = await services.getGlobalDeaths();
+  const globalRecovered = await services.getGlobalRecovered();
 
   return {
     props: {
