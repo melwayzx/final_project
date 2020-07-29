@@ -14,19 +14,29 @@ export default function index(props) {
     domesticSum,
     domesticCase,
     domesticTimeline,
+    globalConfirmed,
+    globalDeaths,
+    globalRecovered,
   } = props;
 
-  const dates = new Date();
-  const day = dates.getDate();
-  let month = dates.getMonth();
-  month = month + 1;
-  const year = dates.getFullYear();
-  const updateDate = day + "/" + month + "/" + year;
+  // const dates = new Date();
+  // const day = dates.getDate();
+  // let month = dates.getMonth();
+  // month = month + 1;
+  // const year = dates.getFullYear();
+  // const updateDate = day + "/" + month + "/" + year;
 
-  // console.log(domesticTimeline);
+  console.log(`domesticDailyCase`, domesticDailyCase);
+  console.log(`domesticSum`, domesticSum);
+  console.log(`domesticCase`, domesticCase);
+  console.log(`domesticTimeline`, domesticTimeline);
+  console.log(`globalConfirmed`, globalConfirmed);
+  console.log(`globalDeaths`, globalDeaths);
+  console.log(`globalRecovered`, globalRecovered);
+
   return (
     <div>
-      <div
+      {/* <div
         style={{
           width: "100vw",
           paddingTop: "150px",
@@ -106,7 +116,7 @@ export default function index(props) {
         >
           <LineCharts updateDate={updateDate} />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
@@ -116,6 +126,9 @@ export async function getServerSideProps() {
   const domesticSum = await CovidReport.getDomesticSum();
   const domesticCase = await CovidReport.getDomesticCase();
   const domesticTimeline = await CovidReport.getDomesticTimeline();
+  const globalConfirmed = await CovidReport.getGlobalConfirmed();
+  const globalDeaths = await CovidReport.getGlobalDeaths();
+  const globalRecovered = await CovidReport.getGlobalRecovered();
 
   return {
     props: {
@@ -123,6 +136,9 @@ export async function getServerSideProps() {
       domesticSum,
       domesticCase,
       domesticTimeline,
+      globalConfirmed,
+      globalDeaths,
+      globalRecovered,
     }, // will be passed to the page component as props
   };
 }
