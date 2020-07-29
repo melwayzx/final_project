@@ -61,7 +61,7 @@ export default function index() {
         >
           <ThailandSumCard />
         </div>
-        {/* <div
+        <div
           style={{
             display: "flex",
             alignItems: "center",
@@ -72,7 +72,7 @@ export default function index() {
             marginTop: "30px",
           }}
         >
-          <GlobalSumCard updateDate={updateDate} />
+          <GlobalSumCard />
         </div>
         <div
           style={{
@@ -85,8 +85,8 @@ export default function index() {
             marginBottom: "20px",
           }}
         >
-          <LineCharts updateDate={updateDate} />
-        </div> */}
+          <LineCharts />
+        </div>
       </div>
     </div>
   );

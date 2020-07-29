@@ -16,7 +16,7 @@ import styled from "styled-components";
 import Reset from "../../images/Convert.svg";
 import TableSum from "../Chart/TableSum";
 
-export default function LineCharts({ sumCountry, updateDate }) {
+export default function LineCharts() {
   let data = [];
   const initialData = ["India", "Brazil", "US", "Russia", "South Africa"];
   const colours = [
@@ -39,28 +39,14 @@ export default function LineCharts({ sumCountry, updateDate }) {
   const [isSelectedButton, setIsSelectedButton] = useState("ผู้ติดเชื้อ");
   const [date, setDate] = useState("");
 
+  const dates = new Date();
+  const day = dates.getDate();
+  let month = dates.getMonth();
+  month = month + 1;
+  const year = dates.getFullYear();
+  const updateDate = day + "/" + month + "/" + year;
+
   useEffect(() => {
-    var d = new Date();
-    var date = d.getDate();
-    date = date - 2;
-    if (date < 10) {
-      date = "0" + date;
-    }
-    var month = d.getMonth();
-    month = month + 1;
-    if (month < 10) {
-      month = "0" + month;
-    }
-    var year = d.getFullYear();
-    var fileDate =
-      year.toString() +
-      "-" +
-      month.toString() +
-      "-" +
-      date.toString() +
-      "  " +
-      "00:00:00";
-    setDate(fileDate);
     axios({
       method: "get",
       url: urlData,
@@ -104,7 +90,6 @@ export default function LineCharts({ sumCountry, updateDate }) {
           }
         }
 
-        // condition for return data
         if (selected.length == 0) {
           for (let i in dates) {
             data.push({ date: dates[i] });
@@ -149,10 +134,8 @@ export default function LineCharts({ sumCountry, updateDate }) {
             }
           }
         }
-        //console.log(temp);
         setMaxData(temp);
         setMockData(data);
-        // console.log(records);
       })
 
       .catch((err) => {
@@ -161,10 +144,7 @@ export default function LineCharts({ sumCountry, updateDate }) {
   }, [selected, urlData]);
 
   function updateSelectCountry(e) {
-    // temp.push(e);
-    // console.log(temp);
     setSelected(e);
-    // console.log(selected);
   }
 
   return (

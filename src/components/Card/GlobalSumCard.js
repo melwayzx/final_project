@@ -4,11 +4,7 @@ import parse from "csv-parse/lib/sync";
 import TableSum from "../Chart/TableSum";
 import GlobalSumLineChart from "../Chart/GlobalSumLineChart";
 
-export default function GlobalSumCard({ updateDate }) {
-  // const [confirmed, setConfirmed] = useState(0);
-  // const [recovered, setRecovered] = useState(0);
-  // const [deaths, setDeaths] = useState(0);
-  // const [updateDate, setUpdateDate] = useState("");
+export default function GlobalSumCard() {
   const [sumCount, setSumCount] = useState({
     confirmed: 0,
     recovered: 0,
@@ -23,6 +19,13 @@ export default function GlobalSumCard({ updateDate }) {
       deaths: 0,
     },
   ]);
+
+  const dates = new Date();
+  const day = dates.getDate();
+  let month = dates.getMonth();
+  month = month + 1;
+  const year = dates.getFullYear();
+  const updateDate = day + "/" + month + "/" + year;
 
   useEffect(() => {
     var d = new Date();
@@ -114,33 +117,10 @@ export default function GlobalSumCard({ updateDate }) {
         const sortUnique = unique.sort((a, b) => b.confirmed - a.confirmed);
         // console.log(sortUnique);
         setSumCountry(unique);
-
-        // console.time();
-
-        // for (const i in records) {
-        //   setConfirmed(
-        //     (confirmed) => parseInt(records[i].Confirmed) + confirmed
-        //   );
-        //   setRecovered(
-        //     (recovered) => parseInt(records[i].Recovered) + recovered
-        //   );
-        //   setDeaths((deaths) => parseInt(records[i].Deaths) + deaths);
-        // }
-        // console.timeEnd();
-
-        // setUpdateDate(records[0].Last_Update);
-
-        // console.log(sumCount);
       })
       .catch((err) => {
         console.error(err);
       });
-
-    // return () => {
-    //   setConfirmed(0);
-    //   setRecovered(0);
-    //   setDeaths(0);
-    // };
   }, []);
 
   return (
