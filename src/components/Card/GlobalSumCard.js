@@ -57,9 +57,6 @@ export default function GlobalSumCard() {
           skip_empty_lines: true,
         });
 
-        // console.log(records);
-
-        // console.time();
         const confirmed = [...records].reduce(
           (prev, curr) => parseInt(prev) + parseInt(curr.Confirmed),
           0
@@ -80,8 +77,6 @@ export default function GlobalSumCard() {
           deaths: deaths,
           updateDate: records[0].Last_Update,
         });
-        // console.log(confirmed, recovered, deaths);
-        // console.timeEnd();
 
         let tempList = [];
         for (const i in records) {
@@ -115,7 +110,6 @@ export default function GlobalSumCard() {
         }
 
         const sortUnique = unique.sort((a, b) => b.confirmed - a.confirmed);
-        // console.log(sortUnique);
         setSumCountry(unique);
       })
       .catch((err) => {
