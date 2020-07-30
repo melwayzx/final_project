@@ -1,7 +1,31 @@
 import PieChartData from "../Chart/PieChartData";
+import { useState, useEffect } from "react";
+import services from "../../services";
 
-export default function GenderSumCard({ domesticSum, updateDate }) {
+export default function GenderSumCard() {
+  const [domesticSum, setDomesticSum] = useState({});
+  const dates = new Date();
+  const day = dates.getDate();
+  let month = dates.getMonth();
+  month = month + 1;
+  const year = dates.getFullYear();
+  const updateDate = day + "/" + month + "/" + year;
+
   // console.log(domesticSum);
+  useEffect(() => {
+    const data = services.getDomesticSum().then((data) => {
+      setDomesticSum(data);
+    });
+  }, []);
+
+  if (domesticSum.Gender == undefined) {
+    return "loading...";
+  }
+
+  return <View domesticSum={domesticSum} updateDate={updateDate} />;
+}
+
+function View({ domesticSum, updateDate }) {
   return (
     <div
       style={{
@@ -27,5 +51,3 @@ export default function GenderSumCard({ domesticSum, updateDate }) {
     </div>
   );
 }
-
-const StyledTitle = {};

@@ -5,7 +5,6 @@ import services from "../../services";
 import { Loader } from 'semantic-ui-react'
 
 
-
 export default function SumCard() {
   const [domesticDailyCase, setDomesticDailyCase] = useState({});
   const dates = new Date();

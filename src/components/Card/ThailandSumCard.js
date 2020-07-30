@@ -2,10 +2,25 @@ import BarChartData from "../Chart/BarChartData";
 import ThailandMap from "../Map/ThMap";
 import Table from "../Chart/Table";
 import json from "../Map/thailand.json";
+import { useState, useEffect } from "react";
+import services from "../../services";
 
-export default function ThailandSumCard({ domesticSum, updateDate }) {
-  // console.log(domesticSum);
+export default function ThailandSumCard() {
+  const [domesticSum, setDomesticSum] = useState({});
+  const dates = new Date();
+  const day = dates.getDate();
+  let month = dates.getMonth();
+  month = month + 1;
+  const year = dates.getFullYear();
+  const updateDate = day + "/" + month + "/" + year;
 
+  useEffect(() => {
+    const data = services.getDomesticSum().then((data) => {
+      setDomesticSum(data);
+    });
+  }, []);
+
+  let check = false;
   for (const j in domesticSum.Province) {
     for (const i in json.features) {
       if (j === json.features[i].properties.name) {
@@ -50,8 +65,17 @@ export default function ThailandSumCard({ domesticSum, updateDate }) {
         json.features[i].properties.level = "0";
       }
     }
+    check = true;
   }
 
+  if (check == false) {
+    return "loading...";
+  }
+
+  return <View domesticCase={json} updateDate={updateDate} />;
+}
+
+function View({ domesticCase, updateDate }) {
   return (
     <div
       style={{
@@ -64,7 +88,7 @@ export default function ThailandSumCard({ domesticSum, updateDate }) {
     >
       <div style={{ display: "flex", marginTop: "40px" }}>
         {/* <ThailandMap domesticSum={domesticSum} /> */}
-        <ThailandMap domesticSum={json} updateDate={updateDate} />
+        <ThailandMap domesticSum={domesticCase} updateDate={updateDate} />
 
         {/* <div style={TableContainer}> */}
         <div style={{ marginTop: "50px" }}>

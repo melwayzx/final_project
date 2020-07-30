@@ -37,7 +37,7 @@ export default function index() {
         >
           <THLineChart />
         </div>
-        {/* <div
+        <div
           style={{
             display: "flex",
             alignItems: "center",
@@ -47,8 +47,8 @@ export default function index() {
             height: "600px",
           }}
         >
-          <GenderSumCard domesticSum={domesticSum} updateDate={updateDate} />
-          <AgeSumCard domesticCase={domesticCase} updateDate={updateDate} />
+          <GenderSumCard />
+          <AgeSumCard />
         </div>
 
         <div
@@ -59,7 +59,7 @@ export default function index() {
             background: "white",
           }}
         >
-          <ThailandSumCard domesticSum={domesticSum} updateDate={updateDate} />
+          <ThailandSumCard />
         </div>
         <div
           style={{
@@ -72,7 +72,7 @@ export default function index() {
             marginTop: "30px",
           }}
         >
-          <GlobalSumCard updateDate={updateDate} />
+          <GlobalSumCard />
         </div>
         <div
           style={{
@@ -85,31 +85,9 @@ export default function index() {
             marginBottom: "20px",
           }}
         >
-          <LineCharts updateDate={updateDate} />
-        </div> */}
+          <LineCharts />
+        </div>
       </div>
     </div>
   );
 }
-
-// export async function getServerSideProps() {
-//   const domesticDailyCase = await services.getDomesticDailyCase();
-// const domesticSum = await services.getDomesticSum();
-// const domesticCase = await services.getDomesticCase();
-// const domesticTimeline = await services.getDomesticTimeline();
-// const globalConfirmed = await services.getGlobalConfirmed();
-// const globalDeaths = await services.getGlobalDeaths();
-// const globalRecovered = await services.getGlobalRecovered();
-
-// return {
-//   props: {
-//     domesticDailyCase,
-// domesticSum,
-// domesticCase,
-// domesticTimeline,
-// globalConfirmed,
-// globalDeaths,
-// globalRecovered,
-//     }, // will be passed to the page component as props
-//   };
-// }
