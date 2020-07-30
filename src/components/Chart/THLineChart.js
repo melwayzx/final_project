@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import services from "../../services";
-
+import Skeleton from 'react-loading-skeleton';
 import {
   LineChart,
   Line,
@@ -40,7 +40,7 @@ export default function LineCharts() {
   }
 
   if (dailyConfirmed.length == 0 && sumConfirmed.length == 0) {
-    return "loading...";
+    return <Skeleton variant="rect" width={1154.81} height={275.75} />
   }
 
   return <View dailyConfirmed={dailyConfirmed} sumConfirmed={sumConfirmed} />;
@@ -65,13 +65,13 @@ function View({ dailyConfirmed, sumConfirmed }) {
           width={550}
           height={300}
           data={dailyConfirmed}
-          // margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+        // margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
         >
           <XAxis dataKey="date" tick={{ fontSize: 10 }} />
           <YAxis
             type="number"
-            // domain={[0, maxData]}
-            // ticks={[0, ]}
+          // domain={[0, maxData]}
+          // ticks={[0, ]}
           />
           <CartesianGrid stroke="#DDDDDD" vertical={false} />
           <Tooltip />
@@ -95,7 +95,7 @@ function View({ dailyConfirmed, sumConfirmed }) {
           width={550}
           height={300}
           data={sumConfirmed}
-          // margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+        // margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
         >
           <XAxis dataKey="date" tick={{ fontSize: 10 }} />
           <YAxis

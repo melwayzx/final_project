@@ -25,6 +25,8 @@
     "react-bootstrap": "^1.2.2",
     "react-d3-library": "^1.1.8",
     "react-dom": "16.13.1",
+    "react-loading-screen": "0.0.17",
+    "react-loading-skeleton": "^2.1.1",
     "react-multi-select-component": "^3.0.0",
     "react-select": "^3.1.0",
     "react-tooltip": "^4.2.7",

@@ -69,7 +69,7 @@ export default function ThailandSumCard() {
   }
 
   if (check == false) {
-    return "loading...";
+    return <div class="ui active inline loader"></div>
   }
 
   return <View domesticCase={json} updateDate={updateDate} />;
