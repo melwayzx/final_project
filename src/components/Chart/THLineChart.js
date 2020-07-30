@@ -12,32 +12,18 @@ import {
 } from "recharts";
 
 export default function LineCharts() {
-  const [domesticTimeline, setDomesticTimeline] = useState({});
-  // let dai] = useState([{}]);
+  const [dailyConfirmed, setDailyConfirmed] = useState({});
+  const [sumConfirmed, setSumConfirmed] = useState({});
 
   useEffect(() => {
-    const data = services.getDomesticTimeline().then((data) => {
-      setDomesticTimeline(data.Data);
-    });
+    const daily = services.getDailyConfirmedData();
+    setDailyConfirmed(daily);
+
+    const sum = services.getSumConfirmedData();
+    setSumConfirmed(sum);
+
+    console.log(daily);
   }, []);
-
-  let dailyConfirmed = [];
-  let sumConfirmed = [];
-  for (const i in domesticTimeline) {
-    dailyConfirmed.push({
-      date: domesticTimeline[i].Date,
-      ผู้ติดเชื้อรายวัน: domesticTimeline[i].NewConfirmed,
-    });
-  }
-
-  for (const i in domesticTimeline) {
-    sumConfirmed.push({
-      date: domesticTimeline[i].Date,
-      ผู้ติดเชื้อสะสม: domesticTimeline[i].Confirmed,
-      หายแล้ว: domesticTimeline[i].Recovered,
-      เสียชีวิต: domesticTimeline[i].Deaths,
-    });
-  }
 
   if (dailyConfirmed.length == 0 && sumConfirmed.length == 0) {
     return <Skeleton variant="rect" width={1154.81} height={275.75} />
