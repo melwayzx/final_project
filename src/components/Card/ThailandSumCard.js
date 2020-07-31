@@ -4,6 +4,7 @@ import Table from "../Chart/Table";
 import json from "../Map/thailand.json";
 import { useState, useEffect } from "react";
 import services from "../../services";
+import Skeleton from 'react-loading-skeleton';
 
 export default function ThailandSumCard() {
   const [domesticSum, setDomesticSum] = useState({});
@@ -69,7 +70,7 @@ export default function ThailandSumCard() {
   }
 
   if (check == false) {
-    return <div class="ui active inline loader"></div>
+    return <Skeleton variant="rect" width={1077.33} height={726.67} />
   }
 
   return <View domesticCase={json} updateDate={updateDate} />;
