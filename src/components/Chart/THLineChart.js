@@ -10,19 +10,15 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
+import { sum } from "d3";
 
 export default function LineCharts() {
-  const [dailyConfirmed, setDailyConfirmed] = useState({});
-  const [sumConfirmed, setSumConfirmed] = useState({});
+  const [dailyConfirmed, setDailyConfirmed] = useState([]);
+  const [sumConfirmed, setSumConfirmed] = useState([]);
 
   useEffect(() => {
-    const daily = services.getDailyConfirmedData();
-    setDailyConfirmed(daily);
-
-    const sum = services.getSumConfirmedData();
-    setSumConfirmed(sum);
-
-    console.log(daily);
+    services.getDailyConfirmedData().then((data) => setDailyConfirmed(data));
+    services.getSumConfirmedData().then((data) => setSumConfirmed(data));
   }, []);
 
   if (dailyConfirmed.length == 0 && sumConfirmed.length == 0) {
@@ -47,6 +43,7 @@ function View({ dailyConfirmed, sumConfirmed }) {
         >
           จำนวนผู้ติดเชื้อรายวัน
         </div>
+<<<<<<< HEAD
         <LineChart
           width={550}
           height={300}
@@ -59,6 +56,11 @@ function View({ dailyConfirmed, sumConfirmed }) {
           // domain={[0, maxData]}
           // ticks={[0, ]}
           />
+=======
+        <LineChart width={550} height={300} data={dailyConfirmed}>
+          <XAxis dataKey="date" tick={{ fontSize: 10 }} />
+          <YAxis type="number" />
+>>>>>>> origin/Melwayz
           <CartesianGrid stroke="#DDDDDD" vertical={false} />
           <Tooltip />
           <Legend />
@@ -77,18 +79,18 @@ function View({ dailyConfirmed, sumConfirmed }) {
         >
           จำนวนผู้ติดเชื้อสะสมรายวัน
         </div>
+<<<<<<< HEAD
         <LineChart
           width={550}
           height={300}
           data={sumConfirmed}
         // margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
         >
+=======
+        <LineChart width={550} height={300} data={sumConfirmed}>
+>>>>>>> origin/Melwayz
           <XAxis dataKey="date" tick={{ fontSize: 10 }} />
-          <YAxis
-          // type="number"
-          // domain={[0, maxData]}
-          // ticks={[0, ]}
-          />
+          <YAxis />
           <CartesianGrid stroke="#DDDDDD" vertical={false} />
           <Tooltip />
           <Legend />

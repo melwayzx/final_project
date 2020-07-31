@@ -25,7 +25,7 @@ export default function GlobalSumLineChart() {
           columns: true,
           skip_empty_lines: true,
         });
-        console.log(records);
+        // console.log(records);
 
         const newObj = { ...records };
         let dates = [];

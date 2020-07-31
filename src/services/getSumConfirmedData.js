@@ -1,18 +1,14 @@
 import services from "./";
 
-export default function getSumConfirmedData() {
-  let sumConfirmed = [];
-  const data = services.getDomesticTimeline().then((data) => {
-    const temp = data.Data;
-    for (const i in temp) {
-      sumConfirmed.push({
-        date: temp[i].Date,
-        ผู้ติดเชื้อสะสม: temp[i].Confirmed,
-        หายแล้ว: temp[i].Recovered,
-        เสียชีวิต: temp[i].Deaths,
-      });
-    }
-  });
+export default async function getSumConfirmedData() {
+  const data = await services.getDomesticTimeline();
 
-  return sumConfirmed;
+  return data.Data.map((item) => {
+    return {
+      date: item.Date,
+      ผู้ติดเชื้อสะสม: item.Confirmed,
+      หายแล้ว: item.Recovered,
+      เสียชีวิต: item.Deaths,
+    };
+  });
 }
