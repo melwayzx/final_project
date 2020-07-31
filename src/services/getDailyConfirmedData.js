@@ -1,15 +1,12 @@
 import services from "./";
 
-export default function getDailyConfirmedData() {
-  let dailyConfirmed = [];
-  const data = services.getDomesticTimeline().then((data) => {
-    const temp = data.Data;
-    for (const i in temp) {
-      dailyConfirmed.push({
-        date: temp[i].Date,
-        ผู้ติดเชื้อรายวัน: temp[i].NewConfirmed,
-      });
-    }
+export default async function getDailyConfirmedData() {
+  const data = await services.getDomesticTimeline();
+
+  return data.Data.map((item) => {
+    return {
+      date: item.Date,
+      ผู้ติดเชื้อรายวัน: item.NewConfirmed,
+    };
   });
-  return dailyConfirmed;
 }
