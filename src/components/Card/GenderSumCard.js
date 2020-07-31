@@ -1,7 +1,7 @@
 import PieChartData from "../Chart/PieChartData";
 import { useState, useEffect } from "react";
 import services from "../../services";
-
+import Skeleton from 'react-loading-skeleton';
 export default function GenderSumCard() {
   const [domesticSum, setDomesticSum] = useState({});
   const dates = new Date();
@@ -19,7 +19,7 @@ export default function GenderSumCard() {
   }, []);
 
   if (domesticSum.Gender == undefined) {
-    return "loading...";
+    return <Skeleton variant="rect" width={1015.46} height={600} />
   }
 
   return <View domesticSum={domesticSum} updateDate={updateDate} />;

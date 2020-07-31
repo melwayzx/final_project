@@ -1,6 +1,7 @@
 import BarChartData from "../Chart/BarChartData";
 import { useState, useEffect } from "react";
 import services from "../../services";
+import Skeleton from 'react-loading-skeleton';
 
 export default function AgeSumCard() {
   const [domesticCase, setDomesticCase] = useState([]);
@@ -18,7 +19,7 @@ export default function AgeSumCard() {
   }, []);
 
   if (domesticCase.length == 0) {
-    return "loading...";
+    return <Skeleton variant="rect" width={700} height={350} />
   }
 
   return <View domesticCase={domesticCase} updateDate={updateDate} />;

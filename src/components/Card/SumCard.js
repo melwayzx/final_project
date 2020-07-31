@@ -2,7 +2,7 @@ import StatusCard from "./StatusCard";
 import Button from "../Button";
 import react, { useEffect, useState } from "react";
 import services from "../../services";
-
+import Skeleton from 'react-loading-skeleton';
 export default function SumCard() {
   const [domesticDailyCase, setDomesticDailyCase] = useState({});
   const dates = new Date();
@@ -19,7 +19,7 @@ export default function SumCard() {
   }, []);
 
   if (domesticDailyCase.Deaths == undefined) {
-    return <div style={{ textAlign: "center" }}>"loading..." </div>;
+    return <Skeleton variant="rect" width={1154.81} height={275.75} />
   }
 
   return <View domesticDailyCase={domesticDailyCase} updateDate={updateDate} />;
